@@ -1,0 +1,1443 @@
+/* Reset & CSS Custom Variables */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-gold: #DDA73A;
+  --primary-gold-hover: #E8B448;
+  --glass-bg: rgba(255, 255, 255, 0.14);
+  --glass-bg-hover: rgba(255, 255, 255, 0.22);
+  --glass-input-bg: rgba(255, 255, 255, 0.12);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.25);
+  --glass-shadow: 0 30px 60px rgba(0, 0, 0, 0.25);
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: var(--font-body);
+  background-color: #0b1329;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+/* Video & Preloaded Image Background Layer */
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  overflow: hidden;
+  background-color: #0b1329;
+}
+
+.hero-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 0.05s ease-out;
+}
+
+.hero-video.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 70% 50%, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.35) 100%);
+  pointer-events: none;
+}
+
+/* Transition Elements Base State (Hidden initially) */
+.hero-transition-element {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(24px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+    visibility 1.2s;
+  pointer-events: none;
+}
+
+.hero-transition-element.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Navigation Bar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 4rem;
+  z-index: 10;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+
+.brand-logo-img {
+  height: 62px;
+  max-width: 250px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.3));
+  transition: transform 0.25s ease;
+}
+
+.brand-logo-img:hover {
+  transform: scale(1.03);
+}
+
+.nav-links {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+  z-index: 2;
+  white-space: nowrap;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.88);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 1.1rem;
+  border-radius: 50px;
+  transition: all 0.25s ease;
+}
+
+.nav-link:hover {
+  background: linear-gradient(180deg, #F3B538 0%, #DF9D25 100%);
+  color: #1F2E4D;
+  font-weight: 600;
+  box-shadow: 0 4px 14px rgba(243, 181, 56, 0.35);
+}
+
+.dropdown-icon {
+  opacity: 0.75;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.btn-manage {
+  background: linear-gradient(180deg, #EBAA2B 0%, #D4921E 100%);
+  border: none;
+  color: #ffffff;
+  padding: 0.7rem 1.8rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(212, 146, 30, 0.35);
+  transition: all 0.25s ease;
+}
+
+.btn-manage:hover {
+  background: linear-gradient(180deg, #F3B538 0%, #DF9D25 100%);
+  color: #1F2E4D;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(212, 146, 30, 0.5);
+}
+
+.btn-menu {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: none;
+  color: #0b1329;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.btn-menu:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Main Hero Layout */
+.hero-content {
+  position: relative;
+  z-index: 5;
+  height: 100vh;
+  padding: 7rem 4rem 3rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+/* Right Column: Flight Booking Form */
+.booking-widget-container {
+  width: 460px;
+  margin-left: auto;
+  align-self: center;
+  margin-top: 1.5rem;
+}
+
+.booking-card {
+  background: var(--glass-bg);
+  margin-top: 1rem;
+}
+
+.booking-card-glass {
+  width: 100%;
+}
+
+.booking-card-glass .glass-surface__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 2.2rem 2.2rem;
+}
+
+.booking-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.booking-title {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+}
+
+.booking-subtitle {
+  font-size: 0.84rem;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.48;
+  font-weight: 300;
+}
+
+/* Trip Type Selector Tabs */
+.trip-type-selector {
+  display: flex;
+  gap: 0.65rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.trip-tab {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.88);
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.trip-tab.active {
+  background: #ffffff;
+  color: #1F2E4D;
+  font-weight: 600;
+  border-color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.radio-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary-gold);
+}
+
+.radio-circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Flight Form Inputs */
+.flight-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.location-inputs-group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.input-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 20px;
+  padding: 0.85rem 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 8px 24px rgba(0, 0, 0, 0.12);
+  transition: all 0.25s ease;
+}
+
+.input-card:hover {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.4), 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.input-icon-box {
+  color: var(--primary-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.input-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  width: 100%;
+}
+
+.input-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 0.05rem;
+}
+
+.input-value-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+}
+
+.airport-code {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.city-name {
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.date-value,
+.select-value {
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+/* Floating Swap Button */
+.swap-btn {
+  position: absolute;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--primary-gold);
+  border: none;
+  color: #0b1329;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  box-shadow: 0 4px 14px rgba(221, 167, 58, 0.45);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.swap-btn:hover {
+  transform: translateY(-50%) rotate(180deg);
+  background: var(--primary-gold-hover);
+}
+
+/* Dual Input Card */
+.dual-input-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1.3rem;
+}
+
+.input-sub-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1;
+}
+
+.divider-line {
+  width: 1px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.22);
+  margin: 0 1rem;
+}
+
+/* Search Flights CTA Button */
+.btn-search-flights {
+  width: 100%;
+  background: var(--primary-gold);
+  color: #ffffff;
+  border: none;
+  padding: 1.05rem 1.5rem;
+  border-radius: 50px;
+  font-size: 1.02rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  box-shadow: 0 8px 25px rgba(221, 167, 58, 0.38);
+  transition: all 0.25s ease;
+}
+
+.btn-search-flights:hover {
+  background: var(--primary-gold-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(221, 167, 58, 0.5);
+}
+
+/* Left Column: Hero Headline & Trust Badges */
+.hero-left-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 2.2rem;
+  max-width: 620px;
+  margin-bottom: 1.5rem;
+}
+
+.hero-typography {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-body);
+  font-size: 4.2rem;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -1px;
+}
+
+.title-white {
+  color: #ffffff;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.title-gold {
+  color: var(--primary-gold);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero-description {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
+  font-weight: 400;
+  max-width: 520px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Trust Badges Horizontal Glass Pill Bar */
+.trust-badges-bar {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 60px;
+  padding: 0.85rem 1.6rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  width: fit-content;
+}
+
+.trust-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.badge-icon-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #ffffff;
+  color: #0b1329;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.badge-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.badge-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.badge-subtitle {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.82);
+  white-space: nowrap;
+  font-weight: 400;
+}
+
+.badge-divider {
+  width: 1px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Floating Instant View Button for Testing */
+.skip-intro-btn {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+  font-size: 0.75rem;
+  font-family: var(--font-body);
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.25s ease;
+}
+
+.skip-intro-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* Lowest Fare Section */
+.lowest-fare-wrapper {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+}
+
+.lowest-fare-root {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.flowing-menu-strip {
+  width: 100%;
+  height: 56px;
+  position: relative;
+  z-index: 10;
+  background: transparent;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(238, 176, 29, 0.25);
+  border-bottom: 1px solid rgba(238, 176, 29, 0.25);
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .flowing-menu-strip {
+    height: 48px;
+  }
+}
+
+/* Today's Lowest Fares Deals Section Styling (Poppins Font & Glassmorphism) */
+.lowest-fares-deals-section {
+  position: relative;
+  width: 100%;
+  padding: 4.5rem 5rem 4rem 5rem;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #F7F9FC;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  z-index: 5;
+}
+
+.lowest-fares-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(11, 19, 41, 0.25) 0%, rgba(11, 19, 41, 0.45) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.lowest-fares-content-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.8rem;
+}
+
+/* Top Row Header Block & View All Deals Button */
+.lowest-fares-top-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.lowest-fares-header-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.offers-label-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #EEB01D;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.4rem;
+}
+
+.gold-ticket-icon {
+  flex-shrink: 0;
+}
+
+.lowest-fares-main-heading {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  font-size: 72px;
+  color: #F7F9FC;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  margin-bottom: 0.8rem;
+}
+
+.lowest-fares-support-text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.88);
+  line-height: 1.5;
+  max-width: 680px;
+}
+
+/* View All Deals CTA Button */
+.btn-view-all-deals {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: 56px;
+  padding: 0 28px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: #F7F9FC;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transition: all 0.25s ease;
+}
+
+.btn-view-all-deals:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.65);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* 4 Equal-Width Cards Grid */
+.deals-cards-grid-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.8rem;
+  width: 100%;
+}
+
+.deal-glass-card {
+  width: 100%;
+  height: 560px;
+  border-radius: 28px;
+  overflow: hidden;
+  background: rgba(145, 193, 245, 0.18);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(255, 255, 255, 0.32);
+  box-shadow: 0 15px 40px rgba(8, 27, 54, 0.18);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.deal-glass-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 55px rgba(8, 27, 54, 0.32);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Card Upper 58% Image Area */
+.card-top-image-area {
+  position: relative;
+  width: 100%;
+  height: 58%;
+  overflow: hidden;
+}
+
+.deal-dest-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.deal-glass-card:hover .deal-dest-img {
+  transform: scale(1.06);
+}
+
+.deal-img-top-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.deal-card-badge {
+  position: absolute;
+  top: 1.1rem;
+  left: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.95rem;
+  border-radius: 50px;
+  background: rgba(18, 49, 94, 0.45);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #F7F9FC;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* Card Lower 42% Content Area */
+.card-bottom-info-panel {
+  position: relative;
+  width: 100%;
+  height: 42%;
+  padding: 1.2rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgba(145, 193, 245, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.country-location-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.pin-icon-white {
+  color: #F7F9FC;
+  flex-shrink: 0;
+}
+
+.country-name-text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.destination-title-text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  color: #F7F9FC;
+  line-height: 1.15;
+  margin-top: -0.2rem;
+}
+
+.card-thin-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.18);
+  margin: 0.1rem 0;
+}
+
+.price-info-line {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.starting-from-label {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.gold-price-value {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+  color: #EEB01D;
+}
+
+.card-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.btn-card-book-now {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  background: #EEB01D;
+  color: #1F2E4D;
+  border: none;
+  padding: 0.62rem 1.1rem;
+  border-radius: 50px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(238, 176, 29, 0.35);
+  transition: all 0.25s ease;
+}
+
+.btn-card-book-now:hover {
+  background: #ffffff;
+  color: #1F2E4D;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(255, 255, 255, 0.4);
+}
+
+.btn-card-call-now {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  color: #F7F9FC;
+  text-decoration: none;
+  padding: 0.62rem 1.1rem;
+  border-radius: 50px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-card-call-now:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.7);
+  transform: translateY(-1px);
+}
+
+/* Bottom Frosted Glass Airline Partner Strip */
+.airline-partner-glass-strip {
+  width: 100%;
+  border-radius: 28px;
+  background: rgba(145, 193, 245, 0.22);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(255, 255, 255, 0.32);
+  padding: 1.2rem 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  box-shadow: 0 10px 30px rgba(8, 27, 54, 0.15);
+}
+
+.partner-strip-left-col {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.gold-shield-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(238, 176, 29, 0.15);
+  border: 1px solid rgba(238, 176, 29, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.partner-strip-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.partner-strip-heading {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: #F7F9FC;
+  line-height: 1.2;
+}
+
+.partner-strip-subtext {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.4;
+}
+
+.partner-strip-vertical-divider {
+  width: 1px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.22);
+  flex-shrink: 0;
+}
+
+.partner-strip-right-logos {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+  gap: 1rem;
+}
+
+.airline-logo-item {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #102542;
+}
+
+.logo-name-text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: #102542;
+  letter-spacing: -0.2px;
+}
+
+@media (max-width: 1200px) {
+  .deals-cards-grid-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .lowest-fares-main-heading {
+    font-size: 52px;
+  }
+  .partner-strip-right-logos {
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .lowest-fares-deals-section {
+    padding: 3rem 1.5rem;
+  }
+  .lowest-fares-top-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  .deals-cards-grid-row {
+    grid-template-columns: 1fr;
+  }
+  .airline-partner-glass-strip {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .partner-strip-vertical-divider {
+    display: none;
+  }
+}
+
+.fare-deal-card:hover .deal-image {
+  transform: scale(1.08);
+}
+
+.deal-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+.deal-badge {
+  position: absolute;
+  top: 0.9rem;
+  left: 0.9rem;
+  background: rgba(11, 19, 41, 0.75);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  padding: 0.3rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.discount-tag {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  background: var(--primary-gold);
+  color: #1F2E4D;
+  padding: 0.3rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.deal-card-body {
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  flex: 1;
+}
+
+.route-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.route-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.route-col.align-right {
+  align-items: flex-end;
+}
+
+.route-code {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+}
+
+.route-city {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.78);
+  font-weight: 400;
+}
+
+.flight-arrow {
+  color: var(--primary-gold);
+  opacity: 0.9;
+}
+
+.deal-info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.4rem;
+  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+}
+
+.airline-name {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 500;
+}
+
+.flight-type-pill {
+  font-size: 0.72rem;
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 0.25rem 0.65rem;
+  border-radius: 50px;
+  font-weight: 500;
+}
+
+.deal-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0.8rem;
+}
+
+.price-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-label {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+}
+
+.current-price {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--primary-gold);
+}
+
+.original-price {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: line-through;
+}
+
+.btn-book-deal {
+  background: linear-gradient(180deg, #EBAA2B 0%, #D4921E 100%);
+  border: none;
+  color: #ffffff;
+  padding: 0.55rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(212, 146, 30, 0.35);
+  transition: all 0.25s ease;
+}
+
+.btn-book-deal:hover {
+  background: linear-gradient(180deg, #F3B538 0%, #DF9D25 100%);
+  color: #1F2E4D;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(212, 146, 30, 0.5);
+}
+
+/* Responsive Breakpoints & Device Adaptations */
+@media (max-width: 1200px) {
+  .hero-title {
+    font-size: 3.6rem;
+  }
+  .booking-widget-container {
+    width: 420px;
+  }
+  .nav-links {
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .navbar {
+    padding: 1.2rem 2rem;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    padding: 6.5rem 2rem 3rem 2rem;
+    gap: 2.5rem;
+    overflow-y: auto;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .hero-left-panel {
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+    margin-bottom: 0;
+  }
+
+  .hero-title {
+    font-size: 3.2rem;
+    align-items: center;
+  }
+
+  .hero-description {
+    max-width: 100%;
+    font-size: 1.05rem;
+  }
+
+  .trust-badges-bar {
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 30px;
+    padding: 0.9rem 1.4rem;
+    gap: 1.2rem;
+    width: 100%;
+  }
+
+  .booking-widget-container {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem 1.25rem;
+  }
+
+  .brand-logo-img {
+    height: 46px;
+    max-width: 180px;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 72px;
+    left: 1.25rem;
+    right: 1.25rem;
+    transform: translateY(-20px);
+    background: rgba(11, 19, 41, 0.96);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 24px;
+    flex-direction: column;
+    padding: 1.5rem;
+    gap: 1.1rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    z-index: 100;
+  }
+
+  .nav-links.is-open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .btn-manage {
+    font-size: 0.82rem;
+    padding: 0.55rem 1.1rem;
+  }
+
+  .hero-content {
+    padding: 5.5rem 1rem 2.5rem 1rem;
+    gap: 2rem;
+    align-items: center;
+    text-align: center;
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+  }
+
+  .hero-left-panel {
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 100%;
+  }
+
+  .hero-title {
+    font-size: 2.3rem;
+    line-height: 1.1;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+    line-height: 1.45;
+  }
+
+  .trust-badges-bar {
+    flex-direction: column;
+    width: 100%;
+    border-radius: 24px;
+    padding: 1.2rem 1rem;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .badge-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  .trust-badge-item {
+    width: 100%;
+  }
+
+  .badge-title {
+    font-size: 0.88rem;
+  }
+
+  .badge-subtitle {
+    font-size: 0.75rem;
+  }
+
+  .booking-widget-container {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .booking-card-glass .glass-surface__content {
+    padding: 1.6rem 1.2rem;
+    gap: 1rem;
+  }
+
+  .booking-title {
+    font-size: 1.8rem;
+  }
+
+  .booking-subtitle {
+    font-size: 0.8rem;
+  }
+
+  .trip-type-selector {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .trip-tab {
+    padding: 0.5rem 0.85rem;
+    font-size: 0.8rem;
+  }
+
+  .input-card {
+    padding: 0.75rem 1rem;
+    gap: 0.7rem;
+  }
+
+  .airport-code {
+    font-size: 0.98rem;
+  }
+
+  .city-name {
+    font-size: 0.85rem;
+  }
+
+  .swap-btn {
+    right: 0.7rem;
+    width: 34px;
+    height: 34px;
+  }
+
+  .btn-search-flights {
+    padding: 0.95rem 1.2rem;
+    font-size: 0.95rem;
+  }
+}
