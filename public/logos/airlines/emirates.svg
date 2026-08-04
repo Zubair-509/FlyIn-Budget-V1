@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60" width="220" height="60">
+  <rect x="0" y="10" width="190" height="40" rx="4" fill="#D71921"/>
+  <!-- Arabic Calligraphy stylized block -->
+  <path fill="#FFFFFF" d="M18 22h8v16h-8zm12 0h6v16h-6zm10 0h12v4h-8v3h7v4h-7v5h-4zm18 0h6v16h-6zm10 0h8v16h-8zm12 0h14v4h-10v3h8v4h-8v5h-4z"/>
+  <!-- Emirates Wordmark below calligraphy -->
+  <text x="96" y="36" font-family="'Georgia', serif" font-size="20" font-weight="bold" fill="#FFFFFF" letter-spacing="1">Emirates</text>
+</svg>

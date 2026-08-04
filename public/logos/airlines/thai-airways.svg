@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 60" width="220" height="60">
+  <g transform="translate(10, 10)">
+    <!-- Thai Orchid Emblem -->
+    <path fill="#4A154B" d="M5 20c15-10 30-5 35 5-10 0-20 5-25 15 8-5 18-5 25 0-10 5-18 12-23 20 0-12-4-25-12-40z"/>
+    <path fill="#F2A900" d="M12 20c10-6 20-3 24 3-7 0-14 3-18 10 5-3 12-3 17 0-7 3-12 8-16 13 1-8-2-17-7-26z"/>
+    <!-- Wordmark -->
+    <text x="46" y="25" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#4A154B" letter-spacing="2">THAI</text>
+    <text x="47" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="600" fill="#F2A900" letter-spacing="3">Smooth as Silk</text>
+  </g>
+</svg>

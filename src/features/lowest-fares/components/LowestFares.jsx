@@ -1,8 +1,9 @@
 import React from 'react';
 import FlowingMenu from './FlowingMenu.jsx';
-import GlassCoverflowCarousel from './GlassCoverflowCarousel.jsx';
-import lftBg from '../assets/LFt S2.png';
-import dubaiImg from '../assets/dubai.png';
+import FaresCarousel from './FaresCarousel.jsx';
+import AirlineLogoLoop from '../../airline-partners/components/AirlineLogoLoop.jsx';
+import lftBg from '../../../assets/LFt S2.png';
+import dubaiImg from '../../../assets/dubai.png';
 
 const FLOWING_MENU_ITEMS = [
   {
@@ -12,7 +13,7 @@ const FLOWING_MENU_ITEMS = [
   }
 ];
 
-export default function LowestFare() {
+export default function LowestFares() {
   return (
     <div className="lowest-fare-root">
       {/* Transparent Marquee Banner Strip */}
@@ -28,7 +29,7 @@ export default function LowestFare() {
         />
       </div>
 
-      {/* Today’s Lowest Fares Section with LFt S2.png Background */}
+      {/* Today’s Lowest Fares Section */}
       <section className="lowest-fares-deals-section" style={{ backgroundImage: `url("${lftBg}")` }}>
         <div className="lowest-fares-overlay" />
         
@@ -63,7 +64,10 @@ export default function LowestFare() {
           </div>
 
           {/* 3D Liquid Glass Coverflow Carousel */}
-          <GlassCoverflowCarousel />
+          <FaresCarousel />
+
+          {/* Airline Partner Logo Loop */}
+          <AirlineLogoLoop />
 
         </div>
       </section>

@@ -1,0 +1,730 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+/* ==========================================================================
+   Discover Pakistan Flights Section Styles — Pixel Perfect Reference Match
+   ========================================================================== */
+
+.pakistan-flights-section {
+  position: relative;
+  width: 100%;
+  min-height: 900px;
+  padding: 52px clamp(24px, 4.7vw, 80px) 48px;
+  font-family: 'Poppins', -apple-system, sans-serif;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Background Atmosphere & Dark Blue Overlay */
+.pakistan-section-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg,
+      rgba(5, 35, 70, 0.46) 0%,
+      rgba(8, 42, 78, 0.34) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.pakistan-flights-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1510px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Top Header Row */
+.pakistan-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+}
+
+.pakistan-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pakistan-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #EEB01D;
+}
+
+.pakistan-main-heading {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2.5rem, 4.2vw, 4rem);
+  font-weight: 700;
+  line-height: 1.08;
+  color: #F7F9FC;
+  letter-spacing: -0.025em;
+  margin: 0;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.pakistan-subtext {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1rem, 1.3vw, 1.25rem);
+  line-height: 1.55;
+  color: rgba(247, 249, 252, 0.92);
+  margin: 0;
+  max-width: 620px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Header Top-Right Glass Outline CTA */
+.btn-view-pakistan-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 58px;
+  padding: 0 30px;
+  background: rgba(8, 47, 91, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 999px;
+  color: #F7F9FC;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(3, 20, 45, 0.2);
+}
+
+.btn-view-pakistan-cta:hover {
+  background: rgba(8, 47, 91, 0.55);
+  border-color: rgba(255, 255, 255, 0.65);
+  color: #FFFFFF;
+  box-shadow: 0 12px 30px rgba(3, 20, 45, 0.35);
+}
+
+.btn-view-pakistan-cta:hover .cta-arrow-icon {
+  transform: translateX(3px);
+}
+
+.cta-arrow-icon {
+  transition: transform 0.25s ease;
+}
+
+/* Main 2-Column Grid Layout */
+.pakistan-main-grid {
+  display: grid;
+  grid-template-columns: 44% 56%;
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* Left Column: Pakistan Map Panel */
+.pakistan-map-panel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 640px;
+  background: rgba(8, 47, 91, 0.40);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    0 20px 50px rgba(3, 20, 45, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.map-bg-texture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 65% 35%, rgba(30, 75, 140, 0.35) 0%, rgba(5, 25, 55, 0.95) 80%);
+  z-index: 1;
+}
+
+.pakistan-svg-map {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  max-height: 590px;
+}
+
+/* 3D Map Graphic Image & Interactive Hotspots */
+.pakistan-map-img-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pakistan-3d-map-img {
+  width: 100%;
+  height: 100%;
+  max-height: 590px;
+  object-fit: contain;
+
+  object-position: center;
+  filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.5));
+}
+
+.map-interactive-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.interactive-map-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 38px;
+  height: 38px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+}
+
+.node-pulse-aura {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #EEB01D;
+  background: rgba(238, 176, 29, 0.25);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.interactive-map-node.is-active .node-pulse-aura,
+.interactive-map-node:hover .node-pulse-aura {
+  opacity: 1;
+  animation: auraPulse 2s infinite ease-out;
+}
+
+@keyframes auraPulse {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+.node-core-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 2.5px solid #EEB01D;
+  box-shadow: 0 0 12px rgba(238, 176, 29, 0.8);
+  transition: transform 0.25s ease;
+}
+
+.interactive-map-node.is-active .node-core-dot,
+.interactive-map-node:hover .node-core-dot {
+  transform: scale(1.25);
+  background: #EEB01D;
+  border-color: #FFFFFF;
+  box-shadow: 0 0 18px rgba(238, 176, 29, 1);
+}
+
+/* Map Node Animations */
+@keyframes mapPulseRing {
+  0% {
+    r: 10px;
+    opacity: 0.85;
+  }
+
+  100% {
+    r: 24px;
+    opacity: 0;
+  }
+}
+
+.map-node-pulse {
+  animation: mapPulseRing 2.4s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+  transform-origin: center;
+}
+
+.map-city-group {
+  outline: none;
+  transition: opacity 0.25s ease;
+}
+
+.map-city-group:hover .map-city-name,
+.map-city-group:focus-visible .map-city-name {
+  fill: #EEB01D;
+}
+
+.flight-route-path {
+  animation: dashRoute 3.5s infinite linear;
+}
+
+@keyframes dashRoute {
+  to {
+    stroke-dashoffset: -32;
+  }
+}
+
+.map-city-name {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.85);
+  pointer-events: none;
+}
+
+/* Right Column Structure */
+.pakistan-right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Featured Active City Card */
+.active-pakistan-card {
+  display: grid;
+  grid-template-columns: 43% 57%;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  box-shadow: 0 20px 50px rgba(3, 20, 45, 0.3);
+  min-height: 410px;
+  background: rgba(8, 31, 61, 0.95);
+}
+
+.active-card-media-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 410px;
+}
+
+.active-card-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.active-card-content-box {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(145deg,
+      rgba(8, 31, 61, 0.95),
+      rgba(9, 43, 81, 0.90));
+  box-sizing: border-box;
+}
+
+.active-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: flex-start;
+  background: rgba(11, 19, 41, 0.6);
+  border: 1px solid #EEB01D;
+  color: #EEB01D;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 5px 16px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.active-city-heading {
+  font-family: 'Poppins', sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  color: #FFFFFF;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.active-country-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 17px;
+  color: #FFFFFF;
+  margin-top: 6px;
+}
+
+.active-city-desc {
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  color: rgba(247, 249, 252, 0.90);
+  margin: 12px 0 0;
+  max-width: 480px;
+}
+
+.active-card-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.22);
+  margin-bottom: 16px;
+}
+
+.active-price-block {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.active-price-label {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.active-price-value {
+  font-family: 'Poppins', sans-serif;
+  font-size: 46px;
+  font-weight: 600;
+  color: #EEB01D;
+  line-height: 1.05;
+}
+
+.active-action-buttons-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.btn-active-book {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 52px;
+  padding: 0 28px;
+  background: #EEB01D;
+  color: #081F3D;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(238, 176, 29, 0.35);
+}
+
+.btn-active-book:hover {
+  background: #D99A0B;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(238, 176, 29, 0.5);
+}
+
+.btn-active-call {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 52px;
+  padding: 0 26px;
+  background: rgba(8, 47, 91, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.btn-active-call:hover {
+  background: rgba(8, 47, 91, 0.7);
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-1px);
+}
+
+/* Bottom 3 Small City Cards Grid */
+.small-city-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.small-city-card {
+  position: relative;
+  height: 240px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(8, 47, 91, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 12px 30px rgba(3, 20, 45, 0.3);
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+  cursor: pointer;
+  outline: none;
+}
+
+.small-city-card:hover,
+.small-city-card:focus-visible {
+  transform: translateY(-4px);
+  border-color: rgba(238, 176, 29, 0.65);
+  box-shadow: 0 18px 40px rgba(3, 20, 45, 0.45);
+}
+
+.small-city-card.is-active {
+  border-color: #EEB01D;
+  box-shadow: 0 0 20px rgba(238, 176, 29, 0.4);
+}
+
+.small-card-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.small-city-card:hover .small-card-bg-img {
+  transform: scale(1.05);
+}
+
+.small-card-overlay-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg,
+      rgba(8, 31, 61, 0.15) 0%,
+      rgba(8, 31, 61, 0.88) 72%,
+      rgba(8, 31, 61, 0.98) 100%);
+}
+
+.small-card-content-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.small-card-text-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.small-card-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.small-card-country-row {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 2px;
+}
+
+.small-card-price-label {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.65);
+  margin-top: 6px;
+}
+
+.small-card-price-val {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #EEB01D;
+  line-height: 1.05;
+}
+
+.small-card-arrow-circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(8, 47, 91, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.small-city-card:hover .small-card-arrow-circle {
+  background: #EEB01D;
+  border-color: #EEB01D;
+  color: #081F3D;
+  transform: translateX(2px);
+}
+
+/* Mobile Selection Chips Bar */
+.mobile-city-chips-bar {
+  display: none;
+}
+
+/* ==========================================================================
+   Responsive Media Queries
+   ========================================================================== */
+
+@media (max-width: 1199px) {
+  .pakistan-main-grid {
+    grid-template-columns: 46% 54%;
+    gap: 20px;
+  }
+
+  .active-city-heading {
+    font-size: 34px;
+  }
+
+  .active-price-value {
+    font-size: 38px;
+  }
+}
+
+@media (max-width: 991px) {
+  .pakistan-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pakistan-main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pakistan-map-panel {
+    min-height: 500px;
+  }
+
+  .active-pakistan-card {
+    grid-template-columns: 1fr 1.2fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .pakistan-flights-section {
+    padding: 36px 16px 40px;
+  }
+
+  .mobile-city-chips-bar {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobile-city-chip {
+    padding: 8px 16px;
+    border-radius: 50px;
+    background: rgba(8, 47, 91, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    scroll-snap-align: start;
+    cursor: pointer;
+  }
+
+  .mobile-city-chip.is-active {
+    background: #EEB01D;
+    color: #081F3D;
+    border-color: #EEB01D;
+    font-weight: 700;
+  }
+
+  .active-pakistan-card {
+    grid-template-columns: 1fr;
+  }
+
+  .active-card-media-box {
+    min-height: 240px;
+    height: 240px;
+  }
+
+  .active-card-content-box {
+    padding: 24px;
+  }
+
+  .active-city-heading {
+    font-size: 28px;
+  }
+
+  .active-price-value {
+    font-size: 34px;
+  }
+
+  .active-action-buttons-row {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-active-book,
+  .btn-active-call {
+    width: 100%;
+  }
+
+  .small-city-cards-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 12px;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .small-city-card {
+    min-width: 240px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+}

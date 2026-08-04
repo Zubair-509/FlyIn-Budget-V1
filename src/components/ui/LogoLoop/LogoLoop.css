@@ -1,0 +1,213 @@
+.logoloop {
+  position: relative;
+  width: 100%;
+  --logoloop-gap: 84px;
+  --logoloop-logoHeight: 64px;
+  --logoloop-fadeColorAuto: #ffffff;
+}
+
+.logoloop--vertical {
+  height: 100%;
+  display: inline-block;
+}
+
+.logoloop--scale-hover {
+  padding-top: calc(var(--logoloop-logoHeight) * 0.1);
+  padding-bottom: calc(var(--logoloop-logoHeight) * 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .logoloop {
+    --logoloop-fadeColorAuto: #0b0b0b;
+  }
+}
+
+.logoloop__track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  user-select: none;
+  position: relative;
+  z-index: 0;
+}
+
+.logoloop--vertical .logoloop__track {
+  flex-direction: column;
+  height: max-content;
+  width: 100%;
+}
+
+.logoloop__list {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.logoloop--vertical .logoloop__list {
+  flex-direction: column;
+}
+
+.logoloop__item {
+  flex: 0 0 auto;
+  margin-right: var(--logoloop-gap);
+  font-size: var(--logoloop-logoHeight);
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+.logoloop--vertical .logoloop__item {
+  margin-right: 0;
+  margin-bottom: var(--logoloop-gap);
+}
+
+.logoloop__item:last-child {
+  margin-right: var(--logoloop-gap);
+}
+
+.logoloop--vertical .logoloop__item:last-child {
+  margin-right: 0;
+  margin-bottom: var(--logoloop-gap);
+}
+
+.logoloop__node {
+  display: inline-flex;
+  align-items: center;
+}
+
+.logoloop__item img {
+  height: var(--logoloop-logoHeight);
+  width: auto;
+  display: block;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast;
+  -webkit-user-drag: none;
+  pointer-events: auto;
+
+  /* Default Grayscale & Muted Opacity */
+  filter: grayscale(1);
+  opacity: 0.65;
+  transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.logoloop__node {
+  filter: grayscale(1);
+  opacity: 0.65;
+  transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Individual Logo Hover / Focus State — Reveal Original Colors & Subtle Scale */
+.logoloop__item:hover img,
+.logoloop__item:hover .logoloop__node,
+.logoloop__item:focus-within img,
+.logoloop__item:focus-within .logoloop__node {
+  filter: grayscale(0) !important;
+  opacity: 1 !important;
+  transform: scale(1.08) !important;
+}
+
+.logoloop__link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: opacity 0.2s ease;
+}
+
+.logoloop__link:focus-visible {
+  outline: 2px solid #EEB01D;
+  outline-offset: 4px;
+}
+
+/* Edge Mask Linear Gradient Fade Across Full Viewport */
+.logoloop--fade {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 4%,
+    black 96%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 4%,
+    black 96%,
+    transparent 100%
+  );
+}
+
+/* Full-Screen Edge-to-Edge Container (Increased Vertical Height) */
+.airline-logo-loop-container {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+  z-index: 10;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .logoloop__track {
+    transform: translate3d(0, 0, 0) !important;
+  }
+
+  .logoloop__item img,
+  .logoloop__node {
+    transition: none !important;
+    filter: grayscale(0) !important;
+    opacity: 0.9 !important;
+  }
+}
+
+/* Responsive Media Queries Across All Screen Sizes */
+@media (max-width: 1199px) {
+  .airline-logo-loop-container {
+    height: 104px;
+    margin-top: 2rem;
+  }
+
+  .logoloop {
+    --logoloop-gap: 70px;
+    --logoloop-logoHeight: 52px;
+  }
+}
+
+@media (max-width: 991px) {
+  .airline-logo-loop-container {
+    height: 90px;
+    margin-top: 1.8rem;
+  }
+
+  .logoloop {
+    --logoloop-gap: 56px;
+    --logoloop-logoHeight: 44px;
+  }
+}
+
+@media (max-width: 767px) {
+  .airline-logo-loop-container {
+    height: 76px;
+    margin-top: 1.4rem;
+  }
+
+  .logoloop {
+    --logoloop-gap: 40px;
+    --logoloop-logoHeight: 36px;
+  }
+}

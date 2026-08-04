@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60">
+  <!-- Cathay Pacific Brushwing Icon -->
+  <path fill="#006564" d="M10 30c15-12 35-18 55-15-22 8-38 18-50 25 15-5 35-8 55-2 -18 3-38 8-52 14 25-10 55-8 75 0C68 38 42 22 10 30z"/>
+  <path fill="#006564" d="M22.5 14.5c18.5 0 35.5 6.5 48.5 17.5-16.5-7.5-34.5-10.5-52.5-9.5 15.5 3 30.5 9.5 43.5 18.5-18.5-4-36.5-3.5-53.5 1.5 22.5-3.5 44.5 1.5 62.5 11.5-23.5-11-49.5-14-74.5-9 8.5-19 19.5-30.5 26-30.5z"/>
+  <!-- Cathay Pacific Wordmark Text -->
+  <text x="82" y="32" font-family="'Plus Jakarta Sans', Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF" letter-spacing="1.5">CATHAY PACIFIC</text>
+</svg>

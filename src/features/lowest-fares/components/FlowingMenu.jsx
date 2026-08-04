@@ -1,7 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { gsap } from 'gsap';
-
-import './FlowingMenu.css';
+import '../styles/flowing-menu.css';
 
 function FlowingMenu({
   items = [],
@@ -56,14 +55,12 @@ function MenuItem({ link, text, image, speed, textColor, marqueeBgColor, marquee
     const calculateRepetitions = () => {
       if (!marqueeInnerRef.current) return;
 
-      // Get the first marquee part to measure content width
       const marqueeContent = marqueeInnerRef.current.querySelector('.marquee__part');
       if (!marqueeContent) return;
 
       const contentWidth = marqueeContent.offsetWidth;
       const viewportWidth = window.innerWidth;
 
-      // Calculate how many copies we need to fill viewport + extra for seamless loop
       const needed = Math.ceil(viewportWidth / contentWidth) + 2;
       setRepetitions(Math.max(4, needed));
     };
@@ -87,7 +84,6 @@ function MenuItem({ link, text, image, speed, textColor, marqueeBgColor, marquee
         animationRef.current.kill();
       }
 
-      // Animate exactly one content width for seamless loop
       animationRef.current = gsap.to(marqueeInnerRef.current, {
         x: -contentWidth,
         duration: speed,
@@ -96,7 +92,6 @@ function MenuItem({ link, text, image, speed, textColor, marqueeBgColor, marquee
       });
     };
 
-    // Small delay to ensure DOM is ready after repetitions update
     const timer = setTimeout(setupMarquee, 50);
 
     return () => {

@@ -1,0 +1,30 @@
+:root {
+  /* Colors */
+  --color-navy-950: #071a33;
+  --color-navy-900: #0b1329;
+  --color-navy-800: #0f172a;
+  --color-navy-700: #1a2542;
+
+  --color-gold: #EEB01D;
+  --color-gold-hover: #d99a0b;
+
+  --color-white: #ffffff;
+  --color-text-muted: rgba(255, 255, 255, 0.82);
+
+  /* Glassmorphism */
+  --glass-background: rgba(255, 255, 255, 0.12);
+  --glass-border: rgba(255, 255, 255, 0.28);
+
+  /* Border Radii */
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+
+  /* Layout */
+  --container-width: 1440px;
+
+  /* Shadows */
+  --shadow-glass: 0 24px 50px rgba(0, 0, 0, 0.35);
+  --shadow-gold: 0 8px 25px rgba(238, 176, 29, 0.38);
+}

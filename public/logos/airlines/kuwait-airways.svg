@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 60" width="230" height="60">
+  <g transform="translate(10, 10)">
+    <!-- Bird emblem -->
+    <path fill="#005B94" d="M5 20C18 5 35 3 45 12 32 15 22 22 15 32c10-3 20-3 30 0-12 5-22 13-28 22C12 42 7 30 5 20z"/>
+    <!-- Wordmark -->
+    <text x="50" y="25" font-family="'Plus Jakarta Sans', sans-serif" font-size="15" font-weight="800" fill="#0077C8" letter-spacing="1.5">KUWAIT AIRWAYS</text>
+    <text x="51" y="38" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="600" fill="#FFFFFF" letter-spacing="3">الـكـويـتـيـة</text>
+  </g>
+</svg>

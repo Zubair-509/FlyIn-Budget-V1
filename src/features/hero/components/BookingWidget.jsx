@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import GlassSurface from './GlassSurface.jsx';
+import GlassSurface from '../../../components/ui/GlassSurface/GlassSurface.jsx';
 
 export default function BookingWidget() {
   const [tripType, setTripType] = useState('oneway');

@@ -1,15 +1,31 @@
-import React, { useState } from 'react';
-import logoImg from '../assets/l2.png';
+import React, { useState, useEffect } from 'react';
+import logoImg from '../../assets/l2.png';
 
 export default function Navbar({ isVisible }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 30) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(prev => !prev);
   };
 
   return (
-    <header className={`navbar hero-transition-element ${isVisible ? 'is-visible' : ''}`}>
+    <header className={`navbar hero-transition-element ${isVisible ? 'is-visible' : ''} ${isScrolled ? 'is-scrolled' : ''}`}>
       <div className="nav-brand">
         <img src={logoImg} alt="FlyIn Budget" className="brand-logo-img" />
       </div>

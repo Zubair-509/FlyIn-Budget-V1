@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <g transform="translate(8, 8)">
+    <!-- Falcon emblem -->
+    <path fill="#CFA93E" d="M22 5C12 12 5 24 5 35c8-5 16-8 25-8 12 0 20 6 25 15C48 30 38 15 22 5z"/>
+    <path fill="#E6C865" d="M18 12c-6 5-10 13-10 20 6-3 12-5 18-5 9 0 15 4 19 10-5-10-14-20-27-25z"/>
+    <!-- Wordmark -->
+    <text x="56" y="27" font-family="'Plus Jakarta Sans', sans-serif" font-size="16" font-weight="800" fill="#E6C865" letter-spacing="2">GULF AIR</text>
+    <text x="57" y="40" font-family="'Plus Jakarta Sans', sans-serif" font-size="8" font-weight="600" fill="#FFFFFF" letter-spacing="3">BAHRAIN</text>
+  </g>
+</svg>

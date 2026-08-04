@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 230 60" width="230" height="60">
+  <g transform="translate(10, 10)">
+    <!-- Qatar Burgundy Circle Oryx Emblem -->
+    <circle cx="20" cy="20" r="18" fill="#5C0632"/>
+    <!-- Stylized Oryx Head -->
+    <path fill="#FFFFFF" d="M12 28l6-16 4 2-4 14zm8-16l8 18-5 1-5-12z"/>
+    <path fill="#5C0632" d="M18 16l3 8h-4z"/>
+    <!-- Wordmark -->
+    <text x="48" y="22" font-family="'Georgia', serif" font-size="16" font-weight="bold" fill="#5C0632" letter-spacing="1">QATAR</text>
+    <text x="49" y="35" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="600" fill="#FFFFFF" letter-spacing="3">AIRWAYS القطرية</text>
+  </g>
+</svg>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60">
+  <g transform="translate(10, 10)">
+    <!-- Red & Blue Wau Bulan Kite Emblem -->
+    <path fill="#002060" d="M5 20C18 8 32 6 42 16 30 18 20 25 12 35c10-3 22-3 32 0C32 40 20 46 12 50 8 38 6 28 5 20z"/>
+    <path fill="#E30613" d="M12 20c10-8 22-10 30-2-10 2-18 8-24 16 8-2 16-2 24 0-8 4-16 8-22 12 5-9 3-18-8-26z"/>
+    <!-- Wordmark -->
+    <text x="48" y="24" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="800" fill="#E30613" letter-spacing="1">malaysia</text>
+    <text x="120" y="24" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="800" fill="#002060" letter-spacing="1">airlines</text>
+  </g>
+</svg>

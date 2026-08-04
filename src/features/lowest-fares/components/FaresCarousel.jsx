@@ -1,75 +1,20 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import './GlassCoverflowCarousel.css';
+import '../styles/lowest-fares.css';
+import { fareDeals } from '../data/fareDeals';
 
-import istanbulImg from '../assets/istanbul.png';
-import karachiImg from '../assets/karachi.png';
-import dubaiImg from '../assets/dubai.png';
-import delhiImg from '../assets/delhi.png';
-import seoulImg from '../assets/seoul.png';
-
-const DESTINATIONS = [
-  {
-    id: 1,
-    title: 'Istanbul',
-    country: 'Turkey',
-    subtitle: 'Where East Meets West & History Lives',
-    description: 'An ancient citadel of architecture, grand bazaars, and mesmerizing Bosporus sunsets bridging two continents.',
-    location: 'Istanbul, Turkey • 41.0082° N, 28.9784° E',
-    price: '£115*',
-    image: istanbulImg
-  },
-  {
-    id: 2,
-    title: 'Karachi',
-    country: 'Pakistan',
-    subtitle: 'Historic Architecture & Coastal Charm',
-    description: 'Home to majestic marble monuments, bustling seaside promenades, and vibrant cultural heritage.',
-    location: 'Karachi, Pakistan • 24.8607° N, 67.0011° E',
-    price: '£304*',
-    image: karachiImg
-  },
-  {
-    id: 3,
-    title: 'Dubai',
-    country: 'UAE',
-    subtitle: 'Future Skyline & Luxury Oasis',
-    description: 'Witness architectural wonders, world-class desert safaris, and ultra-modern luxury in the heart of the Gulf.',
-    location: 'Dubai, UAE • 25.2048° N, 55.2708° E',
-    price: '£275*',
-    image: dubaiImg
-  },
-  {
-    id: 4,
-    title: 'Delhi',
-    country: 'India',
-    subtitle: 'Vibrant Heritage & Timeless Culture',
-    description: 'Explore magnificent red fortresses, ancient spice markets, and centuries of rich imperial history.',
-    location: 'New Delhi, India • 28.6139° N, 77.2090° E',
-    price: '£418*',
-    image: delhiImg
-  },
-  {
-    id: 5,
-    title: 'Seoul',
-    country: 'South Korea',
-    subtitle: 'Modern Metropolis & Royal Palaces',
-    description: 'A captivating fusion of high-tech futuristic skyline, ancient royal dynasties, and world-famous cuisine.',
-    location: 'Seoul, South Korea • 37.5665° N, 126.9780° E',
-    price: '£389*',
-    image: seoulImg
-  }
-];
-
-export default function GlassCoverflowCarousel() {
+export default function FaresCarousel() {
   const [activeIndex, setActiveIndex] = useState(2); // Start at Dubai (center)
   const [favorites, setFavorites] = useState({});
   const [expandedCard, setExpandedCard] = useState(null);
-  
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== 'undefined' ? window.innerWidth : 1200
+  );
+
   const touchStartX = useRef(null);
   const touchEndX = useRef(null);
   const isDragging = useRef(false);
 
-  const total = DESTINATIONS.length;
+  const total = fareDeals.length;
 
   const handleNext = useCallback(() => {
     setActiveIndex((prev) => (prev + 1) % total);
@@ -84,7 +29,12 @@ export default function GlassCoverflowCarousel() {
     setFavorites((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
-  // Keyboard navigation
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'ArrowRight') handleNext();
@@ -94,7 +44,6 @@ export default function GlassCoverflowCarousel() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [handleNext, handlePrev]);
 
-  // Touch / Drag Handlers
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches ? e.touches[0].clientX : e.clientX;
     isDragging.current = true;
@@ -110,71 +59,77 @@ export default function GlassCoverflowCarousel() {
     isDragging.current = false;
     if (touchStartX.current !== null && touchEndX.current !== null) {
       const diff = touchStartX.current - touchEndX.current;
-      if (diff > 40) handleNext();
-      if (diff < -40) handlePrev();
+      if (diff > 35) handleNext();
+      if (diff < -35) handlePrev();
     }
     touchStartX.current = null;
     touchEndX.current = null;
   };
 
-  // Calculate 3D Offset & Transform Properties
+  // High-Precision 3D Deck Math - Sharp Vector Output with Responsive Deck Scaling
   const getCardStyle = (index) => {
     let offset = index - activeIndex;
 
-    // Handle wrap-around math for circular deck
     if (offset > Math.floor(total / 2)) offset -= total;
     if (offset < -Math.floor(total / 2)) offset += total;
 
+    const isMobile = windowWidth <= 600;
+    const isTablet = windowWidth > 600 && windowWidth <= 992;
+
+    const stepX = isMobile ? 0 : isTablet ? 220 : 340;
+    const rotateAngle = isTablet ? 26 : 32;
+
     if (offset === 0) {
       return {
-        transform: 'translateX(0px) translateZ(100px) rotateY(0deg) scale(1)',
-        zIndex: 20,
+        transform: 'translate3d(0px, 0px, 0px) scale(1)',
+        zIndex: 25,
         opacity: 1,
-        filter: 'blur(0px) brightness(1.05)',
+        filter: 'none',
         pointerEvents: 'auto'
       };
     } else if (offset === 1) {
       return {
-        transform: 'translateX(340px) translateZ(-80px) rotateY(-32deg) scale(0.85)',
-        zIndex: 10,
-        opacity: 0.8,
-        filter: 'blur(0.5px) brightness(0.85)',
-        pointerEvents: 'auto'
+        transform: isMobile ? 'translate3d(120px, 0px, 0px) scale(0.8)' : `translate3d(${stepX}px, 0px, 0px) rotateY(-${rotateAngle}deg) scale(0.85)`,
+        zIndex: 15,
+        opacity: isMobile ? 0 : 0.82,
+        filter: 'brightness(0.88)',
+        pointerEvents: isMobile ? 'none' : 'auto'
       };
     } else if (offset === -1) {
       return {
-        transform: 'translateX(-340px) translateZ(-80px) rotateY(32deg) scale(0.85)',
-        zIndex: 10,
-        opacity: 0.8,
-        filter: 'blur(0.5px) brightness(0.85)',
-        pointerEvents: 'auto'
+        transform: isMobile ? 'translate3d(-120px, 0px, 0px) scale(0.8)' : `translate3d(-${stepX}px, 0px, 0px) rotateY(${rotateAngle}deg) scale(0.85)`,
+        zIndex: 15,
+        opacity: isMobile ? 0 : 0.82,
+        filter: 'brightness(0.88)',
+        pointerEvents: isMobile ? 'none' : 'auto'
       };
     } else if (offset === 2 || offset < -2) {
       return {
-        transform: 'translateX(580px) translateZ(-220px) rotateY(-48deg) scale(0.68)',
+        transform: `translate3d(${stepX * 1.7}px, 0px, 0px) rotateY(-${rotateAngle * 1.35}deg) scale(0.68)`,
         zIndex: 5,
-        opacity: 0.45,
-        filter: 'blur(2px) brightness(0.7)',
-        pointerEvents: 'auto'
+        opacity: isMobile ? 0 : 0.45,
+        filter: 'brightness(0.72)',
+        pointerEvents: 'none'
       };
     } else if (offset === -2 || offset > 2) {
       return {
-        transform: 'translateX(-580px) translateZ(-220px) rotateY(48deg) scale(0.68)',
+        transform: `translate3d(-${stepX * 1.7}px, 0px, 0px) rotateY(${rotateAngle * 1.35}deg) scale(0.68)`,
         zIndex: 5,
-        opacity: 0.45,
-        filter: 'blur(2px) brightness(0.7)',
-        pointerEvents: 'auto'
+        opacity: isMobile ? 0 : 0.45,
+        filter: 'brightness(0.72)',
+        pointerEvents: 'none'
       };
     }
 
     return {
-      transform: `translateX(${offset * 300}px) translateZ(-300px) rotateY(${offset > 0 ? -50 : 50}deg) scale(0.5)`,
+      transform: `translate3d(${offset * stepX}px, 0px, 0px) scale(0.5)`,
       zIndex: 1,
-      opacity: 0
+      opacity: 0,
+      pointerEvents: 'none'
     };
   };
 
-  const activeDest = DESTINATIONS[activeIndex];
+  const activeDest = fareDeals[activeIndex];
 
   return (
     <div className="coverflow-carousel-wrapper">
@@ -189,7 +144,7 @@ export default function GlassCoverflowCarousel() {
         onMouseMove={handleTouchMove}
         onMouseUp={handleTouchEnd}
       >
-        {DESTINATIONS.map((dest, idx) => {
+        {fareDeals.map((dest, idx) => {
           const isCenter = idx === activeIndex;
           const style = getCardStyle(idx);
 
@@ -202,7 +157,12 @@ export default function GlassCoverflowCarousel() {
             >
               {/* Card Image Background Layer */}
               <div className="card-bg-layer">
-                <img src={dest.image} alt={dest.title} className="card-bg-img" />
+                <img
+                  src={dest.image}
+                  alt={dest.title}
+                  className="card-bg-img"
+                  loading="eager"
+                />
                 <div className="card-gradient-overlay" />
               </div>
 
@@ -241,7 +201,7 @@ export default function GlassCoverflowCarousel() {
                 </button>
               </div>
 
-              {/* Card Bottom Liquid Glass Panel */}
+              {/* Card Bottom Glass Panel (Sharp Live HTML Content) */}
               <div className="card-bottom-glass-panel">
                 <div className="card-title-row">
                   <h3 className="card-main-title">{dest.title}</h3>
@@ -342,7 +302,7 @@ export default function GlassCoverflowCarousel() {
 
       {/* Pagination Indicator Dots */}
       <div className="coverflow-pagination-dots">
-        {DESTINATIONS.map((dest, idx) => (
+        {fareDeals.map((dest, idx) => (
           <button
             key={dest.id}
             type="button"

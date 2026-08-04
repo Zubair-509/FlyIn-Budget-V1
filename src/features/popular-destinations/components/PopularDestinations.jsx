@@ -1,6 +1,5 @@
 import React from 'react';
-import seoulImg from '../assets/seoul.png';
-import dubaiImg from '../assets/dubai.png';
+import { popularDestinations } from '../data/destinations';
 
 export default function PopularDestinations() {
   return (
@@ -22,23 +21,15 @@ export default function PopularDestinations() {
       </div>
 
       <div className="destinations-cards">
-        {/* Destination Card 1 */}
-        <div className="destination-card">
-          <img src={seoulImg} alt="Seoul, Korea" className="card-bg" />
-          <div className="card-overlay">
-            <span className="card-location">Seoul , Korea</span>
-            <div className="card-price-tag">$324</div>
+        {popularDestinations.map((dest) => (
+          <div key={dest.id} className="destination-card">
+            <img src={dest.image} alt={dest.name} className="card-bg" />
+            <div className="card-overlay">
+              <span className="card-location">{dest.name}</span>
+              <div className="card-price-tag">{dest.price}</div>
+            </div>
           </div>
-        </div>
-
-        {/* Destination Card 2 */}
-        <div className="destination-card">
-          <img src={dubaiImg} alt="Dubai, UAE" className="card-bg" />
-          <div className="card-overlay">
-            <span className="card-location">Dubai , UAE</span>
-            <div className="card-price-tag">$264</div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

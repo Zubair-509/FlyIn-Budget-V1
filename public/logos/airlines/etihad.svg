@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <g transform="translate(10, 10)">
+    <!-- Gold geometric crest -->
+    <polygon points="15,5 25,15 15,25 5,15" fill="#CBB26A"/>
+    <polygon points="25,15 35,25 25,35 15,25" fill="#D4AF37"/>
+    <polygon points="15,25 25,35 15,45 5,35" fill="#B38B2D"/>
+    <!-- Etihad wordmark -->
+    <text x="45" y="24" font-family="'Georgia', serif" font-size="18" font-weight="700" fill="#BD9B34" letter-spacing="3">ETIHAD</text>
+    <text x="46" y="37" font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="600" fill="#FFFFFF" letter-spacing="4">AIRWAYS</text>
+  </g>
+</svg>
