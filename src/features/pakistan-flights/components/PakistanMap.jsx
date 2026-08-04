@@ -16,36 +16,38 @@ const PakistanMap = memo(function PakistanMap({ flights = [], activeCityId, onSe
 
       {/* 3D Satellite Terrain Graphic Map */}
       <div className="pakistan-map-img-wrapper">
-        <img
-          src={pakistanMapImg}
-          alt="3D Interactive Map of Pakistan showing flight routes"
-          className="pakistan-3d-map-img"
-          loading="eager"
-          width="600"
-          height="640"
-        />
+        <div className="pakistan-map-aspect-box">
+          <img
+            src={pakistanMapImg}
+            alt="3D Interactive Map of Pakistan showing flight routes"
+            className="pakistan-3d-map-img"
+            loading="eager"
+            width="600"
+            height="640"
+          />
 
-        {/* Interactive Clickable Node Hotspots & Active Pulsing Indicators */}
-        <div className="map-interactive-layer">
-          {cityNodes.map((city) => {
-            const isActive = activeCityId === city.id;
-            const flightInfo = flights.find((f) => f.id === city.id);
+          {/* Interactive Clickable Node Hotspots & Active Pulsing Indicators */}
+          <div className="map-interactive-layer">
+            {cityNodes.map((city) => {
+              const isActive = activeCityId === city.id;
+              const flightInfo = flights.find((f) => f.id === city.id);
 
-            return (
-              <button
-                key={city.id}
-                type="button"
-                className={`interactive-map-node ${isActive ? 'is-active' : ''}`}
-                style={{ left: city.left, top: city.top }}
-                onClick={() => onSelectCity(city.id)}
-                aria-pressed={isActive}
-                aria-label={`Select ${city.name} route, starting from £${flightInfo ? flightInfo.price : ''}`}
-              >
-                <span className="node-pulse-aura" />
-                <span className="node-core-dot" />
-              </button>
-            );
-          })}
+              return (
+                <button
+                  key={city.id}
+                  type="button"
+                  className={`interactive-map-node ${isActive ? 'is-active' : ''}`}
+                  style={{ left: city.left, top: city.top }}
+                  onClick={() => onSelectCity(city.id)}
+                  aria-pressed={isActive}
+                  aria-label={`Select ${city.name} route, starting from £${flightInfo ? flightInfo.price : ''}`}
+                >
+                  <span className="node-pulse-aura" />
+                  <span className="node-core-dot" />
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>
