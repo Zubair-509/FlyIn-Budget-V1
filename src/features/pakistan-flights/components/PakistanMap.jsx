@@ -2,12 +2,12 @@ import React, { memo } from 'react';
 import pakistanMapImg from '../../../assets/images/pakistan/Pakistan_Map.png';
 
 const PakistanMap = memo(function PakistanMap({ flights = [], activeCityId, onSelectCity }) {
-  // Interactive node percentage coordinates matching Pakistan_Map.png
+  // Preserved interactive node percentage coordinates matching Pakistan_Map.png (600x640 ratio)
   const cityNodes = [
-    { id: 'peshawar', name: 'Peshawar', left: '66%', top: '19.4%' },
-    { id: 'lahore', name: 'Lahore', left: '73.7%', top: '36.5%' },
-    { id: 'multan', name: 'Multan', left: '54.1%', top: '47.7%' },
-    { id: 'karachi', name: 'Karachi', left: '30.9%', top: '72.6%' }
+    { id: 'peshawar', name: 'Peshawar', left: '66.88%', top: '19.418%' },
+    { id: 'lahore', name: 'Lahore', left: '74.78%', top: '36.484%' },
+    { id: 'multan', name: 'Multan', left: '54.3%', top: '47.658%' },
+    { id: 'karachi', name: 'Karachi', left: '30.011%', top: '72.7%' }
   ];
 
   return (

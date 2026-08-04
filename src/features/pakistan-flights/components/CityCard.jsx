@@ -2,20 +2,13 @@ import React, { memo } from 'react';
 
 const CityCard = memo(function CityCard({ flight, isActive, onSelect }) {
   return (
-    <div
+    <button
       key={flight.id}
+      type="button"
       className={`small-city-card animate-subcard-reassemble ${isActive ? 'is-active' : ''}`}
       onClick={() => onSelect(flight.id)}
-      role="button"
-      tabIndex={0}
       aria-pressed={isActive}
       aria-label={`Select ${flight.title}, price from £${flight.price}`}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          onSelect(flight.id);
-        }
-      }}
     >
       <img
         src={flight.image}
@@ -41,7 +34,7 @@ const CityCard = memo(function CityCard({ flight, isActive, onSelect }) {
           </svg>
         </div>
       </div>
-    </div>
+    </button>
   );
 });
 

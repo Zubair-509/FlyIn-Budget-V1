@@ -6,13 +6,12 @@ import PakistanFlights from '../../features/pakistan-flights';
 import IndiaFlightsSection from '../../features/india-flights';
 
 export default function HomePage() {
-  // Synchronously check if user has already seen the intro video
+  // Check if user has already seen the intro video during this browser session
   const [isUIRevealed, setIsUIRevealed] = useState(() => {
     try {
-      return (
-        localStorage.getItem('hasSeenIntro') === 'true' ||
-        sessionStorage.getItem('hasSeenIntro') === 'true'
-      );
+      // Clear legacy persistent localStorage lock if present so intro plays on new sessions
+      localStorage.removeItem('hasSeenIntro');
+      return sessionStorage.getItem('hasSeenIntro') === 'true';
     } catch {
       return false;
     }
@@ -21,7 +20,6 @@ export default function HomePage() {
   const markIntroSeen = useCallback(() => {
     setIsUIRevealed(true);
     try {
-      localStorage.setItem('hasSeenIntro', 'true');
       sessionStorage.setItem('hasSeenIntro', 'true');
     } catch (e) {
       console.warn('Storage error:', e);

@@ -7,9 +7,11 @@ export default function HeroVideo({ onVideoEnded, isVideoEnded }) {
 
   useEffect(() => {
     if (videoRef.current && !isVideoEnded) {
-      videoRef.current.play().catch(err => {
-        console.warn('Autoplay prevented or interrupted:', err);
-        setTimeout(onVideoEnded, 300);
+      videoRef.current.play().catch((err) => {
+        // Ignore React 18 StrictMode mount interruptions (AbortError)
+        if (err.name === 'AbortError') return;
+        console.warn('Autoplay prevented by browser policy:', err);
+        setTimeout(onVideoEnded, 1000);
       });
     }
   }, [onVideoEnded, isVideoEnded]);

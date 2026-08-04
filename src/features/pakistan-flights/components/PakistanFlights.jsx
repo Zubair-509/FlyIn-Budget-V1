@@ -54,14 +54,15 @@ export default function PakistanFlights() {
         </header>
 
         {/* Mobile City Selector Chips */}
-        <div className="mobile-city-chips-bar" role="tablist" aria-label="Select Pakistan destination">
+        <div className="mobile-city-chips-bar" aria-label="Select Pakistan destination">
           {pakistanFlights.map((item) => (
             <button
               key={item.id}
+              type="button"
               className={`mobile-city-chip ${item.id === activeCityId ? 'is-active' : ''}`}
               onClick={() => handleSelectCity(item.id)}
-              role="tab"
-              aria-selected={item.id === activeCityId}
+              aria-pressed={item.id === activeCityId}
+              aria-label={`View flights for ${item.city}`}
             >
               {item.city}
             </button>
