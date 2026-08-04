@@ -4,10 +4,10 @@ import pakistanMapImg from '../../../assets/images/pakistan/Pakistan_Map.png';
 const PakistanMap = memo(function PakistanMap({ flights = [], activeCityId, onSelectCity }) {
   // Interactive node percentage coordinates matching Pakistan_Map.png
   const cityNodes = [
-    { id: 'peshawar', name: 'Peshawar', left: '65.5%', top: '19%' },
-    { id: 'lahore', name: 'Lahore', left: '73.5%', top: '36.5%' },
-    { id: 'multan', name: 'Multan', left: '54.5%', top: '48.5%' },
-    { id: 'karachi', name: 'Karachi', left: '31.5%', top: '74%' }
+    { id: 'peshawar', name: 'Peshawar', left: '66%', top: '19.4%' },
+    { id: 'lahore', name: 'Lahore', left: '73.7%', top: '36.5%' },
+    { id: 'multan', name: 'Multan', left: '54.1%', top: '47.7%' },
+    { id: 'karachi', name: 'Karachi', left: '30.9%', top: '72.6%' }
   ];
 
   return (

@@ -1,4 +1,4 @@
-# FlyIn Budget (F2) — Project Brain & Knowledge Base
+w# FlyIn Budget (F2) — Project Brain & Knowledge Base
 
 > **Project Version**: 2.1 (Hybrid Feature-Based Architecture • React 18 + Vite)  
 > **Last Updated**: July 30, 2026  
@@ -111,7 +111,8 @@ F2/
 - **Stage Deck**: 3D spatial perspective deck (`perspective: 1200px`) with `overflow: visible` and increased vertical card height (`525px` card height, `570px` stage height).
 - **Liquid Glass Control Bar**: Translucent liquid glass controller (`background: rgba(255, 255, 255, 0.14); backdrop-filter: blur(20px)`).
 - **Single Active Card on Mobile**: Displays only the active center card on mobile viewports (`<= 600px`) for zero clutter.
-- **Pakistan Flights Feature (`src/features/pakistan-flights/`)**: Pixel-perfect implementation of "Discover Pakistan for less" section placed directly after Lowest Fares. Features full-bleed 3D satellite terrain map graphic (`Pakistan_Map.png`, `object-fit: cover`, `padding: 0`) with interactive city hotspots (**Peshawar** `65.5% / 19%`, **Lahore** `73.5% / 36.5%`, **Multan** `54.5% / 48.5%`, **Karachi** `31.5% / 74%`), animated flight path arcs, featured active route card (*Lahore* £460* by default), and 3 small city cards grid (*Karachi* £304*, *Multan* £682*, *Peshawar* £469*).
+- **Pakistan Flights Feature (`src/features/pakistan-flights/`)**: Pixel-perfect implementation of "Discover Pakistan for less" section placed directly after Lowest Fares. Features full-bleed 3D satellite terrain map graphic (`Pakistan_Map.png`, `object-fit: cover`, `padding: 0`, `border-radius: 24px`) with interactive city hotspots (**Peshawar** `65.5% / 19%`, **Lahore** `73.5% / 36.5%`, **Multan** `54.5% / 48.5%`, **Karachi** `31.5% / 74%`), smooth card swap & reassembly animations (`@keyframes activeCardReveal`, `@keyframes activeImageZoom`, `@keyframes textSlideUp`, `@keyframes subCardReassemble`), featured active route card (*Lahore* £460* by default), and 3 small city cards grid (*Karachi* £304*, *Multan* £682*, *Peshawar* £469*).
+- **India Flights Feature (`src/features/india-flights/`)**: Premium "Best Flights in India." section rendered directly below Discover Pakistan. Features 3D spatial perspective coverflow stage deck (`perspective: 1200px`) with 5 destination cards (**Mumbai** £463* default featured with tagline *Vibrant cities. Timeless India.*, **Goa** £546*, **Delhi** £418*, **Ahmedabad** £500*, **Bangalore** £478*), subtle radial blue lighting, map outline contour, and bottom navigation pill control bar (`• Mumbai | Goa | Delhi | Ahmedabad | Bangalore`).
 - **Vector-Sharp Content Rendering**: Zero `filter: blur()` and zero `backdrop-filter` applied on content layers or active cards. Live HTML text, coordinates, prices, and CTA buttons are hardware-accelerated with `-webkit-font-smoothing: antialiased` for crisp subpixel clarity.
 - **Card Deck**: 5 destination cards (Istanbul, Karachi, Dubai, Delhi, Seoul) featuring starting prices, location tags, detail modals, and bookmarking interactions.
 

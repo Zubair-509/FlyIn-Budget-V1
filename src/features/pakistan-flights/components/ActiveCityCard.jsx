@@ -4,14 +4,19 @@ const ActiveCityCard = memo(function ActiveCityCard({ activeFlight }) {
   if (!activeFlight) return null;
 
   return (
-    <div className="active-pakistan-card" role="article" aria-label={`Featured route: ${activeFlight.title}`}>
-      
+    <div
+      key={activeFlight.id}
+      className="active-pakistan-card animate-card-swap"
+      role="article"
+      aria-label={`Featured route: ${activeFlight.title}`}
+    >
       {/* Left Media Image Area */}
       <div className="active-card-media-box">
         <img
+          key={activeFlight.image}
           src={activeFlight.image}
           alt={`Landmark view of ${activeFlight.city}`}
-          className="active-card-hero-img"
+          className="active-card-hero-img animate-hero-zoom"
           loading="eager"
           width="480"
           height="420"
@@ -19,12 +24,11 @@ const ActiveCityCard = memo(function ActiveCityCard({ activeFlight }) {
       </div>
 
       {/* Right Content Area */}
-      <div className="active-card-content-box">
-        
+      <div className="active-card-content-box animate-content-reveal">
         <div className="active-card-top-content">
           {/* Badge */}
           {activeFlight.badge && (
-            <div className="active-badge-pill">
+            <div className="active-badge-pill animate-stagger-1">
               <svg viewBox="0 0 24 24" width="14" height="14" fill="#EEB01D" aria-hidden="true">
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
               </svg>
@@ -33,9 +37,9 @@ const ActiveCityCard = memo(function ActiveCityCard({ activeFlight }) {
           )}
 
           {/* Title & Country */}
-          <h3 className="active-city-heading">{activeFlight.title}</h3>
-          
-          <div className="active-country-row">
+          <h3 className="active-city-heading animate-stagger-2">{activeFlight.title}</h3>
+
+          <div className="active-country-row animate-stagger-2">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#EEB01D" strokeWidth="2.2" aria-hidden="true">
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
               <circle cx="12" cy="10" r="3" />
@@ -44,10 +48,10 @@ const ActiveCityCard = memo(function ActiveCityCard({ activeFlight }) {
           </div>
 
           {/* Description */}
-          <p className="active-city-desc">{activeFlight.description}</p>
+          <p className="active-city-desc animate-stagger-3">{activeFlight.description}</p>
         </div>
 
-        <div className="active-card-bottom-content">
+        <div className="active-card-bottom-content animate-stagger-4">
           {/* Divider */}
           <div className="active-card-divider" />
 
@@ -83,7 +87,6 @@ const ActiveCityCard = memo(function ActiveCityCard({ activeFlight }) {
             </a>
           </div>
         </div>
-
       </div>
     </div>
   );

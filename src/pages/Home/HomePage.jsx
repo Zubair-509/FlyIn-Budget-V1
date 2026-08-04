@@ -3,6 +3,7 @@ import Navbar from '../../components/layout/Navbar';
 import HeroSection from '../../features/hero';
 import LowestFares from '../../features/lowest-fares';
 import PakistanFlights from '../../features/pakistan-flights';
+import IndiaFlightsSection from '../../features/india-flights';
 
 export default function HomePage() {
   // Synchronously check if user has already seen the intro video
@@ -43,10 +44,11 @@ export default function HomePage() {
         onInstantView={markIntroSeen}
       />
 
-      {/* Lowest Fares & Pakistan Flights Features */}
+      {/* Lowest Fares, Pakistan Flights & India Flights Features */}
       <div className={`lowest-fare-wrapper hero-transition-element ${isUIRevealed ? 'is-visible' : ''}`}>
         <LowestFares />
         <PakistanFlights />
+        <IndiaFlightsSection />
       </div>
     </div>
   );
