@@ -11,8 +11,8 @@ export default function AirlineLogoLoop() {
         logos={airlineData}
         speed={80}
         direction="left"
-        logoHeight={64}
-        gap={84}
+        logoHeight={40}
+        gap={64}
         hoverSpeed={0}
         fadeOut={true}
         ariaLabel="FlyInBudget airline partners"

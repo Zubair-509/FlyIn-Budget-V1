@@ -62,7 +62,10 @@ function MenuItem({ link, text, image, speed, textColor, marqueeBgColor, marquee
       const viewportWidth = window.innerWidth;
 
       const needed = Math.ceil(viewportWidth / contentWidth) + 2;
-      setRepetitions(Math.max(4, needed));
+      setRepetitions(prev => {
+        const next = Math.max(4, needed);
+        return prev !== next ? next : prev;
+      });
     };
 
     calculateRepetitions();

@@ -56,6 +56,19 @@
   line-height: 1;
   display: flex;
   align-items: center;
+  position: relative;
+}
+
+.logoloop__item::after {
+  content: '';
+  position: absolute;
+  right: calc(var(--logoloop-gap) / -2);
+  top: 50%;
+  transform: translateY(-50%);
+  height: 30px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  pointer-events: none;
 }
 
 .logoloop--vertical .logoloop__item {
@@ -86,24 +99,24 @@
   -webkit-user-drag: none;
   pointer-events: auto;
 
-  /* Default Grayscale & Muted Opacity */
-  filter: grayscale(1);
-  opacity: 0.65;
+  /* Crisp White Logos */
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
   transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .logoloop__node {
-  filter: grayscale(1);
-  opacity: 0.65;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
   transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Individual Logo Hover / Focus State — Reveal Original Colors & Subtle Scale */
+/* Individual Logo Hover / Focus State */
 .logoloop__item:hover img,
 .logoloop__item:hover .logoloop__node,
 .logoloop__item:focus-within img,
 .logoloop__item:focus-within .logoloop__node {
-  filter: grayscale(0) !important;
+  filter: brightness(0) invert(1) !important;
   opacity: 1 !important;
   transform: scale(1.08) !important;
 }
@@ -123,41 +136,35 @@
 
 /* Edge Mask Linear Gradient Fade Across Full Viewport */
 .logoloop--fade {
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 4%,
-    black 96%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 4%,
-    black 96%,
-    transparent 100%
-  );
+  mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 4%,
+      black 96%,
+      transparent 100%);
+  -webkit-mask-image: linear-gradient(to right,
+      transparent 0%,
+      black 4%,
+      black 96%,
+      transparent 100%);
 }
 
-/* Full-Screen Edge-to-Edge Container (Increased Vertical Height) */
+/* Glass Pill Container matching reference design */
 .airline-logo-loop-container {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  margin-top: 2.5rem;
-  margin-bottom: 0.5rem;
-  height: 120px;
+  width: 100%;
+  max-width: 1280px;
+  margin: 2.5rem auto 1rem;
+  height: 88px;
   display: flex;
   align-items: center;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
-  padding: 0 !important;
+  background: rgba(14, 26, 52, 0.45) !important;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.12) !important;
+  border-radius: 20px !important;
+  padding: 0 1.5rem !important;
   overflow: hidden;
+  position: relative;
   z-index: 10;
 }
 
@@ -170,7 +177,7 @@
   .logoloop__item img,
   .logoloop__node {
     transition: none !important;
-    filter: grayscale(0) !important;
+    filter: brightness(0) invert(1) !important;
     opacity: 0.9 !important;
   }
 }
@@ -178,36 +185,38 @@
 /* Responsive Media Queries Across All Screen Sizes */
 @media (max-width: 1199px) {
   .airline-logo-loop-container {
-    height: 104px;
+    height: 80px;
     margin-top: 2rem;
   }
 
   .logoloop {
-    --logoloop-gap: 70px;
-    --logoloop-logoHeight: 52px;
+    --logoloop-gap: 52px;
+    --logoloop-logoHeight: 30px;
   }
 }
 
 @media (max-width: 991px) {
   .airline-logo-loop-container {
-    height: 90px;
+    height: 72px;
     margin-top: 1.8rem;
   }
 
   .logoloop {
-    --logoloop-gap: 56px;
-    --logoloop-logoHeight: 44px;
+    --logoloop-gap: 44px;
+    --logoloop-logoHeight: 26px;
   }
 }
 
 @media (max-width: 767px) {
   .airline-logo-loop-container {
-    height: 76px;
+    height: 62px;
     margin-top: 1.4rem;
+    padding: 0 1rem !important;
+    border-radius: 14px !important;
   }
 
   .logoloop {
-    --logoloop-gap: 40px;
-    --logoloop-logoHeight: 36px;
+    --logoloop-gap: 36px;
+    --logoloop-logoHeight: 22px;
   }
 }

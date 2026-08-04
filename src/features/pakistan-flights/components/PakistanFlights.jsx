@@ -3,6 +3,7 @@ import PakistanMap from './PakistanMap';
 import ActiveCityCard from './ActiveCityCard';
 import CityCard from './CityCard';
 import { pakistanFlights } from '../data/pakistanFlights';
+import dp2Bg from '../../../assets/DP2.png';
 import '../styles/pakistan-flights.css';
 
 export default function PakistanFlights() {
@@ -21,7 +22,7 @@ export default function PakistanFlights() {
   }, [activeCityId]);
 
   return (
-    <section className="pakistan-flights-section" aria-labelledby="pakistan-flights-title">
+    <section className="pakistan-flights-section" style={{ backgroundImage: `url("${dp2Bg}")` }} aria-labelledby="pakistan-flights-title">
       <div className="pakistan-section-bg-overlay" />
 
       <div className="pakistan-flights-container">

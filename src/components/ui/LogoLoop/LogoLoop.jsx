@@ -23,7 +23,8 @@ const useResizeObserver = (callback, elements, dependencies) => {
     return () => {
       observers.forEach(observer => observer?.disconnect());
     };
-  }, [callback, elements, dependencies]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [callback, ...dependencies]);
 };
 
 const useImageLoader = (seqRef, onLoad, dependencies) => {
@@ -53,7 +54,8 @@ const useImageLoader = (seqRef, onLoad, dependencies) => {
         img.removeEventListener('error', handleImageLoad);
       });
     };
-  }, [onLoad, seqRef, dependencies]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onLoad, seqRef, ...dependencies]);
 };
 
 const useAnimationLoop = (trackRef, targetVelocity, seqWidth, seqHeight, isHovered, hoverSpeed, isVertical) => {
@@ -176,15 +178,19 @@ export const LogoLoop = memo(
             containerRef.current.style.height = `${targetHeight}px`;
         }
         if (sequenceHeight > 0) {
-          setSeqHeight(Math.ceil(sequenceHeight));
+          const nextHeight = Math.ceil(sequenceHeight);
+          setSeqHeight(prev => (prev !== nextHeight ? nextHeight : prev));
           const viewport = containerRef.current?.clientHeight ?? parentHeight ?? sequenceHeight;
           const copiesNeeded = Math.ceil(viewport / sequenceHeight) + ANIMATION_CONFIG.COPY_HEADROOM;
-          setCopyCount(Math.max(ANIMATION_CONFIG.MIN_COPIES, copiesNeeded));
+          const nextCopies = Math.max(ANIMATION_CONFIG.MIN_COPIES, copiesNeeded);
+          setCopyCount(prev => (prev !== nextCopies ? nextCopies : prev));
         }
       } else if (sequenceWidth > 0) {
-        setSeqWidth(Math.ceil(sequenceWidth));
+        const nextWidth = Math.ceil(sequenceWidth);
+        setSeqWidth(prev => (prev !== nextWidth ? nextWidth : prev));
         const copiesNeeded = Math.ceil(containerWidth / sequenceWidth) + ANIMATION_CONFIG.COPY_HEADROOM;
-        setCopyCount(Math.max(ANIMATION_CONFIG.MIN_COPIES, copiesNeeded));
+        const nextCopies = Math.max(ANIMATION_CONFIG.MIN_COPIES, copiesNeeded);
+        setCopyCount(prev => (prev !== nextCopies ? nextCopies : prev));
       }
     }, [isVertical]);
 

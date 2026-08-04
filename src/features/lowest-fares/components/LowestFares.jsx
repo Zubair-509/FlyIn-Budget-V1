@@ -2,7 +2,7 @@ import React from 'react';
 import FlowingMenu from './FlowingMenu.jsx';
 import FaresCarousel from './FaresCarousel.jsx';
 import AirlineLogoLoop from '../../airline-partners/components/AirlineLogoLoop.jsx';
-import lftBg from '../../../assets/LFt S2.png';
+import lftBg from '../../../assets/LFT3.png';
 import dubaiImg from '../../../assets/dubai.png';
 
 const FLOWING_MENU_ITEMS = [
@@ -32,9 +32,9 @@ export default function LowestFares() {
       {/* Today’s Lowest Fares Section */}
       <section className="lowest-fares-deals-section" style={{ backgroundImage: `url("${lftBg}")` }}>
         <div className="lowest-fares-overlay" />
-        
+
         <div className="lowest-fares-content-container">
-          
+
           {/* Top Header Block & View All Deals CTA */}
           <div className="lowest-fares-top-row">
             <div className="lowest-fares-header-block">
@@ -45,7 +45,7 @@ export default function LowestFares() {
                 </svg>
                 <span>LIMITED-TIME OFFERS</span>
               </div>
-              <h2 className="lowest-fares-main-heading">Today’s Lowest Fares</h2>
+              <h2 className="lowest-fares-main-heading">Today’s Lowest Fares<span style={{ color: '#EEB01D' }}>.</span></h2>
               <p className="lowest-fares-support-text">
                 Handpicked deals to the world’s most-loved destinations.<br />
                 Book now and save big on our most popular routes.
