@@ -675,14 +675,13 @@ body {
 .lowest-fares-deals-section::before {
   content: '';
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 65%;
+  inset: 0;
+  width: 100%;
   height: 100%;
   background-image: var(--lowest-fare-bg-img);
-  background-position: right bottom;
+  background-position: center right;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   pointer-events: none;
   z-index: 1;
   opacity: 0.85;
@@ -701,11 +700,24 @@ body {
 
 .lowest-fares-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(18, 63, 117, 0.15) 0%, rgba(10, 45, 88, 0.35) 60%, rgba(6, 29, 61, 0.85) 100%);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(18, 63, 117, 0.98) 0%,
+      rgba(18, 63, 117, 0.88) 24%,
+      rgba(13, 49, 94, 0.58) 48%,
+      rgba(8, 35, 70, 0.20) 72%,
+      rgba(6, 29, 61, 0.08) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(18, 63, 117, 0.05) 0%,
+      rgba(10, 45, 88, 0.18) 62%,
+      rgba(6, 29, 61, 0.82) 100%
+    );
   pointer-events: none;
   z-index: 2;
 }
@@ -1108,7 +1120,7 @@ body {
     display: none;
   }
   .lowest-fares-deals-section::before {
-    width: 95%;
+    background-position: center right;
     opacity: 0.65;
   }
 }
@@ -1118,9 +1130,8 @@ body {
     padding: 3rem 1.5rem;
   }
   .lowest-fares-deals-section::before {
-    width: 100%;
-    opacity: 0.45;
-    background-size: cover;
+    background-position: center right;
+    opacity: 0.5;
   }
   .lowest-fares-top-row {
     flex-direction: column;
