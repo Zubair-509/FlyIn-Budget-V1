@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState, memo } from 'react';
 import FAQAccordion from './FAQAccordion';
 import FAQBenefits from './FAQBenefits';
-import faqBgImg from '../../../assets/FAQ.png';
+import faqBgImg from '../../../assets/Desktop Assets/BG/FAQ.png';
 import '../styles/faq.css';
 
 export const FAQSection = memo(function FAQSection() {

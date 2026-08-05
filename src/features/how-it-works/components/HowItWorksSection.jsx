@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import StepCard from './StepCard';
 import TravelSupportBanner from './TravelSupportBanner';
-import fibBg from '../../../assets/FIB H.png';
+import fibBg from '../../../assets/Desktop Assets/BG/HIW v1.png';
 import '../styles/how-it-works.css';
 
 const STEPS = [

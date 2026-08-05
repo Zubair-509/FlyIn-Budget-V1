@@ -2,7 +2,7 @@ import React from 'react';
 import FlowingMenu from './FlowingMenu.jsx';
 import FaresCarousel from './FaresCarousel.jsx';
 import AirlineLogoLoop from '../../airline-partners/components/AirlineLogoLoop.jsx';
-import lftBg from '../../../assets/LFT3.png';
+import lftBg from '../../../assets/Desktop Assets/BG/LFT v3.png';
 import dubaiImg from '../../../assets/dubai.png';
 
 const FLOWING_MENU_ITEMS = [

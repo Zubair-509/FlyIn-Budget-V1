@@ -3,7 +3,7 @@ import PakistanMap from './PakistanMap';
 import ActiveCityCard from './ActiveCityCard';
 import CityCard from './CityCard';
 import { pakistanFlights } from '../data/pakistanFlights';
-import dp2Bg from '../../../assets/DP2.png';
+import dp2Bg from '../../../assets/Desktop Assets/BG/DP v1.png';
 import '../styles/pakistan-flights.css';
 
 export default function PakistanFlights() {

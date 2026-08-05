@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import supportBgImg from '../../../assets/FIB H.png';
+import supportBgImg from '../../../assets/Desktop Assets/BG/HIW v1.png';
 
 const TravelSupportBanner = memo(function TravelSupportBanner() {
   return (

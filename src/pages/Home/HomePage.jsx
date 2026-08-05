@@ -6,6 +6,7 @@ import PakistanFlights from '../../features/pakistan-flights';
 import IndiaFlightsSection from '../../features/india-flights';
 import HowItWorksSection from '../../features/how-it-works';
 import FAQSection from '../../features/faq';
+import Footer from '../../features/footer';
 
 export default function HomePage() {
   // Check if user has already seen the intro video during this browser session
@@ -44,13 +45,14 @@ export default function HomePage() {
         onInstantView={markIntroSeen}
       />
 
-      {/* Lowest Fares, Pakistan Flights, India Flights, How It Works & FAQ Features */}
+      {/* Lowest Fares, Pakistan Flights, India Flights, How It Works, FAQ & Footer Features */}
       <div className={`lowest-fare-wrapper hero-transition-element ${isUIRevealed ? 'is-visible' : ''}`}>
         <LowestFares />
         <PakistanFlights />
         <IndiaFlightsSection />
         <HowItWorksSection />
         <FAQSection />
+        <Footer />
       </div>
     </div>
   );

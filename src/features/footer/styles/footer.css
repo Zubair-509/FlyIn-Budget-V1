@@ -1,0 +1,814 @@
+/* ==========================================================================
+   FlyInBudget Premium Footer Feature Styles
+   ========================================================================== */
+
+.site-footer-wrapper {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-body, 'Plus Jakarta Sans', -apple-system, sans-serif);
+  background-color: #031227;
+  overflow: hidden;
+}
+
+/* Full Width Edge-to-Edge Footer Shell */
+.site-footer-card {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  border-radius: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  padding: clamp(54px, 6vw, 96px) clamp(24px, 5vw, 80px) clamp(28px, 3vw, 48px);
+  box-sizing: border-box;
+}
+
+.footer-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(5, 21, 45, 0.55) 0%, rgba(7, 26, 51, 0.75) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.footer-flight-trail {
+  position: absolute;
+  top: 12px;
+  right: 24px;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.85;
+}
+
+/* Main 4-Column Layout Grid */
+.footer-main-grid {
+  position: relative;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 2.7fr 1fr 1.15fr 1.15fr;
+  gap: clamp(24px, 3vw, 44px);
+  margin: 0 auto 48px;
+  max-width: 1560px;
+  min-width: 0;
+  align-items: start;
+  box-sizing: border-box;
+}
+
+/* Vertical Separator Lines Between Desktop Columns */
+@media (min-width: 992px) {
+  .footer-col-links,
+  .footer-col-destinations,
+  .footer-col-contact {
+    position: relative;
+  }
+
+  .footer-col-links::before,
+  .footer-col-destinations::before,
+  .footer-col-contact::before {
+    content: '';
+    position: absolute;
+    left: calc(clamp(24px, 3vw, 44px) / -2);
+    top: 0;
+    height: 100%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    pointer-events: none;
+  }
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* Column 1: Brand & Slogan */
+.footer-brand-logo-wrap {
+  margin-bottom: 14px;
+}
+
+.footer-brand-logo {
+  height: 58px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.footer-brand-slogan {
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+  font-weight: 800;
+  color: #ffffff;
+  font-family: var(--font-heading, 'Playfair Display', Georgia, serif);
+  margin: 0 0 10px 0;
+  line-height: 1.2;
+}
+
+.slogan-gold {
+  color: #EEB01D;
+}
+
+.footer-brand-description {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.74);
+  max-width: 500px;
+  margin: 0 0 22px 0;
+}
+
+/* Accessibility visually-hidden utility */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Newsletter Card */
+.footer-newsletter-card {
+  background: rgba(8, 30, 60, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 22px 24px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  margin-bottom: 24px;
+  box-sizing: border-box;
+}
+
+.footer-newsletter-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.newsletter-icon-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(238, 176, 29, 0.15);
+  border: 1px solid rgba(238, 176, 29, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.newsletter-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.newsletter-subtext {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 2px 0 0 0;
+}
+
+.footer-newsletter-form {
+  position: relative;
+}
+
+.newsletter-input-wrapper {
+  display: flex;
+  align-items: center;
+  background: rgba(5, 18, 38, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+  padding: 6px 6px 6px 16px;
+  min-height: 52px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  box-sizing: border-box;
+}
+
+.newsletter-input-wrapper:focus-within {
+  border-color: #EEB01D;
+  box-shadow: 0 0 14px rgba(238, 176, 29, 0.3);
+}
+
+.newsletter-email-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 0.925rem;
+  font-family: inherit;
+  min-width: 0;
+  padding: 4px 0;
+}
+
+.newsletter-email-input::placeholder {
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.newsletter-submit-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #EEB01D;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.newsletter-submit-btn:hover {
+  background: #d99a0b;
+  transform: scale(1.05);
+}
+
+.newsletter-submit-btn:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.newsletter-success-toast {
+  font-size: 0.8rem;
+  color: #EEB01D;
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+/* Trust Benefits Row */
+.footer-benefits-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer-benefit-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1 1 0%;
+  min-width: 0;
+}
+
+.footer-benefit-icon {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.footer-benefit-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.footer-benefit-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.25;
+  display: block;
+}
+
+.footer-benefit-desc {
+  font-size: 0.71rem;
+  color: rgba(255, 255, 255, 0.68);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.25;
+  display: block;
+  margin-top: 1px;
+}
+
+.footer-benefit-divider {
+  width: 1px;
+  height: 32px;
+  min-width: 1px;
+  background: rgba(255, 255, 255, 0.14);
+  flex-shrink: 0;
+  margin: 0 4px;
+}
+
+/* Column Titles */
+.footer-col-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin: 0 0 20px 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.footer-title-underline {
+  width: 28px;
+  height: 2px;
+  background: #EEB01D;
+  border-radius: 2px;
+}
+
+/* Column 2: Quick Links */
+.footer-links-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-link-item {
+  margin: 0;
+}
+
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.footer-link:hover {
+  color: #EEB01D;
+  transform: translateX(3px);
+}
+
+.footer-link:focus-visible {
+  outline: 2px solid #EEB01D;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.footer-link-chevron {
+  transition: transform 0.25s ease;
+}
+
+.footer-link:hover .footer-link-chevron {
+  transform: translateX(2px);
+}
+
+/* Column 3: Top Destinations */
+.footer-destinations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-dest-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  padding: 4px 6px;
+  border-radius: 10px;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.footer-dest-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(3px);
+}
+
+.footer-dest-card:focus-visible {
+  outline: 2px solid #EEB01D;
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+.footer-dest-thumb {
+  width: 44px;
+  height: 34px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+}
+
+.footer-dest-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.footer-dest-name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.footer-dest-price {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 1px;
+}
+
+.footer-dest-chevron {
+  margin-left: auto;
+  color: #EEB01D;
+  opacity: 0.8;
+  transition: transform 0.25s ease;
+}
+
+.footer-dest-card:hover .footer-dest-chevron {
+  transform: translateX(2px);
+  opacity: 1;
+}
+
+/* Column 4: Contact & Social */
+.footer-contact-list {
+  list-style: none;
+  margin: 0 0 18px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.contact-icon-bubble {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-text-link,
+.contact-address-text {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+  font-style: normal;
+  line-height: 1.4;
+  transition: color 0.25s ease;
+}
+
+.contact-text-link:hover {
+  color: #EEB01D;
+}
+
+.contact-text-link:focus-visible {
+  outline: 2px solid #EEB01D;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.footer-contact-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  margin-bottom: 18px;
+}
+
+.footer-social-title {
+  margin-bottom: 14px;
+}
+
+.footer-social-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.social-btn:hover {
+  background: rgba(238, 176, 29, 0.15);
+  border-color: #EEB01D;
+  color: #EEB01D;
+  transform: translateY(-2px);
+}
+
+.social-btn:focus-visible {
+  outline: 2px solid #EEB01D;
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Bottom Bar
+   ========================================================================== */
+
+.footer-bottom-bar {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  flex-wrap: wrap;
+  max-width: 1560px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.footer-copyright {
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.copyright-gold {
+  color: #EEB01D;
+  font-weight: 700;
+}
+
+.footer-legal-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.8125rem;
+}
+
+.legal-link {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.legal-link:hover {
+  color: #EEB01D;
+}
+
+.legal-link:focus-visible {
+  outline: 2px solid #EEB01D;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.legal-divider {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 0.75rem;
+}
+
+/* Payment Chips */
+.footer-payment-strip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.payment-chip {
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 6px;
+  background: rgba(7, 28, 55, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  user-select: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.chip-visa .visa-text {
+  color: #ffffff;
+  font-style: italic;
+  font-family: sans-serif;
+  font-weight: 900;
+}
+
+.chip-mastercard {
+  gap: 4px;
+}
+
+.mc-circles {
+  display: flex;
+  align-items: center;
+}
+
+.mc-red {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #eb001b;
+  margin-right: -4px;
+}
+
+.mc-orange {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ff5f00;
+  opacity: 0.9;
+}
+
+.mc-text {
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.chip-amex .amex-text {
+  color: #006fcf;
+  font-weight: 900;
+  font-size: 0.65rem;
+}
+
+.chip-discover .discover-text {
+  color: #ff6000;
+  font-weight: 900;
+  font-size: 0.65rem;
+}
+
+.chip-paypal {
+  font-weight: 900;
+  font-size: 0.75rem;
+}
+
+.paypal-p1 {
+  color: #003087;
+}
+
+.paypal-p2 {
+  color: #0079c1;
+}
+
+/* ==========================================================================
+   Scroll Entrance Animation
+   ========================================================================== */
+
+.footer-col,
+.footer-bottom-bar {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.site-footer-wrapper.is-in-view .footer-col:nth-child(1) { transition-delay: 0.05s; opacity: 1; transform: translateY(0); }
+.site-footer-wrapper.is-in-view .footer-col:nth-child(2) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
+.site-footer-wrapper.is-in-view .footer-col:nth-child(3) { transition-delay: 0.25s; opacity: 1; transform: translateY(0); }
+.site-footer-wrapper.is-in-view .footer-col:nth-child(4) { transition-delay: 0.35s; opacity: 1; transform: translateY(0); }
+.site-footer-wrapper.is-in-view .footer-bottom-bar { transition-delay: 0.45s; opacity: 1; transform: translateY(0); }
+
+@supports not (intersection-observer: true) {
+  .footer-col,
+  .footer-bottom-bar {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .footer-col,
+  .footer-bottom-bar,
+  .footer-link,
+  .footer-dest-card,
+  .social-btn,
+  .newsletter-submit-btn {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+@media (max-width: 1199px) {
+  .footer-main-grid {
+    grid-template-columns: 1.8fr 1fr 1.2fr 1.2fr;
+    gap: 28px;
+  }
+
+  .footer-benefits-row {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-benefit-divider {
+    display: none;
+  }
+}
+
+@media (max-width: 991px) {
+  .footer-main-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 36px 28px;
+  }
+
+  .footer-col-links::before,
+  .footer-col-destinations::before,
+  .footer-col-contact::before {
+    display: none;
+  }
+
+  .footer-bottom-bar {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-footer-wrapper {
+    padding: 0;
+  }
+
+  .site-footer-card {
+    border-radius: 0;
+    padding: 40px 20px 24px;
+  }
+
+  .footer-main-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-benefits-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .footer-flight-trail {
+    display: none;
+  }
+}
+
+@media (max-width: 430px) {
+  .footer-benefits-row {
+    grid-template-columns: 1fr;
+  }
+
+  .newsletter-input-wrapper {
+    padding: 3px 3px 3px 12px;
+  }
+
+  .footer-legal-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

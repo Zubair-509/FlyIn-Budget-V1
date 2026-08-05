@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import IndiaFlightsCarousel from './IndiaFlightsCarousel';
-import ftiBg from '../../../assets/FTI BI.png';
+import ftiBg from '../../../assets/Desktop Assets/BG/FTI v1.png';
 import '../styles/india-flights.css';
 
 export default function IndiaFlightsSection() {

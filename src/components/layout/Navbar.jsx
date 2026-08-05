@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import logoImg from '../../assets/l2.png';
+import logoImg from '../../assets/Desktop Assets/l2.png';
 
 export default function Navbar({ isVisible }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

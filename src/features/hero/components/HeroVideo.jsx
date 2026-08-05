@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
-import videoSrc from '../../../assets/0729.mp4';
-import heroBgImg from '../../../assets/BC-Hero.png';
+import videoSrc from '../../../assets/Desktop Assets/Hero/Hero Video.mp4';
+import heroBgImg from '../../../assets/Desktop Assets/BG/BC-Hero.png';
 
 export default function HeroVideo({ onVideoEnded, isVideoEnded }) {
   const videoRef = useRef(null);
