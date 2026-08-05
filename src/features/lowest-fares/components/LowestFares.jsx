@@ -2,7 +2,7 @@ import React from 'react';
 import FlowingMenu from './FlowingMenu.jsx';
 import FaresCarousel from './FaresCarousel.jsx';
 import AirlineLogoLoop from '../../airline-partners/components/AirlineLogoLoop.jsx';
-import lftBg from '../../../assets/Desktop Assets/BG/LFT v3.png';
+import lftBg from '../../../assets/Desktop Assets/BG/Lowest Fare.png';
 import dubaiImg from '../../../assets/dubai.png';
 
 const FLOWING_MENU_ITEMS = [
@@ -30,7 +30,16 @@ export default function LowestFares() {
       </div>
 
       {/* Today’s Lowest Fares Section */}
-      <section className="lowest-fares-deals-section" style={{ backgroundImage: `url("${lftBg}")` }}>
+      <section
+        className="lowest-fares-deals-section"
+        style={{ '--lowest-fare-bg-img': `url("${lftBg}")` }}
+      >
+        {/* Subtle Flight Path Accent */}
+        <svg className="lowest-fares-flight-path" viewBox="0 0 500 120" fill="none" aria-hidden="true">
+          <path d="M 20 100 C 150 30, 300 110, 460 20" stroke="rgba(238, 176, 29, 0.35)" strokeWidth="1.5" strokeDasharray="4 4" />
+          <path d="M 455 15 L 465 20 L 458 27 Z" fill="#EEB01D" opacity="0.6" />
+        </svg>
+
         <div className="lowest-fares-overlay" />
 
         <div className="lowest-fares-content-container">

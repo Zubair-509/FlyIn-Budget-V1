@@ -1,9 +1,14 @@
 import React, { memo } from 'react';
-import supportBgImg from '../../../assets/Desktop Assets/BG/HIW v1.png';
+import supportBgImg from '../../../assets/Desktop Assets/BG/How it works Banner.png';
 
 const TravelSupportBanner = memo(function TravelSupportBanner() {
   return (
-    <section className="travel-support-banner" aria-labelledby="travel-support-heading">
+    <section
+      className="travel-support-banner"
+      style={{ backgroundImage: `url("${supportBgImg}")` }}
+      aria-labelledby="travel-support-heading"
+    >
+      <div className="support-banner-overlay" aria-hidden="true" />
       {/* Center-Aligned Content Container */}
       <div className="support-banner-content">
         {/* Eyebrow with Headset Icon */}

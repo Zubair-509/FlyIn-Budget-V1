@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 import StepCard from './StepCard';
 import TravelSupportBanner from './TravelSupportBanner';
-import fibBg from '../../../assets/Desktop Assets/BG/HIW v1.png';
 import '../styles/how-it-works.css';
 
 const STEPS = [
@@ -82,7 +81,6 @@ const HowItWorksSection = memo(function HowItWorksSection() {
   return (
     <section
       className="how-it-works-section"
-      style={{ backgroundImage: `url("${fibBg}")` }}
       aria-labelledby="how-it-works-heading"
     >
       {/* Deep Navy Responsive Overlay */}

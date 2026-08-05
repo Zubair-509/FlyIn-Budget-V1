@@ -12,7 +12,9 @@
   padding: 0;
   box-sizing: border-box;
   font-family: var(--font-body, 'Plus Jakarta Sans', -apple-system, sans-serif);
-  background-color: #031227;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(22, 69, 128, 0.18), transparent 32%),
+    linear-gradient(180deg, #031126 0%, #020b19 100%);
   overflow: hidden;
 }
 
@@ -28,7 +30,7 @@
   border-right: none;
   border-bottom: none;
   background-size: cover;
-  background-position: center;
+  background-position: center bottom;
   background-repeat: no-repeat;
   box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.35);
   overflow: hidden;
@@ -42,7 +44,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(5, 21, 45, 0.55) 0%, rgba(7, 26, 51, 0.75) 100%);
+  background: linear-gradient(180deg, rgba(3, 17, 38, 0.45) 0%, rgba(2, 11, 25, 0.75) 100%);
   pointer-events: none;
   z-index: 1;
 }

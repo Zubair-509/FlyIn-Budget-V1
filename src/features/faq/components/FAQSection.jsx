@@ -33,7 +33,7 @@ export const FAQSection = memo(function FAQSection() {
       ref={sectionRef}
       className={`faq-section ${isInView ? 'is-in-view' : ''}`}
       aria-labelledby="faq-main-title"
-      style={{ backgroundImage: `url("${faqBgImg}")` }}
+      style={{ '--faq-bg-img': `url("${faqBgImg}")` }}
     >
       <div className="faq-bg-overlay" aria-hidden="true" />
 

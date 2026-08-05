@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import IndiaFlightsCarousel from './IndiaFlightsCarousel';
-import ftiBg from '../../../assets/Desktop Assets/BG/FTI v1.png';
 import '../styles/india-flights.css';
 
 export default function IndiaFlightsSection() {
@@ -31,11 +30,22 @@ export default function IndiaFlightsSection() {
     <section
       ref={sectionRef}
       className={`india-flights-section ${isVisible ? 'is-visible' : ''}`}
-      style={{ backgroundImage: `url("${ftiBg}")` }}
       aria-labelledby="india-flights-heading"
     >
       {/* Deep Navy Atmosphere & Radial Glow */}
       <div className="india-section-bg" />
+
+      {/* Cultural Mandala Edge Motifs (Left & Right) */}
+      <svg className="india-edge-motif-left" viewBox="0 0 200 400" fill="none" aria-hidden="true">
+        <circle cx="0" cy="200" r="160" stroke="#EEB01D" strokeWidth="1" strokeDasharray="4 4" opacity="0.12" />
+        <circle cx="0" cy="200" r="120" stroke="#EEB01D" strokeWidth="1" opacity="0.1" />
+        <circle cx="0" cy="200" r="80" stroke="#EEB01D" strokeWidth="1" strokeDasharray="2 2" opacity="0.08" />
+      </svg>
+      <svg className="india-edge-motif-right" viewBox="0 0 200 400" fill="none" aria-hidden="true">
+        <circle cx="200" cy="200" r="160" stroke="#EEB01D" strokeWidth="1" strokeDasharray="4 4" opacity="0.12" />
+        <circle cx="200" cy="200" r="120" stroke="#EEB01D" strokeWidth="1" opacity="0.1" />
+        <circle cx="200" cy="200" r="80" stroke="#EEB01D" strokeWidth="1" strokeDasharray="2 2" opacity="0.08" />
+      </svg>
 
       {/* Decorative India Map Contour Outline Line Texture */}
       <svg className="india-map-bg-contour" viewBox="0 0 800 900" fill="none" aria-hidden="true">
