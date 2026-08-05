@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import logoImg from '../../assets/Desktop Assets/l2.png';
 
 export default function Navbar({ isVisible }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,23 +26,26 @@ export default function Navbar({ isVisible }) {
     setIsMenuOpen(prev => !prev);
   };
 
+  const isHome = location.pathname === '/';
+  const isAbout = location.pathname === '/about-us';
+
   return (
     <header className={`navbar hero-transition-element ${isVisible ? 'is-visible' : ''} ${isScrolled ? 'is-scrolled' : ''}`}>
-      <div className="nav-brand">
+      <Link to="/" className="nav-brand" aria-label="FlyIn Budget Home">
         <img src={logoImg} alt="FlyIn Budget" className="brand-logo-img" />
-      </div>
+      </Link>
 
       <nav className={`nav-links ${isMenuOpen ? 'is-open' : ''}`}>
-        <a href="#" className="nav-link active" onClick={() => setIsMenuOpen(false)}>Home</a>
-        <a href="#" className="nav-link" onClick={() => setIsMenuOpen(false)}>About Us</a>
-        <a href="#" className="nav-link" onClick={() => setIsMenuOpen(false)}>
+        <Link to="/" className={`nav-link ${isHome ? 'active' : ''}`} onClick={() => setIsMenuOpen(false)}>Home</Link>
+        <Link to="/about-us" className={`nav-link ${isAbout ? 'active' : ''}`} onClick={() => setIsMenuOpen(false)}>About Us</Link>
+        <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>
           Flights{' '}
           <svg className="dropdown-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" strokeWidth="2" fill="none">
             <path d="m6 9 6 6 6-6"/>
           </svg>
-        </a>
-        <a href="#" className="nav-link" onClick={() => setIsMenuOpen(false)}>Booking Terms</a>
-        <a href="#" className="nav-link" onClick={() => setIsMenuOpen(false)}>Contact</a>
+        </Link>
+        <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>Booking Terms</Link>
+        <a href="tel:01143600079" className="nav-link" onClick={() => setIsMenuOpen(false)}>Contact</a>
       </nav>
 
       <div className="nav-actions">

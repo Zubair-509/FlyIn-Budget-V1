@@ -1,5 +1,5 @@
 export const quickLinks = [
-  { label: 'About Us', href: '#how-it-works' },
+  { label: 'About Us', href: '/about-us' },
   { label: 'Contact Us', href: 'tel:01143600079' },
   { label: 'Flight to Pakistan', href: '#pakistan-flights-title' },
   { label: 'Flight to India', href: '#india-flights-title' },
