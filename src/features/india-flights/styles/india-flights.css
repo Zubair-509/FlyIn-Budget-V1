@@ -5,8 +5,8 @@
 .india-flights-section {
   position: relative;
   width: 100%;
-  min-height: auto;
-  padding: 52px clamp(24px, 4.7vw, 80px) 56px;
+  min-height: clamp(860px, 90svh, 1000px);
+  padding: clamp(80px, 8vh, 104px) clamp(24px, 4.7vw, 80px);
   background:
     radial-gradient(circle at 50% 64%, rgba(30, 92, 165, 0.25), transparent 38%),
     linear-gradient(180deg, #071a35 0%, #06172f 55%, #041226 100%);
@@ -17,6 +17,9 @@
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* Background Atmosphere & Subtle Blue Radial Light Overlay */
@@ -61,10 +64,11 @@
   position: relative;
   z-index: 2;
   max-width: 1510px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: clamp(36px, 5vh, 52px);
 }
 
 /* Section Header Block */
@@ -671,6 +675,17 @@
 
 /* Responsive Media Queries */
 @media (max-width: 1024px) {
+  .india-flights-section {
+    min-height: auto;
+    padding: clamp(64px, 7vw, 84px) clamp(24px, 4.7vw, 80px);
+  }
+
+  .india-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
   .india-edge-motif-left,
   .india-edge-motif-right {
     display: none;
@@ -695,6 +710,20 @@
 }
 
 @media (max-width: 768px) {
+  .india-flights-section {
+    min-height: auto;
+    padding: clamp(52px, 12vw, 72px) clamp(16px, 4.5vw, 80px);
+  }
+
+  .india-header-row {
+    gap: 16px;
+  }
+
+  .btn-view-india-cta {
+    height: 48px;
+    padding: 0 22px;
+    font-size: 14px;
+  }
   .india-stage-deck {
     height: 480px;
   }

@@ -69,7 +69,7 @@ function MenuItem({ link, text, image, speed, textColor, marqueeBgColor, marquee
     };
 
     calculateRepetitions();
-    window.addEventListener('resize', calculateRepetitions);
+    window.addEventListener('resize', calculateRepetitions, { passive: true });
     return () => window.removeEventListener('resize', calculateRepetitions);
   }, [text, image]);
 

@@ -8,8 +8,8 @@
   position: relative;
   width: 100%;
   max-width: 100%;
-  min-height: auto;
-  padding: 52px clamp(16px, 4.5vw, 80px) 48px;
+  min-height: clamp(820px, 86svh, 940px);
+  padding: clamp(72px, 7vh, 96px) clamp(16px, 4.5vw, 80px);
   font-family: 'Poppins', -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -19,6 +19,9 @@
     radial-gradient(circle at 34% 40%, rgba(36, 116, 190, 0.24), transparent 42%),
     linear-gradient(180deg, #164d7d 0%, #0d3158 45%, #071d38 100%);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .pakistan-flights-section::before {
@@ -76,7 +79,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: clamp(28px, 4vh, 44px);
   min-width: 0;
   box-sizing: border-box;
 }
@@ -780,7 +783,8 @@
 /* Laptop / Upper Tablet */
 @media (max-width: 991px) {
   .pakistan-flights-section {
-    padding: 36px 20px 40px;
+    min-height: auto;
+    padding: clamp(64px, 7vw, 84px) clamp(16px, 4.5vw, 80px);
   }
 
   .pakistan-header-row {
@@ -818,7 +822,8 @@
 /* Mobile: 768px and below */
 @media (max-width: 768px) {
   .pakistan-flights-section {
-    padding: 28px 16px 32px;
+    min-height: auto;
+    padding: clamp(52px, 12vw, 72px) clamp(16px, 4.5vw, 80px);
   }
 
   .mobile-city-chips-bar {

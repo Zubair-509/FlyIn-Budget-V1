@@ -6,7 +6,8 @@
   position: relative;
   width: 100%;
   max-width: 100%;
-  padding: 64px clamp(16px, 4.5vw, 80px) 72px;
+  padding-block: clamp(84px, 8vh, 112px);
+  padding-inline: clamp(16px, 4.5vw, 80px);
   font-family: 'Poppins', -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -44,7 +45,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 56px;
+  gap: clamp(64px, 7vw, 88px);
   min-width: 0;
   box-sizing: border-box;
 }
@@ -322,7 +323,7 @@
 .travel-support-banner {
   position: relative;
   width: 100%;
-  min-height: 280px;
+  min-height: clamp(320px, 34vw, 380px);
   border-radius: 20px;
   overflow: hidden;
   border: 1.5px solid rgba(238, 176, 29, 0.45);
@@ -333,7 +334,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 44px 32px;
+  padding-block: clamp(48px, 6vw, 72px);
+  padding-inline: 32px;
   box-sizing: border-box;
   text-align: center;
 }
@@ -439,11 +441,17 @@
 
 @media (max-width: 768px) {
   .how-it-works-section {
-    padding: 44px 16px 52px;
+    padding-block: clamp(52px, 12vw, 72px);
+    padding-inline: 16px;
   }
 
   .how-it-works-container {
-    gap: 40px;
+    gap: clamp(36px, 8vw, 56px);
+  }
+
+  .travel-support-banner {
+    min-height: auto;
+    padding-block: clamp(36px, 6vw, 52px);
   }
 
   .how-cards-row {

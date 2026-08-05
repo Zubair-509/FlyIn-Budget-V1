@@ -14,7 +14,7 @@ export default function Navbar({ isVisible }) {
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
 
     return () => window.removeEventListener('scroll', handleScroll);
@@ -45,7 +45,7 @@ export default function Navbar({ isVisible }) {
 
       <div className="nav-actions">
         <button className="btn-manage">Umrah Inquiry</button>
-        <button className="btn-menu" onClick={toggleMenu} aria-label="Toggle menu">
+        <button className="btn-menu" onClick={toggleMenu} aria-label="Toggle menu" aria-expanded={isMenuOpen}>
           {isMenuOpen ? (
             <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2.5" fill="none">
               <line x1="18" y1="6" x2="6" y2="18"></line>

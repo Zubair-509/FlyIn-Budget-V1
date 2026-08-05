@@ -3,7 +3,6 @@ import React, { memo } from 'react';
 const CityCard = memo(function CityCard({ flight, isActive, onSelect }) {
   return (
     <button
-      key={flight.id}
       type="button"
       className={`small-city-card animate-subcard-reassemble ${isActive ? 'is-active' : ''}`}
       onClick={() => onSelect(flight.id)}

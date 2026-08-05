@@ -662,7 +662,9 @@ body {
 .lowest-fares-deals-section {
   position: relative;
   width: 100%;
-  padding: 4.5rem 5rem 4rem 5rem;
+  min-height: clamp(880px, 92svh, 1020px);
+  padding-block: clamp(84px, 8vh, 108px);
+  padding-inline: clamp(24px, 5vw, 80px);
   background:
     radial-gradient(circle at 72% 22%, rgba(56, 139, 218, 0.38), transparent 38%),
     linear-gradient(180deg, #123f75 0%, #0a2d58 48%, #061d3d 100%);
@@ -670,6 +672,9 @@ body {
   font-family: 'Poppins', sans-serif;
   overflow: hidden;
   z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .lowest-fares-deals-section::before {
@@ -726,10 +731,11 @@ body {
   position: relative;
   z-index: 2;
   max-width: 1440px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 2.8rem;
+  gap: clamp(2.8rem, 4.5vh, 4rem);
 }
 
 /* Top Row Header Block & View All Deals Button */
@@ -1116,6 +1122,10 @@ body {
 }
 
 @media (max-width: 991px) {
+  .lowest-fares-deals-section {
+    min-height: auto;
+    padding-block: clamp(64px, 7vw, 84px);
+  }
   .lowest-fares-flight-path {
     display: none;
   }
@@ -1127,7 +1137,9 @@ body {
 
 @media (max-width: 768px) {
   .lowest-fares-deals-section {
-    padding: 3rem 1.5rem;
+    min-height: auto;
+    padding-block: clamp(52px, 12vw, 72px);
+    padding-inline: 1.5rem;
   }
   .lowest-fares-deals-section::before {
     background-position: center right;
