@@ -1,9 +1,23 @@
 import React from 'react';
 import AirlineLogoLoop from '../../airline-partners/components/AirlineLogoLoop';
+import airlinesBg from '../../../assets/about_airlines_terminal.png';
 
 export default function AboutAirlines() {
   return (
     <section className="about-airlines-section" aria-labelledby="about-airlines-heading">
+      {/* Soft Atmospheric Terminal Background */}
+      <div className="about-airlines-bg-wrapper" aria-hidden="true">
+        <img
+          src={airlinesBg}
+          alt=""
+          className="about-airlines-bg-img"
+          loading="lazy"
+          width="1920"
+          height="1080"
+        />
+        <div className="about-airlines-overlay" />
+      </div>
+
       <div className="about-airlines-container">
         <div className="about-airlines-header">
           <span className="about-airlines-eyebrow">GLOBAL CONNECTIONS</span>
