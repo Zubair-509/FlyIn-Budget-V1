@@ -53,12 +53,6 @@ export default function AboutHero({ onQuoteClick }) {
             </a>
           </div>
         </div>
-
-        {/* Scroll Cue Indicator */}
-        <div className="about-hero-scroll-cue" aria-hidden="true">
-          <span className="scroll-cue-text">SCROLL TO EXPLORE</span>
-          <div className="scroll-cue-line" />
-        </div>
       </div>
     </section>
   );

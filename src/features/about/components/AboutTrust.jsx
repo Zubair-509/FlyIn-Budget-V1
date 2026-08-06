@@ -14,7 +14,7 @@ export default function AboutTrust() {
           <p className="about-trust-subtext">{TRUST_CONTENT.subtext}</p>
         </div>
 
-        {/* Verifiable Credentials Document Folder Grid */}
+        {/* 3-Panel Service Standards Grid */}
         <div className="about-trust-panels-grid">
           {TRUST_CONTENT.panels.map((panel) => (
             <article key={panel.id} className="about-trust-panel">
@@ -25,8 +25,8 @@ export default function AboutTrust() {
                     <path d="M9 12l2 2 4-4" />
                   </svg>
                 </div>
-                <span className={`status-pill ${panel.status === 'VERIFIED ACTIVE' ? 'is-verified' : 'is-pending'}`}>
-                  {panel.status}
+                <span className="panel-principle-badge">
+                  {panel.principleLabel}
                 </span>
               </div>
 
@@ -35,19 +35,8 @@ export default function AboutTrust() {
 
               <p className="panel-desc">{panel.description}</p>
 
-              {panel.placeholderNote && (
-                <div className="panel-placeholder-notice">
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10" />
-                    <line x1="12" y1="8" x2="12" y2="12" />
-                    <line x1="12" y1="16" x2="12.01" y2="16" />
-                  </svg>
-                  <span>{panel.placeholderNote}</span>
-                </div>
-              )}
-
               <div className="panel-footer-badge">
-                <span>{panel.badgeText}</span>
+                <span>{panel.footerLabel}</span>
               </div>
             </article>
           ))}

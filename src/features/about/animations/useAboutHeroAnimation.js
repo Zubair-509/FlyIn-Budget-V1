@@ -50,12 +50,6 @@ export function useAboutHeroAnimation(containerRef, isReady = true) {
           { y: 20, opacity: 0 },
           { y: 0, opacity: 1 },
           0.66
-        )
-        .fromTo(
-          '.about-hero-scroll-cue',
-          { opacity: 0 },
-          { opacity: 0.8, duration: 0.6 },
-          0.85
         );
 
       // Hero scroll parallax (subtle camera push-in & background movement)

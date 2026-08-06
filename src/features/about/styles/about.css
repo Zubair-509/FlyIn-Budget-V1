@@ -50,8 +50,20 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(3, 17, 38, 0.94) 0%, rgba(3, 17, 38, 0.78) 45%, rgba(3, 17, 38, 0.35) 100%),
-    linear-gradient(180deg, rgba(3, 17, 38, 0.4) 0%, rgba(3, 17, 38, 0.88) 100%);
+    linear-gradient(
+      90deg,
+      rgba(3, 17, 38, 0.90) 0%,
+      rgba(3, 17, 38, 0.76) 30%,
+      rgba(3, 17, 38, 0.44) 52%,
+      rgba(3, 17, 38, 0.18) 76%,
+      rgba(3, 17, 38, 0.08) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(3, 17, 38, 0.24) 0%,
+      rgba(3, 17, 38, 0.18) 48%,
+      rgba(3, 17, 38, 0.70) 100%
+    );
   pointer-events: none;
   z-index: 2;
 }
@@ -165,29 +177,6 @@
   background: rgba(255, 255, 255, 0.16);
   border-color: #EEB01D;
   transform: translateY(-2px);
-}
-
-.about-hero-scroll-cue {
-  position: absolute;
-  bottom: 32px;
-  left: clamp(20px, 5vw, 80px);
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  opacity: 0.75;
-}
-
-.scroll-cue-text {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  color: rgba(255, 255, 255, 0.7);
-}
-
-.scroll-cue-line {
-  width: 48px;
-  height: 1px;
-  background: rgba(238, 176, 29, 0.6);
 }
 
 /* --------------------------------------------------------------------------
@@ -824,25 +813,16 @@
   justify-content: center;
 }
 
-.status-pill {
-  font-size: 0.7rem;
+.panel-principle-badge {
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  padding: 4px 10px;
+  letter-spacing: 0.1em;
+  padding: 4px 12px;
   border-radius: 999px;
   text-transform: uppercase;
-}
-
-.status-pill.is-verified {
-  background: rgba(46, 204, 113, 0.15);
-  border: 1px solid rgba(46, 204, 113, 0.4);
-  color: #2ecc71;
-}
-
-.status-pill.is-pending {
-  background: rgba(238, 176, 29, 0.15);
-  border: 1px solid rgba(238, 176, 29, 0.4);
   color: #EEB01D;
+  background: rgba(238, 176, 29, 0.12);
+  border: 1px solid rgba(238, 176, 29, 0.3);
 }
 
 .panel-subtitle {

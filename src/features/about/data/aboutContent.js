@@ -74,7 +74,7 @@ export const APPROACH_STAGES = [
     title: 'Review curated options',
     description:
       'Our team evaluates available flight choices across trusted airlines, explaining fare conditions and savings so you can decide with confidence.',
-    details: ['600+ airline network', 'Transparent fare rules', 'No hidden surprises']
+    details: ['Options across regional and international airlines', 'Transparent fare rules', 'No hidden surprises']
   },
   {
     id: 'support',
@@ -113,37 +113,35 @@ export const BENEFITS_CONTENT = {
   ]
 };
 
-// Trust & Accreditation Data (with clear verification tags)
+// Trust & Service Standards
 export const TRUST_CONTENT = {
-  eyebrow: 'VERIFIABLE STANDARDS',
+  eyebrow: 'SERVICE STANDARDS',
   heading: 'Travel support built on transparency.',
-  subtext: 'We believe trust comes from clear information, responsive support and credentials customers can inspect.',
+  subtext: 'We believe trust begins with clear information, responsive human support and responsible handling of customer details.',
   panels: [
     {
-      id: 'atol-protection',
-      title: 'ATOL Financial Protection',
-      subtitle: 'Air Travel Organiser’s Licence',
-      status: 'VERIFICATION PENDING',
-      placeholderNote: 'Client to provide official ATOL registration number',
-      description: 'Financial protection for qualifying flight-inclusive packages under UK regulations.',
-      badgeText: 'UK Civil Aviation Authority'
+      id: 'clear-information',
+      principleLabel: 'TRANSPARENT GUIDANCE',
+      title: 'Clear Information',
+      subtitle: 'Fare details and next steps',
+      description: 'We explain available options, fare conditions and the next steps clearly before you make a decision.',
+      footerLabel: 'Clarity before booking'
     },
     {
-      id: 'iata-accreditation',
-      title: 'IATA Agent Network',
-      subtitle: 'International Air Transport Association',
-      status: 'VERIFICATION PENDING',
-      placeholderNote: 'Client to provide IATA agency numeric code',
-      description: 'Adherence to international ticketing standards and global airline reservation protocols.',
-      badgeText: 'Global Industry Standard'
+      id: 'human-support',
+      principleLabel: 'PERSONAL ASSISTANCE',
+      title: 'Human Support',
+      subtitle: 'Real help when you need it',
+      description: 'Our travel team is available to answer questions and provide assistance throughout the booking journey.',
+      footerLabel: 'Phone and email support'
     },
     {
-      id: 'secure-data-care',
-      title: 'Secure Payment & Data Privacy',
-      subtitle: 'Encrypted Transaction Processing',
-      status: 'VERIFIED ACTIVE',
-      description: 'Industry-standard encryption safeguarding all customer inquiries, telephone bookings and payments.',
-      badgeText: 'PCI-DSS Compliant Infrastructure'
+      id: 'data-handling',
+      principleLabel: 'CUSTOMER CARE',
+      title: 'Responsible Data Handling',
+      subtitle: 'Careful use of customer information',
+      description: 'Customer details are used only where needed to respond to enquiries, provide travel support and assist with legitimate booking requirements.',
+      footerLabel: 'Purpose-led information handling'
     }
   ]
 };
