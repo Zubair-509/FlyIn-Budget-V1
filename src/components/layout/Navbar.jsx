@@ -28,6 +28,7 @@ export default function Navbar({ isVisible }) {
 
   const isHome = location.pathname === '/';
   const isAbout = location.pathname === '/about-us';
+  const isPakistan = location.pathname === '/flight-to-pakistan';
 
   return (
     <header className={`navbar hero-transition-element ${isVisible ? 'is-visible' : ''} ${isScrolled ? 'is-scrolled' : ''}`}>
@@ -38,12 +39,29 @@ export default function Navbar({ isVisible }) {
       <nav className={`nav-links ${isMenuOpen ? 'is-open' : ''}`}>
         <Link to="/" className={`nav-link ${isHome ? 'active' : ''}`} onClick={() => setIsMenuOpen(false)}>Home</Link>
         <Link to="/about-us" className={`nav-link ${isAbout ? 'active' : ''}`} onClick={() => setIsMenuOpen(false)}>About Us</Link>
-        <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>
-          Flights{' '}
-          <svg className="dropdown-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" strokeWidth="2" fill="none">
-            <path d="m6 9 6 6 6-6"/>
-          </svg>
-        </Link>
+        
+        <div className="nav-dropdown-wrapper">
+          <Link
+            to="/flight-to-pakistan"
+            className={`nav-link ${isPakistan ? 'active' : ''}`}
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Flights{' '}
+            <svg className="dropdown-icon" viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" strokeWidth="2" fill="none">
+              <path d="m6 9 6 6 6-6"/>
+            </svg>
+          </Link>
+          <div className="nav-dropdown-menu">
+            <Link
+              to="/flight-to-pakistan"
+              className={`dropdown-item ${isPakistan ? 'active' : ''}`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Flights to Pakistan
+            </Link>
+          </div>
+        </div>
+
         <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>Booking Terms</Link>
         <a href="tel:01143600079" className="nav-link" onClick={() => setIsMenuOpen(false)}>Contact</a>
       </nav>

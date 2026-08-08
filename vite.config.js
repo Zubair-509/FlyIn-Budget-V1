@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     host: true,
     watch: {
-      ignored: ['**/*.png', '**/*.mp4', '**/*.log']
+      ignored: ['**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.webp', '**/*.mp4', '**/*.log', '**/*.crdownload', '**/*.tmp']
     }
   }
 });

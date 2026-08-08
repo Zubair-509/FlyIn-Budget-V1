@@ -1,0 +1,13 @@
+/* --------------------------------------------------------------------------
+   PAKISTAN FLIGHTS PAGE WRAPPER FOUNDATION
+   -------------------------------------------------------------------------- */
+
+.pakistan-page-wrapper {
+  position: relative;
+  width: 100%;
+  background: #031126;
+  color: #FFFFFF;
+  font-family: 'Poppins', -apple-system, sans-serif;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
