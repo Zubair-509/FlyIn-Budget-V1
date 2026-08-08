@@ -2,7 +2,12 @@ import React, { useEffect, useRef } from 'react';
 import Navbar from '../../components/layout/Navbar';
 import Footer from '../../features/footer';
 import FlowingMenu from '../../features/lowest-fares/components/FlowingMenu';
-import { PakistanHero, PakistanFlightOptions, usePakistanHeroAnimation } from '../../features/pakistan-page';
+import {
+  PakistanHero,
+  PakistanFlightOptions,
+  PakistanDiscovery,
+  usePakistanHeroAnimation
+} from '../../features/pakistan-page';
 
 import dubaiImg from '../../assets/dubai.png';
 import '../../features/lowest-fares/styles/flowing-menu.css';
@@ -54,10 +59,10 @@ export default function PakistanFlightsPage() {
 
       {/* Main Content Area */}
       <main id="main-content">
-        {/* Approved Cinematic Pakistan Hero */}
+        {/* 1. Approved Cinematic Pakistan Hero */}
         <PakistanHero />
 
-        {/* Reused £25 Voucher Strip */}
+        {/* 2. Reused £25 Voucher Strip */}
         <div className="flowing-menu-strip" style={{ position: 'relative', zIndex: 10 }}>
           <FlowingMenu
             items={VOUCHER_MENU_ITEMS}
@@ -70,8 +75,11 @@ export default function PakistanFlightsPage() {
           />
         </div>
 
-        {/* ScrollStack Flight Options Section */}
+        {/* 3. ScrollStack Flight Options Section */}
         <PakistanFlightOptions />
+
+        {/* 4. Interactive Introducing Pakistan / Popular Cities */}
+        <PakistanDiscovery />
       </main>
 
       {/* Shared Global Footer */}
