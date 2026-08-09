@@ -4,10 +4,9 @@ export default function DestinationSelector({
   destinations,
   activeIndex,
   onSelectDestination,
-  thumbsRef
+  nodesRef,
+  getOrbitTarget
 }) {
-  const isMobile = typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches;
-
   const handleKeyDown = (e, index) => {
     let nextIdx = index;
     if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
@@ -27,71 +26,9 @@ export default function DestinationSelector({
     }
   };
 
-  // Helper to calculate circular thumbnail sizes & curve positions relative to active index
-  const getOrbitPositionStyle = (idx) => {
-    const total = destinations.length;
-    let diff = idx - activeIndex;
-
-    // Normalize diff to -2 .. +2
-    if (diff > total / 2) diff -= total;
-    if (diff < -total / 2) diff += total;
-
-    if (diff === 0) {
-      // ACTIVE CIRCLE (furthest right, dominant size)
-      return {
-        top: '50%',
-        transform: 'translateY(-50%)',
-        right: '0px',
-        width: 'clamp(128px, 9vw, 148px)',
-        height: 'clamp(128px, 9vw, 148px)',
-        opacity: 1
-      };
-    } else if (diff === -1) {
-      // ADJACENT UPPER
-      return {
-        top: '26%',
-        transform: 'translateY(-50%)',
-        right: '55px',
-        width: 'clamp(88px, 6.3vw, 104px)',
-        height: 'clamp(88px, 6.3vw, 104px)',
-        opacity: 0.85
-      };
-    } else if (diff === 1) {
-      // ADJACENT LOWER
-      return {
-        top: '74%',
-        transform: 'translateY(-50%)',
-        right: '55px',
-        width: 'clamp(88px, 6.3vw, 104px)',
-        height: 'clamp(88px, 6.3vw, 104px)',
-        opacity: 0.85
-      };
-    } else if (diff === -2) {
-      // OUTER TOP
-      return {
-        top: '6%',
-        transform: 'translateY(-50%)',
-        right: '120px',
-        width: 'clamp(62px, 4.7vw, 78px)',
-        height: 'clamp(62px, 4.7vw, 78px)',
-        opacity: 0.7
-      };
-    } else {
-      // OUTER BOTTOM
-      return {
-        top: '94%',
-        transform: 'translateY(-50%)',
-        right: '120px',
-        width: 'clamp(62px, 4.7vw, 78px)',
-        height: 'clamp(62px, 4.7vw, 78px)',
-        opacity: 0.7
-      };
-    }
-  };
-
   return (
     <div className="discovery-right-zone">
-      {/* DESKTOP / TABLET CURVED ORBIT SELECTOR */}
+      {/* DESKTOP / TABLET CURVED ORBIT SELECTOR (Hidden on Mobile <=768px via CSS) */}
       <div
         className="orbit-selector-container"
         role="tablist"
@@ -99,34 +36,41 @@ export default function DestinationSelector({
       >
         {destinations.map((dest, idx) => {
           const isActive = idx === activeIndex;
-          const frameStyle = getOrbitPositionStyle(idx);
+          const initialTarget = getOrbitTarget
+            ? getOrbitTarget(idx, activeIndex)
+            : { x: 0, y: 0, scale: 1, opacity: 1 };
 
           return (
             <button
               key={dest.id}
+              ref={(el) => {
+                if (nodesRef && nodesRef.current) {
+                  nodesRef.current[idx] = el;
+                }
+              }}
               type="button"
               role="tab"
               aria-selected={isActive}
+              tabIndex={isActive ? 0 : -1}
               aria-controls={`dest-panel-${dest.id}`}
               id={`dest-tab-${dest.id}`}
               className={`orbit-node-btn ${isActive ? 'is-active' : ''}`}
-              style={{ top: frameStyle.top, right: frameStyle.right, transform: frameStyle.transform, opacity: frameStyle.opacity }}
+              style={{
+                transform: `translate3d(${initialTarget.x}px, calc(-50% + ${initialTarget.y}px), 0) scale(${initialTarget.scale})`,
+                opacity: initialTarget.opacity
+              }}
               onClick={() => onSelectDestination(idx)}
               onKeyDown={(e) => handleKeyDown(e, idx)}
             >
-              {/* UPRIGHT CITY LABEL (NEVER ROTATES) */}
+              {/* UPRIGHT CITY LABEL (SITS ON LEFT OF THUMBNAIL, NO ROTATION) */}
               <div className="orbit-node-label" aria-hidden="true">
                 <span className="orbit-node-seq">{dest.sequence}</span>
                 <span className="orbit-node-city">{dest.city}</span>
               </div>
 
               {/* CIRCULAR THUMBNAIL FRAME */}
-              <div
-                className="orbit-node-thumb-frame"
-                style={{ width: frameStyle.width, height: frameStyle.height }}
-              >
+              <div className="orbit-node-thumb-frame">
                 <img
-                  ref={(el) => (thumbsRef.current[idx] = el)}
                   src={dest.backgroundImage}
                   alt={dest.imageAlt || `Thumbnail for ${dest.city}`}
                   className="orbit-node-thumb-img"
@@ -138,7 +82,7 @@ export default function DestinationSelector({
         })}
       </div>
 
-      {/* MOBILE HORIZONTAL DESTINATION RAIL (<= 768px) */}
+      {/* MOBILE HORIZONTAL DESTINATION RAIL (Hidden on Desktop >768px via CSS) */}
       <div className="mobile-dest-rail" role="tablist" aria-label="Pakistan destinations mobile rail">
         {destinations.map((dest, idx) => {
           const isActive = idx === activeIndex;
@@ -148,6 +92,7 @@ export default function DestinationSelector({
               type="button"
               role="tab"
               aria-selected={isActive}
+              tabIndex={isActive ? 0 : -1}
               className={`mobile-rail-node ${isActive ? 'is-active' : ''}`}
               onClick={() => onSelectDestination(idx)}
             >

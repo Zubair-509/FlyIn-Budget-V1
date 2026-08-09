@@ -7,41 +7,42 @@ import '../styles/pakistan-discovery.css';
 
 export default function PakistanDiscovery() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [pendingIndex, setPendingIndex] = useState(null);
+
   const currentBgRef = useRef(null);
   const incomingBgRef = useRef(null);
   const contentRef = useRef(null);
-  const thumbsRef = useRef([]);
+  const nodesRef = useRef([]);
 
-  const { animateTransition, isTransitioningRef } = usePakistanDiscoveryTransition(pakistanDestinations);
+  const { animateTransition, getOrbitTarget, isTransitioningRef } = usePakistanDiscoveryTransition(pakistanDestinations);
 
   const handleSelectDestination = (newIndex) => {
     if (newIndex === activeIndex || isTransitioningRef.current) return;
 
-    // Determine direction ('next' vs 'prev')
-    const total = pakistanDestinations.length;
-    let diff = newIndex - activeIndex;
-    if (diff > total / 2) diff -= total;
-    if (diff < -total / 2) diff += total;
-    const direction = diff >= 0 ? 'next' : 'prev';
+    setPendingIndex(newIndex);
 
     const success = animateTransition({
       newIndex,
-      direction,
       currentBgRef,
       incomingBgRef,
       contentRef,
-      thumbsRef,
+      nodesRef,
       onComplete: (idx) => {
         setActiveIndex(idx);
+        setPendingIndex(null);
       }
     });
 
-    if (success) {
-      setActiveIndex(newIndex);
+    if (!success) {
+      setPendingIndex(null);
     }
   };
 
-  const activeDest = pakistanDestinations[activeIndex] || pakistanDestinations[0];
+  const activeDest = pendingIndex !== null
+    ? pakistanDestinations[pendingIndex]
+    : (pakistanDestinations[activeIndex] || pakistanDestinations[0]);
+
+  const displayIndex = pendingIndex !== null ? pendingIndex : activeIndex;
 
   return (
     <section className="pakistan-discovery-section" aria-label="Introducing Pakistan destination discovery">
@@ -49,10 +50,10 @@ export default function PakistanDiscovery() {
       <div className="discovery-bg-wrapper">
         <img
           ref={currentBgRef}
-          src={activeDest.backgroundImage}
+          src={pakistanDestinations[activeIndex]?.backgroundImage}
           alt=""
           className="discovery-bg-img bg-current"
-          style={{ objectPosition: activeDest.backgroundPosition }}
+          style={{ objectPosition: pakistanDestinations[activeIndex]?.backgroundPosition }}
           aria-hidden="true"
         />
         <img
@@ -76,9 +77,10 @@ export default function PakistanDiscovery() {
         {/* Right Column: Curved Orbit Selector */}
         <DestinationSelector
           destinations={pakistanDestinations}
-          activeIndex={activeIndex}
+          activeIndex={displayIndex}
           onSelectDestination={handleSelectDestination}
-          thumbsRef={thumbsRef}
+          nodesRef={nodesRef}
+          getOrbitTarget={getOrbitTarget}
         />
       </div>
     </section>

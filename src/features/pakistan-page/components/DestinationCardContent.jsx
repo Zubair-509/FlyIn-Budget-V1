@@ -3,20 +3,25 @@ import React from 'react';
 export default function DestinationCardContent({ activeDest, contentRef }) {
   if (!activeDest) return null;
 
-  const { city, headline, description, tags, ctaLabel, ctaTarget, preselectCity } = activeDest;
+  const { id, city, headline, description, tags, ctaLabel, ctaTarget, preselectCity } = activeDest;
 
-  const handleCtaClick = (e) => {
+  const handleCtaClick = () => {
     // If inquiry form exists on page, preselect the city in the form dropdown
     const inquirySelect = document.getElementById('paki-destination');
     if (inquirySelect && preselectCity) {
       inquirySelect.value = preselectCity;
-      // Trigger change event so React state syncs if needed
       inquirySelect.dispatchEvent(new Event('change', { bubbles: true }));
     }
   };
 
   return (
-    <div className="discovery-left-content" ref={contentRef}>
+    <div
+      id={`dest-panel-${id}`}
+      role="tabpanel"
+      aria-labelledby={`dest-tab-${id}`}
+      className="discovery-left-content"
+      ref={contentRef}
+    >
       <span className="discovery-eyebrow">INTRODUCING PAKISTAN</span>
       <h2 className="discovery-main-heading">
         One country.<br />Many unforgettable journeys.

@@ -5,30 +5,56 @@ export function usePakistanDiscoveryTransition(destinations) {
   const isTransitioningRef = useRef(false);
   const activeIndexRef = useRef(0);
 
-  // Preload adjacent city images on idle
+  // Preload function for adjacent city background images
+  const preloadAdjacent = useCallback(
+    (currentIdx) => {
+      if (!destinations || destinations.length === 0) return;
+      const total = destinations.length;
+      const nextIdx = (currentIdx + 1) % total;
+      const prevIdx = (currentIdx - 1 + total) % total;
+
+      [destinations[nextIdx], destinations[prevIdx]].forEach((dest) => {
+        if (dest && dest.backgroundImage) {
+          const img = new Image();
+          img.src = dest.backgroundImage;
+        }
+      });
+    },
+    [destinations]
+  );
+
+  // Initial preload on mount
   useEffect(() => {
-    if (!destinations || destinations.length === 0) return;
+    preloadAdjacent(0);
+  }, [preloadAdjacent]);
 
-    const currentIdx = activeIndexRef.current;
-    const nextIdx = (currentIdx + 1) % destinations.length;
-    const prevIdx = (currentIdx - 1 + destinations.length) % destinations.length;
+  // Helper to calculate target x, y, scale, opacity for orbit nodes relative to target active index
+  const getOrbitTarget = (nodeIdx, targetActiveIdx) => {
+    const total = destinations.length;
+    let diff = nodeIdx - targetActiveIdx;
+    if (diff > total / 2) diff -= total;
+    if (diff < -total / 2) diff += total;
 
-    [destinations[nextIdx], destinations[prevIdx]].forEach(dest => {
-      if (dest && dest.backgroundImage) {
-        const img = new Image();
-        img.src = dest.backgroundImage;
-      }
-    });
-  }, [destinations]);
+    if (diff === 0) {
+      return { x: 0, y: 0, scale: 1.0, opacity: 1.0 };
+    } else if (diff === -1) {
+      return { x: -42, y: -135, scale: 0.74, opacity: 0.85 };
+    } else if (diff === 1) {
+      return { x: -42, y: 135, scale: 0.74, opacity: 0.85 };
+    } else if (diff === -2) {
+      return { x: -90, y: -240, scale: 0.54, opacity: 0.65 };
+    } else {
+      return { x: -90, y: 240, scale: 0.54, opacity: 0.65 };
+    }
+  };
 
   const animateTransition = useCallback(
     ({
       newIndex,
-      direction,
       currentBgRef,
       incomingBgRef,
       contentRef,
-      thumbsRef,
+      nodesRef,
       onComplete
     }) => {
       if (isTransitioningRef.current) return false;
@@ -49,6 +75,7 @@ export function usePakistanDiscoveryTransition(destinations) {
           currentBgRef.current.style.objectPosition = targetDest.backgroundPosition;
         }
         if (onComplete) onComplete(newIndex);
+        preloadAdjacent(newIndex);
         isTransitioningRef.current = false;
         return true;
       }
@@ -57,7 +84,7 @@ export function usePakistanDiscoveryTransition(destinations) {
       if (incomingBgRef.current) {
         incomingBgRef.current.src = targetDest.backgroundImage;
         incomingBgRef.current.style.objectPosition = targetDest.backgroundPosition;
-        gsap.set(incomingBgRef.current, { opacity: 0, scale: 1.05 });
+        gsap.set(incomingBgRef.current, { opacity: 0, scale: 1.035 });
       }
 
       const mainTl = gsap.timeline({
@@ -69,42 +96,51 @@ export function usePakistanDiscoveryTransition(destinations) {
             gsap.set(incomingBgRef.current, { opacity: 0 });
           }
           activeIndexRef.current = newIndex;
+          preloadAdjacent(newIndex);
           isTransitioningRef.current = false;
           if (onComplete) onComplete(newIndex);
         }
       });
 
-      // 1. Background Crossfade
+      // 1. Background Crossfade (Restrained scale & opacity, 0.65s)
       if (incomingBgRef.current && currentBgRef.current) {
         mainTl
           .to(
             currentBgRef.current,
-            { scale: 1.02, opacity: 0.2, duration: 0.7, ease: 'power2.out' },
+            { scale: 1.02, opacity: 0, duration: 0.65, ease: 'power2.inOut' },
             0
           )
           .to(
             incomingBgRef.current,
-            { opacity: 1, scale: 1, duration: 0.8, ease: 'power2.out' },
+            { opacity: 1, scale: 1, duration: 0.65, ease: 'power2.inOut' },
             0
           );
       }
 
-      // 2. Left Content Transition
+      // 2. Left Content Stagger Fade (Out: -12px/0.2s, In: 14px -> 0/0.4s)
       if (contentRef.current) {
         const contentChildren = contentRef.current.children;
         mainTl
-          .to(contentChildren, { opacity: 0, y: -14, duration: 0.25, ease: 'power2.in' }, 0)
-          .to(contentChildren, { opacity: 1, y: 0, duration: 0.45, stagger: 0.04, ease: 'power2.out' }, 0.25);
+          .to(contentChildren, { opacity: 0, y: -12, duration: 0.2, ease: 'power2.in' }, 0)
+          .to(contentChildren, { opacity: 1, y: 0, duration: 0.4, stagger: 0.03, ease: 'power2.out' }, 0.2);
       }
 
-      // 3. Direction-aware thumbnail rotation (Rotate inner image ONLY, labels stay upright)
-      if (thumbsRef.current && thumbsRef.current.length > 0) {
-        const rotationAngle = direction === 'next' ? -90 : 90;
-        thumbsRef.current.forEach(thumbEl => {
-          if (thumbEl) {
+      // 3. Orbit Node Movement (Smooth x, y, scale, opacity transforms — ZERO ROTATION)
+      if (nodesRef.current && nodesRef.current.length > 0) {
+        nodesRef.current.forEach((nodeEl, idx) => {
+          if (nodeEl) {
+            const targetPos = getOrbitTarget(idx, newIndex);
             mainTl.to(
-              thumbEl,
-              { rotation: rotationAngle, duration: 0.6, ease: 'power2.inOut' },
+              nodeEl,
+              {
+                x: targetPos.x,
+                y: targetPos.y,
+                scale: targetPos.scale,
+                opacity: targetPos.opacity,
+                rotation: 0,
+                duration: 0.65,
+                ease: 'power2.inOut'
+              },
               0
             );
           }
@@ -113,8 +149,8 @@ export function usePakistanDiscoveryTransition(destinations) {
 
       return true;
     },
-    [destinations]
+    [destinations, preloadAdjacent]
   );
 
-  return { animateTransition, isTransitioningRef };
+  return { animateTransition, getOrbitTarget, isTransitioningRef };
 }
