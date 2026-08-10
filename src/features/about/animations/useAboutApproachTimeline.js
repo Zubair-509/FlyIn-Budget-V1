@@ -82,7 +82,7 @@ export function useAboutApproachTimeline(sectionRef, isReady = true) {
           );
         });
       });
-    }, sectionRef);
+    }, sectionRef.current);
 
     return () => ctx.revert();
   }, [sectionRef, isReady]);

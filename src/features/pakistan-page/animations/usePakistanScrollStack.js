@@ -62,7 +62,7 @@ export function usePakistanScrollStack(containerRef, cardsRef, onActiveIndexChan
           });
         }
       });
-    }, containerRef);
+    }, containerRef.current);
 
     return () => ctx.revert();
   }, [containerRef, cardsRef, onActiveIndexChange]);

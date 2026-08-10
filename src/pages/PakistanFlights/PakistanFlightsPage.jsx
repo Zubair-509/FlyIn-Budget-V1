@@ -6,6 +6,9 @@ import {
   PakistanHero,
   PakistanFlightOptions,
   PakistanDiscovery,
+  PakistanTravelEssentials,
+  PakistanFAQ,
+  PakistanCtaBanner,
   usePakistanHeroAnimation
 } from '../../features/pakistan-page';
 
@@ -80,6 +83,15 @@ export default function PakistanFlightsPage() {
 
         {/* 4. Interactive Introducing Pakistan / Popular Cities */}
         <PakistanDiscovery />
+
+        {/* 5. Restrained Travel Essentials Accordion Section */}
+        <PakistanTravelEssentials />
+
+        {/* 6. Pakistan Flights FAQ Section */}
+        <PakistanFAQ />
+
+        {/* 7. Final Pakistan CTA Banner Section */}
+        <PakistanCtaBanner />
       </main>
 
       {/* Shared Global Footer */}

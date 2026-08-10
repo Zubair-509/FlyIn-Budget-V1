@@ -64,7 +64,7 @@ export function useAboutHeroAnimation(containerRef, isReady = true) {
           scrub: 0.8
         }
       });
-    }, containerRef);
+    }, containerRef.current);
 
     return () => ctx.revert();
   }, [containerRef, isReady]);

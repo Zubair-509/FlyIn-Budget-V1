@@ -1,0 +1,256 @@
+/* --------------------------------------------------------------------------
+   PAKISTAN TRAVEL ESSENTIALS — EDITORIAL ACCORDION SECTION
+   -------------------------------------------------------------------------- */
+
+.pakistan-travel-essentials-section {
+  position: relative;
+  width: 100%;
+  background: #031126;
+  color: #FFFFFF;
+  padding-top: clamp(60px, 8vh, 100px);
+  padding-bottom: clamp(60px, 8vh, 100px);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Blurred Background Image Layer */
+.pakistan-travel-essentials-section::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  bottom: -20px;
+  left: -20px;
+  right: -20px;
+  background-image: url('../../../assets/about_airlines_terminal.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  filter: blur(12px) brightness(0.85);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Deep Navy Blue Gradient Overlay */
+.pakistan-travel-essentials-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(3, 17, 38, 0.86) 0%, rgba(7, 26, 50, 0.68) 50%, rgba(3, 17, 38, 0.90) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.pakistan-travel-essentials-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
+  padding-inline: clamp(20px, 4vw, 56px);
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(320px, 40%) minmax(0, 60%);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+}
+
+/* --------------------------------------------------------------------------
+   LEFT EDITORIAL COLUMN
+   -------------------------------------------------------------------------- */
+.essentials-left-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.essentials-eyebrow {
+  display: inline-block;
+  font-size: clamp(0.75rem, 0.95vw, 0.875rem);
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: #EEB01D;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.essentials-heading {
+  font-family: 'Poppins', -apple-system, sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin: 0 0 16px 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.essentials-supporting-copy {
+  font-size: clamp(0.925rem, 1.1vw, 1.05rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* --------------------------------------------------------------------------
+   RIGHT ACCORDION COLUMN
+   -------------------------------------------------------------------------- */
+.essentials-right-column {
+  width: 100%;
+}
+
+.essentials-accordion-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-top: 2px solid rgba(255, 255, 255, 0.22);
+}
+
+.essentials-row {
+  width: 100%;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.22);
+  padding-inline: clamp(16px, 2.2vw, 28px);
+  border-radius: 12px;
+  transition: background 0.3s ease, border-color 0.3s ease, padding 0.3s ease;
+}
+
+.essentials-row.is-open {
+  background: rgba(3, 17, 38, 0.65);
+  border-bottom-color: rgba(238, 176, 29, 0.65);
+}
+
+.essentials-row-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  border: none;
+  padding: clamp(24px, 3.2vh, 32px) 0;
+  cursor: pointer;
+  text-align: left;
+  outline: none;
+  transition: color 0.25s ease;
+  min-height: 48px;
+}
+
+.essentials-row-btn:focus-visible {
+  outline: 2px solid #EEB01D;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.essentials-row-header-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.essentials-seq {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #EEB01D;
+  letter-spacing: 0.08em;
+  flex-shrink: 0;
+}
+
+.essentials-row-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.05rem, 1.35vw, 1.25rem);
+  font-weight: 700;
+  color: #FFFFFF;
+  transition: color 0.25s ease;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.essentials-row-btn:hover .essentials-row-title,
+.essentials-row.is-open .essentials-row-title {
+  color: #EEB01D;
+}
+
+.essentials-toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #EEB01D;
+  flex-shrink: 0;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.essentials-row.is-open .essentials-toggle-icon {
+  background: rgba(238, 176, 29, 0.25);
+  border-color: #EEB01D;
+  transform: rotate(45deg);
+}
+
+/* Smooth CSS Grid Accordion Expandable Panel */
+.essentials-row-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease;
+  opacity: 0;
+}
+
+.essentials-row.is-open .essentials-row-panel {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.essentials-panel-inner {
+  overflow: hidden;
+}
+
+.essentials-body-text {
+  font-size: clamp(0.925rem, 1.05vw, 1.025rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0;
+  padding-top: 4px;
+  padding-bottom: 32px;
+  padding-left: clamp(20px, 2.5vw, 42px);
+  padding-right: 12px;
+  max-width: 680px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE BREAKPOINTS
+   -------------------------------------------------------------------------- */
+
+/* Tablet (769px – 1199px) */
+@media (max-width: 1199px) {
+  .pakistan-travel-essentials-container {
+    grid-template-columns: 42% 58%;
+    gap: 36px;
+  }
+
+  .essentials-body-text {
+    padding-left: 0;
+  }
+}
+
+/* Mobile (<= 768px) */
+@media (max-width: 768px) {
+  .pakistan-travel-essentials-section {
+    padding-top: 48px;
+    padding-bottom: 56px;
+  }
+
+  .pakistan-travel-essentials-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .essentials-body-text {
+    padding-left: 0;
+  }
+}

@@ -63,7 +63,7 @@ export default function PakistanInquiryForm() {
   };
 
   return (
-    <div className="pakistan-inquiry-form-container">
+    <div id="pakistan-flight-inquiry" className="pakistan-inquiry-form-container">
       {/* Top Segmented Controls Row */}
       <div className="form-header-row">
         <div className="trip-type-segmented-control" role="radiogroup" aria-label="Flight trip type">

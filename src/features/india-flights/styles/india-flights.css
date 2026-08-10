@@ -252,13 +252,11 @@
   width: 100%;
   height: 100%;
   z-index: 2;
-  background: linear-gradient(
-    180deg,
-    rgba(7, 26, 51, 0.22) 0%,
-    rgba(7, 26, 51, 0.12) 30%,
-    rgba(7, 26, 51, 0.78) 65%,
-    rgba(7, 26, 51, 0.96) 100%
-  );
+  background: linear-gradient(180deg,
+      rgba(7, 26, 51, 0.22) 0%,
+      rgba(7, 26, 51, 0.12) 30%,
+      rgba(7, 26, 51, 0.78) 65%,
+      rgba(7, 26, 51, 0.96) 100%);
 }
 
 .india-card-inner-content {
@@ -448,7 +446,7 @@
   border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: 60px;
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35),
-              0 16px 36px rgba(0, 0, 0, 0.25);
+    0 16px 36px rgba(0, 0, 0, 0.25);
   z-index: 30;
   -webkit-font-smoothing: antialiased;
 }
@@ -724,26 +722,60 @@
     padding: 0 22px;
     font-size: 14px;
   }
+
   .india-stage-deck {
-    height: 480px;
+    height: 510px;
   }
 
   .india-card {
-    width: 290px;
-    height: 435px;
+    width: 300px;
+    height: 470px;
     border-radius: 20px;
   }
 
   .india-card-inner-content {
-    padding: 24px 20px;
+    padding: 22px 18px;
   }
 
   .india-card-city-name {
-    font-size: 30px;
+    font-size: 28px;
+  }
+
+  .india-card-body-block {
+    gap: 10px;
+    margin-bottom: 12px;
   }
 
   .india-card-price-val {
-    font-size: 32px;
+    font-size: 30px;
+  }
+
+  .india-card-action-bar {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .india-card-buttons-row {
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+  }
+
+  .btn-india-book,
+  .btn-india-call {
+    width: 100%;
+    height: 44px;
+    padding: 0 16px;
+    font-size: 14px;
+  }
+
+  .india-card-tagline-pill {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 8px 14px;
+    font-size: 12px;
+    text-align: center;
+    justify-content: center;
   }
 
   .control-dest-subtitle {
@@ -758,12 +790,12 @@
 
 @media (max-width: 480px) {
   .india-stage-deck {
-    height: 440px;
+    height: 490px;
   }
 
   .india-card {
-    width: 280px;
-    height: 410px;
+    width: 285px;
+    height: 455px;
     border-radius: 18px;
   }
 
@@ -778,7 +810,6 @@
   .btn-india-book,
   .btn-india-call {
     height: 42px;
-    padding: 0 16px;
     font-size: 13px;
   }
 

@@ -155,7 +155,7 @@ export function useAboutSectionAnimations(containerRef, isReady = true) {
           }
         );
       });
-    }, containerRef);
+    }, containerRef.current);
 
     return () => ctx.revert();
   }, [containerRef, isReady]);
