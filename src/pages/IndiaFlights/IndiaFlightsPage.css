@@ -1,0 +1,13 @@
+/* --------------------------------------------------------------------------
+   FLIGHTS TO INDIA PAGE WRAPPER
+   -------------------------------------------------------------------------- */
+
+.india-page-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #031126;
+  color: #FFFFFF;
+  font-family: 'Poppins', -apple-system, sans-serif;
+  overflow-x: hidden;
+}

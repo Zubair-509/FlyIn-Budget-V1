@@ -29,6 +29,7 @@ export default function Navbar({ isVisible }) {
   const isHome = location.pathname === '/';
   const isAbout = location.pathname === '/about-us';
   const isPakistan = location.pathname === '/flight-to-pakistan';
+  const isIndia = location.pathname === '/flight-to-india';
 
   return (
     <header className={`navbar hero-transition-element ${isVisible ? 'is-visible' : ''} ${isScrolled ? 'is-scrolled' : ''}`}>
@@ -43,7 +44,7 @@ export default function Navbar({ isVisible }) {
         <div className="nav-dropdown-wrapper">
           <Link
             to="/flight-to-pakistan"
-            className={`nav-link ${isPakistan ? 'active' : ''}`}
+            className={`nav-link ${isPakistan || isIndia ? 'active' : ''}`}
             onClick={() => setIsMenuOpen(false)}
           >
             Flights{' '}
@@ -58,6 +59,13 @@ export default function Navbar({ isVisible }) {
               onClick={() => setIsMenuOpen(false)}
             >
               Flights to Pakistan
+            </Link>
+            <Link
+              to="/flight-to-india"
+              className={`dropdown-item ${isIndia ? 'active' : ''}`}
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Flights to India
             </Link>
           </div>
         </div>
