@@ -4,8 +4,7 @@ export default function DestinationSelector({
   destinations,
   activeIndex,
   onSelectDestination,
-  nodesRef,
-  getOrbitTarget
+  nodesRef
 }) {
   const handleKeyDown = (e, index) => {
     let nextIdx = index;
@@ -36,9 +35,6 @@ export default function DestinationSelector({
       >
         {destinations.map((dest, idx) => {
           const isActive = idx === activeIndex;
-          const initialTarget = getOrbitTarget
-            ? getOrbitTarget(idx, activeIndex)
-            : { x: 0, y: 0, scale: 1, opacity: 1 };
 
           return (
             <button
@@ -55,10 +51,6 @@ export default function DestinationSelector({
               aria-controls={`dest-panel-${dest.id}`}
               id={`dest-tab-${dest.id}`}
               className={`orbit-node-btn ${isActive ? 'is-active' : ''}`}
-              style={{
-                transform: `translate3d(${initialTarget.x}px, calc(-50% + ${initialTarget.y}px), 0) scale(${initialTarget.scale})`,
-                opacity: initialTarget.opacity
-              }}
               onClick={() => onSelectDestination(idx)}
               onKeyDown={(e) => handleKeyDown(e, idx)}
             >

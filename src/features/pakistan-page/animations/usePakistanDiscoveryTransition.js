@@ -1,9 +1,14 @@
-import { useRef, useCallback, useEffect } from 'react';
+import { useRef, useCallback, useEffect, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 
-export function usePakistanDiscoveryTransition(destinations) {
+export function usePakistanDiscoveryTransition(destinations, activeIndex, nodesRef) {
   const isTransitioningRef = useRef(false);
-  const activeIndexRef = useRef(0);
+  const activeIndexRef = useRef(activeIndex);
+
+  // Synchronize ref with activeIndex
+  useEffect(() => {
+    activeIndexRef.current = activeIndex;
+  }, [activeIndex]);
 
   // Preload function for adjacent city background images
   const preloadAdjacent = useCallback(
@@ -23,30 +28,86 @@ export function usePakistanDiscoveryTransition(destinations) {
     [destinations]
   );
 
-  // Initial preload on mount
+  // Helper to calculate target x, y, scale, opacity, zIndex for orbit nodes
+  const getOrbitTarget = useCallback(
+    (nodeIdx, targetActiveIdx) => {
+      const total = destinations.length;
+      let diff = nodeIdx - targetActiveIdx;
+      if (diff > total / 2) diff -= total;
+      if (diff < -total / 2) diff += total;
+
+      const isTablet = typeof window !== 'undefined' && window.matchMedia('(max-width: 1199px)').matches;
+
+      if (isTablet) {
+        if (diff === 0) {
+          return { x: 0, y: 0, scale: 1.0, opacity: 1.0, zIndex: 10 };
+        } else if (diff === -1) {
+          return { x: -35, y: -130, scale: 0.72, opacity: 0.85, zIndex: 8 };
+        } else if (diff === 1) {
+          return { x: -35, y: 130, scale: 0.72, opacity: 0.85, zIndex: 8 };
+        } else if (diff === -2) {
+          return { x: -75, y: -240, scale: 0.52, opacity: 0.65, zIndex: 6 };
+        } else {
+          return { x: -75, y: 240, scale: 0.52, opacity: 0.65, zIndex: 6 };
+        }
+      }
+
+      // Large / Standard Desktop
+      if (diff === 0) {
+        return { x: 0, y: 0, scale: 1.0, opacity: 1.0, zIndex: 10 };
+      } else if (diff === -1) {
+        return { x: -45, y: -160, scale: 0.74, opacity: 0.85, zIndex: 8 };
+      } else if (diff === 1) {
+        return { x: -45, y: 160, scale: 0.74, opacity: 0.85, zIndex: 8 };
+      } else if (diff === -2) {
+        return { x: -95, y: -295, scale: 0.54, opacity: 0.65, zIndex: 6 };
+      } else {
+        return { x: -95, y: 295, scale: 0.54, opacity: 0.65, zIndex: 6 };
+      }
+    },
+    [destinations]
+  );
+
+  // Initial GSAP layout positioning before paint
+  useLayoutEffect(() => {
+    if (!nodesRef || !nodesRef.current) return;
+    const nodes = nodesRef.current.filter(Boolean);
+    if (nodes.length === 0) return;
+
+    const mm = gsap.matchMedia();
+
+    mm.add('(min-width: 769px)', () => {
+      nodes.forEach((nodeEl, idx) => {
+        if (nodeEl) {
+          const target = getOrbitTarget(idx, activeIndexRef.current);
+          gsap.set(nodeEl, {
+            yPercent: -50,
+            x: target.x,
+            y: target.y,
+            scale: target.scale,
+            opacity: target.opacity,
+            zIndex: target.zIndex,
+            rotation: 0
+          });
+        }
+      });
+    });
+
+    mm.add('(max-width: 768px)', () => {
+      nodes.forEach((nodeEl) => {
+        if (nodeEl) {
+          gsap.set(nodeEl, { clearProps: 'transform,opacity,zIndex' });
+        }
+      });
+    });
+
+    return () => mm.revert();
+  }, [nodesRef, getOrbitTarget]);
+
+  // Preload initial adjacent images on mount
   useEffect(() => {
     preloadAdjacent(0);
   }, [preloadAdjacent]);
-
-  // Helper to calculate target x, y, scale, opacity for orbit nodes relative to target active index
-  const getOrbitTarget = (nodeIdx, targetActiveIdx) => {
-    const total = destinations.length;
-    let diff = nodeIdx - targetActiveIdx;
-    if (diff > total / 2) diff -= total;
-    if (diff < -total / 2) diff += total;
-
-    if (diff === 0) {
-      return { x: 0, y: 0, scale: 1.0, opacity: 1.0 };
-    } else if (diff === -1) {
-      return { x: -42, y: -135, scale: 0.74, opacity: 0.85 };
-    } else if (diff === 1) {
-      return { x: -42, y: 135, scale: 0.74, opacity: 0.85 };
-    } else if (diff === -2) {
-      return { x: -90, y: -240, scale: 0.54, opacity: 0.65 };
-    } else {
-      return { x: -90, y: 240, scale: 0.54, opacity: 0.65 };
-    }
-  };
 
   const animateTransition = useCallback(
     ({
@@ -54,7 +115,6 @@ export function usePakistanDiscoveryTransition(destinations) {
       currentBgRef,
       incomingBgRef,
       contentRef,
-      nodesRef,
       onComplete
     }) => {
       if (isTransitioningRef.current) return false;
@@ -125,9 +185,10 @@ export function usePakistanDiscoveryTransition(destinations) {
           .to(contentChildren, { opacity: 1, y: 0, duration: 0.4, stagger: 0.03, ease: 'power2.out' }, 0.2);
       }
 
-      // 3. Orbit Node Movement (Smooth x, y, scale, opacity transforms — ZERO ROTATION)
+      // 3. Orbit Node Movement — GSAP IS SOLE TRANSFORM OWNER
       if (nodesRef.current && nodesRef.current.length > 0) {
-        nodesRef.current.forEach((nodeEl, idx) => {
+        const nodes = nodesRef.current.filter(Boolean);
+        nodes.forEach((nodeEl, idx) => {
           if (nodeEl) {
             const targetPos = getOrbitTarget(idx, newIndex);
             mainTl.to(
@@ -137,6 +198,7 @@ export function usePakistanDiscoveryTransition(destinations) {
                 y: targetPos.y,
                 scale: targetPos.scale,
                 opacity: targetPos.opacity,
+                zIndex: targetPos.zIndex,
                 rotation: 0,
                 duration: 0.65,
                 ease: 'power2.inOut'
@@ -149,7 +211,7 @@ export function usePakistanDiscoveryTransition(destinations) {
 
       return true;
     },
-    [destinations, preloadAdjacent]
+    [destinations, getOrbitTarget, nodesRef, preloadAdjacent]
   );
 
   return { animateTransition, getOrbitTarget, isTransitioningRef };

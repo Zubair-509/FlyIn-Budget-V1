@@ -123,7 +123,6 @@ body {
   padding: 1.2rem 4rem;
   z-index: 10;
   transition: background 0.4s cubic-bezier(0.25, 1, 0.5, 1),
-              backdrop-filter 0.4s cubic-bezier(0.25, 1, 0.5, 1),
               border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1),
               padding 0.4s cubic-bezier(0.25, 1, 0.5, 1),
               box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
@@ -131,9 +130,7 @@ body {
 }
 
 .navbar.is-scrolled {
-  background: rgba(11, 19, 41, 0.65);
-  backdrop-filter: blur(24px) saturate(1.8) brightness(1.1);
-  -webkit-backdrop-filter: blur(24px) saturate(1.8) brightness(1.1);
+  background: rgba(11, 19, 41, 0.94);
   border-bottom: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   padding: 0.85rem 4rem;
@@ -150,7 +147,6 @@ body {
   height: 62px;
   max-width: 250px;
   object-fit: contain;
-  filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.3));
   transition: transform 0.25s ease;
 }
 
@@ -265,6 +261,10 @@ body {
   color: #1F2E4D;
   transform: translateY(-1px);
   box-shadow: 0 6px 20px rgba(212, 146, 30, 0.5);
+}
+
+.btn-manage.mobile-nav-btn {
+  display: none;
 }
 
 .btn-menu {
@@ -1442,6 +1442,7 @@ body {
   .brand-logo-img {
     height: 46px;
     max-width: 180px;
+    image-rendering: -webkit-optimize-contrast;
   }
 
   .nav-links {
@@ -1450,9 +1451,7 @@ body {
     left: 1.25rem;
     right: 1.25rem;
     transform: translateY(-20px);
-    background: rgba(11, 19, 41, 0.96);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    background: rgba(11, 19, 41, 0.98);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 24px;
     flex-direction: column;
@@ -1471,9 +1470,19 @@ body {
     pointer-events: auto;
   }
 
-  .btn-manage {
-    font-size: 0.82rem;
-    padding: 0.55rem 1.1rem;
+  .nav-actions .desktop-only-btn {
+    display: none !important;
+  }
+
+  .btn-manage.mobile-nav-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 0.4rem;
+    font-size: 0.95rem;
+    padding: 0.75rem 1.4rem;
+    text-align: center;
   }
 
   .hero-content {

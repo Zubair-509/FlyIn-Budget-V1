@@ -14,7 +14,11 @@ export default function PakistanDiscovery() {
   const contentRef = useRef(null);
   const nodesRef = useRef([]);
 
-  const { animateTransition, getOrbitTarget, isTransitioningRef } = usePakistanDiscoveryTransition(pakistanDestinations);
+  const { animateTransition, isTransitioningRef } = usePakistanDiscoveryTransition(
+    pakistanDestinations,
+    activeIndex,
+    nodesRef
+  );
 
   const handleSelectDestination = (newIndex) => {
     if (newIndex === activeIndex || isTransitioningRef.current) return;
@@ -26,7 +30,6 @@ export default function PakistanDiscovery() {
       currentBgRef,
       incomingBgRef,
       contentRef,
-      nodesRef,
       onComplete: (idx) => {
         setActiveIndex(idx);
         setPendingIndex(null);
@@ -80,7 +83,6 @@ export default function PakistanDiscovery() {
           activeIndex={displayIndex}
           onSelectDestination={handleSelectDestination}
           nodesRef={nodesRef}
-          getOrbitTarget={getOrbitTarget}
         />
       </div>
     </section>

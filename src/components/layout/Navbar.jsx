@@ -64,10 +64,13 @@ export default function Navbar({ isVisible }) {
 
         <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>Booking Terms</Link>
         <a href="tel:01143600079" className="nav-link" onClick={() => setIsMenuOpen(false)}>Contact</a>
+        <button className="btn-manage mobile-nav-btn" onClick={() => setIsMenuOpen(false)}>
+          Umrah Inquiry
+        </button>
       </nav>
 
       <div className="nav-actions">
-        <button className="btn-manage">Umrah Inquiry</button>
+        <button className="btn-manage desktop-only-btn">Umrah Inquiry</button>
         <button className="btn-menu" onClick={toggleMenu} aria-label="Toggle menu" aria-expanded={isMenuOpen}>
           {isMenuOpen ? (
             <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2.5" fill="none">
