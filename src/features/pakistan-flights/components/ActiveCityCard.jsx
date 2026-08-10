@@ -66,7 +66,7 @@ const ActiveCityCard = memo(function ActiveCityCard({ activeFlight }) {
             <button
               className="btn-active-book"
               type="button"
-              onClick={() => alert(`Booking flight to ${activeFlight.city}`)}
+              onClick={() => document.getElementById('booking-widget')?.scrollIntoView({ behavior: 'smooth' })}
               aria-label={`Book now for flights to ${activeFlight.city}`}
             >
               <span>Book now</span>
@@ -76,7 +76,7 @@ const ActiveCityCard = memo(function ActiveCityCard({ activeFlight }) {
             </button>
 
             <a
-              href="tel:+18005550199"
+              href="tel:01143600079"
               className="btn-active-call"
               aria-label={`Call customer care now to book flight to ${activeFlight.city}`}
             >

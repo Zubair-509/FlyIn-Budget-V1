@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import PakistanMap from './PakistanMap';
 import ActiveCityCard from './ActiveCityCard';
 import CityCard from './CityCard';
@@ -8,6 +9,7 @@ import '../styles/pakistan-flights.css';
 
 export default function PakistanFlights() {
   const [activeCityId, setActiveCityId] = useState('lahore');
+  const navigate = useNavigate();
 
   const handleSelectCity = useCallback((id) => {
     setActiveCityId(id);
@@ -50,7 +52,11 @@ export default function PakistanFlights() {
             </p>
           </div>
 
-          <button className="btn-view-pakistan-cta" type="button">
+          <button
+            className="btn-view-pakistan-cta"
+            type="button"
+            onClick={() => navigate('/flight-to-pakistan')}
+          >
             <span>View all Pakistan flights</span>
             <svg className="cta-arrow-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
               <path d="M9 18l6-6-6-6" />

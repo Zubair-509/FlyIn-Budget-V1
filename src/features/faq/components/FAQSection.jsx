@@ -67,7 +67,7 @@ export const FAQSection = memo(function FAQSection() {
             <button
               className="faq-btn-primary"
               type="button"
-              onClick={() => alert('Getting in touch with FlyInBudget travel support...')}
+              onClick={() => document.getElementById('booking-widget')?.scrollIntoView({ behavior: 'smooth' })}
               aria-label="Get in touch with FlyInBudget travel support"
             >
               <svg className="faq-btn-headset-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
@@ -81,7 +81,7 @@ export const FAQSection = memo(function FAQSection() {
             </button>
 
             <a
-              href="tel:+18005550199"
+              href="tel:01143600079"
               className="faq-btn-secondary"
               aria-label="Call FlyInBudget customer service now"
             >

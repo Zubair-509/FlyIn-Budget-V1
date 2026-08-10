@@ -7,13 +7,17 @@ import dubaiImg from '../../../assets/dubai.png';
 
 const FLOWING_MENU_ITEMS = [
   {
-    link: 'tel:+18005550199',
-    text: 'BOOK FLIGHT AND AVAIL $25 VOUCHER •',
+    link: 'tel:01143600079',
+    text: 'BOOK FLIGHT AND AVAIL £25 VOUCHER •',
     image: dubaiImg
   }
 ];
 
 export default function LowestFares() {
+  const handleViewDeals = () => {
+    document.getElementById('booking-widget')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <div className="lowest-fare-root">
       {/* Transparent Marquee Banner Strip */}
@@ -61,7 +65,7 @@ export default function LowestFares() {
               </p>
             </div>
 
-            <button className="btn-view-all-deals" type="button">
+            <button className="btn-view-all-deals" type="button" onClick={handleViewDeals}>
               <svg className="gold-btn-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#EEB01D" strokeWidth="2">
                 <path d="M20.59 13.41l-7.17 7.17a2 2 0 01-2.83 0L2 12V2h10l8.59 8.59a2 2 0 010 2.82z" />
               </svg>

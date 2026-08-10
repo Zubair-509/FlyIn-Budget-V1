@@ -231,7 +231,7 @@ export default function FaresCarousel() {
                     className="btn-card-cta"
                     onClick={(e) => {
                       e.stopPropagation();
-                      alert(`Booking flight to ${dest.title}`);
+                      document.getElementById('booking-widget')?.scrollIntoView({ behavior: 'smooth' });
                     }}
                   >
                     <span>Book now</span>
@@ -331,8 +331,8 @@ export default function FaresCarousel() {
                 <button
                   className="btn-card-cta"
                   onClick={() => {
-                    alert(`Booking flight to ${expandedCard.title}`);
                     setExpandedCard(null);
+                    document.getElementById('booking-widget')?.scrollIntoView({ behavior: 'smooth' });
                   }}
                 >
                   Book Now

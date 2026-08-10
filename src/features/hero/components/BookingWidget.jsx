@@ -16,7 +16,7 @@ export default function BookingWidget() {
   };
 
   return (
-    <div className="booking-widget-container">
+    <div id="booking-widget" className="booking-widget-container">
       <GlassSurface
         width="100%"
         height="auto"

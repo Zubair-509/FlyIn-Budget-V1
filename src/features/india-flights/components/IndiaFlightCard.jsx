@@ -62,7 +62,7 @@ const IndiaFlightCard = memo(function IndiaFlightCard({
                 className="btn-india-book"
                 onClick={(e) => {
                   e.stopPropagation();
-                  onBook ? onBook(flight) : alert(`Booking flight to ${flight.title}`);
+                  onBook ? onBook(flight) : document.getElementById('booking-widget')?.scrollIntoView({ behavior: 'smooth' });
                 }}
               >
                 <span>Book now</span>
@@ -76,7 +76,7 @@ const IndiaFlightCard = memo(function IndiaFlightCard({
                 className="btn-india-call"
                 onClick={(e) => {
                   e.stopPropagation();
-                  onCall ? onCall(flight) : window.open('tel:+442031234567');
+                  onCall ? onCall(flight) : window.open('tel:01143600079');
                 }}
               >
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">

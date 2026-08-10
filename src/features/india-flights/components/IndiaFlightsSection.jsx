@@ -77,7 +77,11 @@ export default function IndiaFlightsSection() {
           </div>
 
           {/* Top Right View All CTA Button */}
-          <button className="btn-view-india-cta" type="button">
+          <button
+            className="btn-view-india-cta"
+            type="button"
+            onClick={() => document.getElementById('booking-widget')?.scrollIntoView({ behavior: 'smooth' })}
+          >
             <span>View all India flights</span>
             <svg className="cta-arrow-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
               <path d="M9 18l6-6-6-6" />

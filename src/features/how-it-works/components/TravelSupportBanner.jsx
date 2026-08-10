@@ -35,7 +35,7 @@ const TravelSupportBanner = memo(function TravelSupportBanner() {
           <button
             className="btn-support-primary"
             type="button"
-            onClick={() => alert('Getting in touch with FlyInBudget travel support...')}
+            onClick={() => document.getElementById('booking-widget')?.scrollIntoView({ behavior: 'smooth' })}
             aria-label="Get in touch with FlyInBudget travel support"
           >
             <span>Get in touch</span>
@@ -45,7 +45,7 @@ const TravelSupportBanner = memo(function TravelSupportBanner() {
           </button>
 
           <a
-            href="tel:+18005550199"
+            href="tel:01143600079"
             className="btn-support-secondary"
             aria-label="Call FlyInBudget travel support team now"
           >

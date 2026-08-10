@@ -123,7 +123,7 @@ const HowItWorksSection = memo(function HowItWorksSection() {
               <button
                 className="btn-how-primary"
                 type="button"
-                onClick={() => alert('Requesting fare quote...')}
+                onClick={() => document.getElementById('booking-widget')?.scrollIntoView({ behavior: 'smooth' })}
                 aria-label="Get my fare quote from FlyInBudget"
               >
                 <span>Get my fare quote</span>
@@ -133,7 +133,7 @@ const HowItWorksSection = memo(function HowItWorksSection() {
               </button>
 
               <a
-                href="tel:+18005550199"
+                href="tel:01143600079"
                 className="btn-how-secondary"
                 aria-label="Call FlyInBudget team now"
               >
