@@ -5,7 +5,7 @@
 .pakistan-hero {
   position: relative;
   width: 100%;
-  min-height: clamp(800px, 95vh, 1000px);
+  min-height: clamp(900px, 110vh, 1150px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -115,7 +115,7 @@
    -------------------------------------------------------------------------- */
 .pakistan-hero__fg-layer {
   position: absolute;
-  bottom: -30px;
+  bottom: 0px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 3;
@@ -129,8 +129,8 @@
 
 .pakistan-hero__fg-img {
   width: 100%;
-  height: auto;
-  max-height: clamp(860px, 76vh, 1130px);
+  height: 100%;
+  max-height: clamp(900px, 76vh, 1200px);
   object-fit: contain;
   object-position: center bottom;
   filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.6));
