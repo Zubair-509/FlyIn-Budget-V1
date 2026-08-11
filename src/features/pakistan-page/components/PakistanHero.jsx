@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PakistanInquiryForm from './PakistanInquiryForm';
+import { usePakistanHeroAnimation } from '../animations/usePakistanHeroAnimation';
 import heroBgL1 from '../../../assets/Desktop Assets/Flights To Pakistan/BG_Hero_L1.png';
 import heroBgL3 from '../../../assets/Desktop Assets/Flights To Pakistan/BG_Hero_L3.png';
 
 export default function PakistanHero() {
+  const containerRef = useRef(null);
+
+  // Initialize GSAP animation hook scoped to this Hero section
+  usePakistanHeroAnimation(containerRef);
+
   return (
-    <section className="pakistan-hero" aria-label="Flights to Pakistan Hero">
+    <section ref={containerRef} className="pakistan-hero" aria-label="Flights to Pakistan Hero">
       {/* LAYER 1 — MARGALLA HILLS FULL BACKGROUND (z-index: 1) */}
       <div className="pakistan-hero__bg-layer" aria-hidden="true">
         <img

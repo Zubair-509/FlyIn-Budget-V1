@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import Navbar from '../../components/layout/Navbar';
 import Footer from '../../features/footer';
 import FlowingMenu from '../../features/lowest-fares/components/FlowingMenu';
@@ -8,8 +8,7 @@ import {
   PakistanDiscovery,
   PakistanTravelEssentials,
   PakistanFAQ,
-  PakistanCtaBanner,
-  usePakistanHeroAnimation
+  PakistanCtaBanner
 } from '../../features/pakistan-page';
 
 import dubaiImg from '../../assets/dubai.png';
@@ -26,8 +25,6 @@ const VOUCHER_MENU_ITEMS = [
 ];
 
 export default function PakistanFlightsPage() {
-  const containerRef = useRef(null);
-
   // Route level SEO metadata
   useEffect(() => {
     document.title = 'Flights to Pakistan | Affordable Flight Options | FlyInBudget';
@@ -52,11 +49,8 @@ export default function PakistanFlightsPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  // Bind GSAP Hero animations with scoped context cleanup
-  usePakistanHeroAnimation(containerRef, true);
-
   return (
-    <div ref={containerRef} className="pakistan-page-wrapper">
+    <div className="pakistan-page-wrapper">
       {/* Shared Top Navbar */}
       <Navbar isVisible={true} />
 
