@@ -64,6 +64,28 @@ export default function IndiaArrivalGuidance() {
     }
   };
 
+  const renderSupportCard = () => (
+    <div className="india-arrival-support-card">
+      <div className="india-arrival-support-text">
+        <span className="india-arrival-support-title">Not sure which airport suits your journey?</span>
+        <p className="india-arrival-support-desc">
+          Our travel team can help you compare suitable arrival options based on your destination and travel dates.
+        </p>
+      </div>
+
+      <a
+        href="#india-flight-inquiry"
+        onClick={handleCtaClick}
+        className="btn-india-arrival-cta"
+      >
+        <span>Ask about your route</span>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+          <path d="M5 12h14M12 5l7 7-7 7" />
+        </svg>
+      </a>
+    </div>
+  );
+
   return (
     <section
       ref={sectionRef}
@@ -84,6 +106,11 @@ export default function IndiaArrivalGuidance() {
             <p className="india-arrival-copy">
               Your ideal arrival city can depend on where your journey continues after landing.
             </p>
+
+            {/* Support Card on Desktop (under left text section) */}
+            <div className="support-card-desktop-wrapper">
+              {renderSupportCard()}
+            </div>
           </div>
 
           {/* Right Regional Rows Column */}
@@ -98,25 +125,9 @@ export default function IndiaArrivalGuidance() {
               ))}
             </div>
 
-            {/* Subtle Bottom Support Note */}
-            <div className="india-arrival-support-card">
-              <div className="india-arrival-support-text">
-                <span className="india-arrival-support-title">Not sure which airport suits your journey?</span>
-                <p className="india-arrival-support-desc">
-                  Our travel team can help you compare suitable arrival options based on your destination and travel dates.
-                </p>
-              </div>
-
-              <a
-                href="#india-flight-inquiry"
-                onClick={handleCtaClick}
-                className="btn-india-arrival-cta"
-              >
-                <span>Ask about your route</span>
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </a>
+            {/* Support Card on Mobile/Tablet (at bottom of section) */}
+            <div className="support-card-mobile-wrapper">
+              {renderSupportCard()}
             </div>
           </div>
         </div>

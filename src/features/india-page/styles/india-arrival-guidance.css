@@ -1,11 +1,11 @@
 /* --------------------------------------------------------------------------
-   INDIA REGIONAL ARRIVAL GUIDANCE — SECTION STYLES
+   INDIA REGIONAL ARRIVAL GUIDANCE — POLISHED SECTION STYLES
    -------------------------------------------------------------------------- */
 
 .india-arrival-guidance-section {
   position: relative;
   width: 100%;
-  padding-block: clamp(80px, 10vw, 128px);
+  padding-block: clamp(90px, 9vw, 136px);
   background: linear-gradient(180deg, #020d1e 0%, #04152d 50%, #031126 100%);
   color: #FFFFFF;
   font-family: 'Poppins', -apple-system, sans-serif;
@@ -14,15 +14,22 @@
   overflow: hidden;
 }
 
+/* Short desktop height tuning (1366x768, 1280x800, 1280x720) */
+@media (min-width: 769px) and (max-height: 800px) {
+  .india-arrival-guidance-section {
+    padding-block: clamp(50px, 6vh, 76px);
+  }
+}
+
 .india-arrival-bg-glow {
   position: absolute;
   top: 40%;
-  left: 30%;
-  width: 50vw;
-  height: 50vw;
-  max-width: 600px;
-  max-height: 600px;
-  background: radial-gradient(circle, rgba(238, 176, 29, 0.03) 0%, transparent 70%);
+  left: 25%;
+  width: 55vw;
+  height: 55vw;
+  max-width: 700px;
+  max-height: 700px;
+  background: radial-gradient(circle, rgba(238, 176, 29, 0.035) 0%, transparent 70%);
   transform: translate(-50%, -50%);
   pointer-events: none;
   z-index: 1;
@@ -32,17 +39,17 @@
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1460px;
   margin: 0 auto;
-  padding-inline: clamp(20px, 4vw, 64px);
+  padding-inline: clamp(24px, 4.5vw, 64px);
   box-sizing: border-box;
 }
 
 /* 2-Column Grid Layout */
 .india-arrival-grid {
   display: grid;
-  grid-template-columns: minmax(320px, 38%) minmax(0, 62%);
-  gap: clamp(36px, 5vw, 64px);
+  grid-template-columns: minmax(340px, 40%) minmax(0, 60%);
+  gap: clamp(48px, 6vw, 96px);
   align-items: start;
 }
 
@@ -51,7 +58,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 480px;
+  max-width: 520px;
 
   /* Sticky visual alignment on desktop without pinning */
   position: sticky;
@@ -60,37 +67,38 @@
 
 .india-arrival-eyebrow {
   display: inline-block;
-  font-size: clamp(0.75rem, 0.9vw, 0.875rem);
+  font-size: clamp(0.8rem, 0.95vw, 0.925rem);
   font-weight: 700;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.24em;
   color: #EEB01D;
   text-transform: uppercase;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .india-arrival-heading {
   font-family: 'Poppins', -apple-system, sans-serif;
-  font-size: clamp(2rem, 3.4vw, 2.9rem);
+  font-size: clamp(2.5rem, 4vw, 4.2rem);
   font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
   color: #FFFFFF;
-  margin: 0 0 16px 0;
-  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
+  margin: 0 0 clamp(16px, 2vh, 24px) 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
 }
 
 .india-arrival-copy {
-  font-size: clamp(0.95rem, 1.15vw, 1.1rem);
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.82);
+  font-size: clamp(1.025rem, 1.25vw, 1.175rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.85);
   margin: 0;
+  max-width: 480px;
 }
 
 /* Right Regional Rows List */
 .india-arrival-rows-col {
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 32px;
 }
 
 .india-arrival-rows-list {
@@ -101,23 +109,23 @@
 
 /* Individual Regional Row */
 .india-arrival-region-row {
-  padding-block: clamp(24px, 3.5vh, 32px);
+  padding-block: clamp(32px, 4.5vh, 44px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   transition: background 0.3s ease;
 }
 
 .india-arrival-row-header {
   display: flex;
   align-items: baseline;
-  gap: 18px;
+  gap: 20px;
 }
 
 .india-arrival-row-number {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+  font-size: clamp(1.2rem, 1.6vw, 1.4rem);
   font-weight: 900;
   color: #EEB01D;
   letter-spacing: 0.05em;
@@ -127,14 +135,14 @@
 .india-arrival-row-titles {
   display: flex;
   align-items: baseline;
-  gap: 16px;
+  gap: 20px;
   flex-wrap: wrap;
 }
 
 .india-arrival-row-region {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(1.2rem, 1.8vw, 1.45rem);
-  font-weight: 700;
+  font-size: clamp(1.35rem, 2vw, 1.65rem);
+  font-weight: 800;
   color: #FFFFFF;
   margin: 0;
   letter-spacing: 0.02em;
@@ -150,80 +158,95 @@
 .india-gateway-dot {
   color: #EEB01D;
   font-size: 0.85rem;
+  margin-inline: 2px;
 }
 
 .india-gateway-item {
   display: inline-flex;
   align-items: baseline;
-  gap: 4px;
-  font-size: clamp(0.875rem, 1.1vw, 0.975rem);
+  gap: 5px;
+  font-size: clamp(0.925rem, 1.15vw, 1.05rem);
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
 }
 
 .india-gateway-name {
   color: #FFFFFF;
+  font-weight: 700;
 }
 
 .india-gateway-code {
-  font-size: 0.775rem;
+  font-size: 0.825rem;
   font-weight: 700;
   color: #EEB01D;
+  opacity: 0.95;
 }
 
 .india-arrival-row-desc {
-  font-size: clamp(0.9rem, 1.05vw, 1.025rem);
-  line-height: 1.62;
-  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(0.95rem, 1.1vw, 1.075rem);
+  line-height: 1.68;
+  color: rgba(255, 255, 255, 0.82);
   margin: 0;
-  padding-left: clamp(0px, 2.5vw, 36px);
+  padding-left: clamp(0px, 2.5vw, 40px);
+}
+
+/* Support Card Desktop/Mobile Wrappers */
+.support-card-desktop-wrapper {
+  display: block;
+  width: 100%;
+  margin-top: clamp(28px, 4.5vh, 48px);
+}
+
+.support-card-mobile-wrapper {
+  display: none;
+  width: 100%;
 }
 
 /* Secondary Support Note Card */
 .india-arrival-support-card {
-  margin-top: 12px;
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 16px;
-  padding: clamp(20px, 3vw, 28px);
+  padding: clamp(22px, 2.5vw, 28px);
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .india-arrival-support-text {
-  max-width: 520px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .india-arrival-support-title {
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #FFFFFF;
 }
 
 .india-arrival-support-desc {
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.75);
   margin: 0;
 }
 
 .btn-india-arrival-cta {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  min-height: 44px;
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  padding: 10px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 12px;
+  padding: 11px 22px;
   color: #FFFFFF;
   font-family: 'Poppins', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.875rem;
   font-weight: 600;
   text-decoration: none;
   transition: all 0.25s ease;
@@ -235,6 +258,12 @@
   border-color: #EEB01D;
   color: #EEB01D;
   transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(238, 176, 29, 0.2);
+}
+
+.btn-india-arrival-cta:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(238, 176, 29, 0.5);
 }
 
 /* --------------------------------------------------------------------------
@@ -243,13 +272,26 @@
 
 /* Tablet (769px – 1023px) */
 @media (max-width: 1023px) {
+  .support-card-desktop-wrapper {
+    display: none;
+  }
+
+  .support-card-mobile-wrapper {
+    display: block;
+    margin-top: 16px;
+  }
+
   .india-arrival-grid {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 40px;
   }
 
   .india-arrival-intro-col {
     position: static;
+    max-width: 100%;
+  }
+
+  .india-arrival-copy {
     max-width: 100%;
   }
 
@@ -264,22 +306,26 @@
     padding-block: 56px;
   }
 
+  .india-arrival-heading {
+    font-size: clamp(2.1rem, 8vw, 3.2rem);
+  }
+
   .india-arrival-row-header {
     flex-direction: row;
     align-items: flex-start;
-    gap: 12px;
+    gap: 14px;
   }
 
   .india-arrival-row-titles {
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
   }
 
   .india-arrival-support-card {
     flex-direction: column;
     align-items: flex-start;
-    gap: 14px;
-    padding: 18px 16px;
+    gap: 16px;
+    padding: 20px 18px;
   }
 
   .btn-india-arrival-cta {

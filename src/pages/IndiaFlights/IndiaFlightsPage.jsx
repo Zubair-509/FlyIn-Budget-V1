@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Navbar from '../../components/layout/Navbar';
 import Footer from '../../features/footer';
-import IndiaHero, { IndiaFlightOptions, IndiaDiscovery, IndiaArrivalGuidance } from '../../features/india-page';
+import IndiaHero, { IndiaFlightOptions, IndiaDiscovery, IndiaArrivalGuidance, IndiaTravelEssentials, IndiaFAQ, IndiaFinalCTA } from '../../features/india-page';
 import FlowingMenu from '../../features/lowest-fares/components/FlowingMenu';
 import dubaiImg from '../../assets/dubai.png';
 import '../../features/lowest-fares/styles/flowing-menu.css';
@@ -71,6 +71,15 @@ export default function IndiaFlightsPage() {
 
         {/* 5. Regional Arrival Guidance */}
         <IndiaArrivalGuidance />
+
+        {/* 6. India Travel Essentials */}
+        <IndiaTravelEssentials />
+
+        {/* 7. India Flights FAQ */}
+        <IndiaFAQ />
+
+        {/* 8. Final Flights to India CTA */}
+        <IndiaFinalCTA />
       </main>
 
       {/* Shared Global Footer */}
