@@ -78,7 +78,7 @@ export function useIndiaHeroAnimation(containerRef, isReady = true) {
         ease: 'none',
         immediateRender: false,
         scrollTrigger: {
-          trigger: '.india-hero',
+          trigger: containerRef.current,
           start: 'top top',
           end: 'bottom top',
           scrub: 0.8
@@ -91,7 +91,7 @@ export function useIndiaHeroAnimation(containerRef, isReady = true) {
         scale: 1.03,
         ease: 'none',
         scrollTrigger: {
-          trigger: '.india-hero',
+          trigger: containerRef.current,
           start: 'top top',
           end: 'bottom top',
           scrub: 0.8
@@ -103,7 +103,7 @@ export function useIndiaHeroAnimation(containerRef, isReady = true) {
         yPercent: 12,
         ease: 'none',
         scrollTrigger: {
-          trigger: '.india-hero',
+          trigger: containerRef.current,
           start: 'top top',
           end: 'bottom top',
           scrub: 0.8

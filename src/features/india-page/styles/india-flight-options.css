@@ -1,0 +1,468 @@
+/* --------------------------------------------------------------------------
+   INDIA FLIGHT OPTIONS — SCROLLSTACK & SECTION STYLES
+   -------------------------------------------------------------------------- */
+
+.india-flight-options-section {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(180deg, #031126 0%, #04152b 45%, #020d1e 100%);
+  color: #FFFFFF;
+  padding-top: clamp(60px, 8vh, 100px);
+  padding-bottom: clamp(80px, 10vh, 120px);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.india-flight-options-container {
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
+  padding-inline: clamp(16px, 4vw, 48px);
+  box-sizing: border-box;
+}
+
+/* --------------------------------------------------------------------------
+   SECTION INTRODUCTION HEADER
+   -------------------------------------------------------------------------- */
+.india-flight-options-intro-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: clamp(40px, 6vh, 64px);
+  flex-wrap: wrap;
+}
+
+.india-flight-options-intro-left {
+  max-width: 720px;
+}
+
+.india-flight-options-eyebrow {
+  display: inline-block;
+  font-size: clamp(0.75rem, 1vw, 0.875rem);
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #EEB01D;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.india-flight-options-heading {
+  font-family: 'Poppins', -apple-system, sans-serif;
+  font-size: clamp(1.85rem, 3.2vw, 2.75rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin: 0 0 16px 0;
+}
+
+.india-flight-options-copy {
+  font-size: clamp(0.95rem, 1.15vw, 1.1rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0;
+}
+
+.btn-india-view-all-options {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  padding: 12px 24px;
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.925rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.btn-india-view-all-options:hover {
+  background: rgba(238, 176, 29, 0.15);
+  border-color: #EEB01D;
+  color: #EEB01D;
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   SCROLLSTACK WRAPPER & CONTAINER
+   -------------------------------------------------------------------------- */
+.india-scroll-stack-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.india-scroll-stack-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  position: relative;
+}
+
+/* --------------------------------------------------------------------------
+   EDITORIAL DESTINATION PANEL CARD
+   -------------------------------------------------------------------------- */
+.india-scroll-stack-card {
+  position: relative;
+  width: 100%;
+  min-height: 480px;
+  background: #051833;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+  display: flex;
+  box-sizing: border-box;
+  transform-origin: center top;
+  will-change: transform, opacity;
+  transition: background 0.3s ease;
+}
+
+.india-scroll-stack-card__dark-overlay {
+  position: absolute;
+  inset: 0;
+  background: #020d1e;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.india-scroll-stack-card.is-covered .india-scroll-stack-card__dark-overlay {
+  opacity: 0.45;
+}
+
+.india-scroll-stack-card__grid {
+  display: grid;
+  grid-template-columns: 48% 52%;
+  width: 100%;
+  height: 100%;
+}
+
+/* Left Image Column */
+.india-scroll-stack-card__image-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 480px;
+  overflow: hidden;
+}
+
+.india-scroll-stack-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s ease;
+}
+
+.india-scroll-stack-card:hover .india-scroll-stack-card__img {
+  transform: scale(1.04);
+}
+
+.india-scroll-stack-card__img-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(5, 24, 51, 0) 60%, rgba(5, 24, 51, 0.95) 100%);
+  pointer-events: none;
+}
+
+/* Optional Badge */
+.india-scroll-stack-card__badge {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background: #EEB01D;
+  color: #031126;
+  font-size: 0.725rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  padding: 6px 14px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 14px rgba(238, 176, 29, 0.4);
+  z-index: 2;
+}
+
+/* Right Content Column */
+.india-scroll-stack-card__content {
+  padding: clamp(32px, 4vw, 48px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.india-scroll-stack-card__top-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.india-scroll-stack-card__seq {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: rgba(238, 176, 29, 0.6);
+  letter-spacing: 0.05em;
+}
+
+.india-scroll-stack-card__tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.india-scroll-stack-card__code-badge {
+  font-size: 0.725rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.india-scroll-stack-card__route-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #EEB01D;
+  text-transform: uppercase;
+}
+
+.india-scroll-stack-card__city-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(2rem, 3vw, 2.75rem);
+  font-weight: 800;
+  color: #FFFFFF;
+  margin: 0 0 6px 0;
+  line-height: 1.1;
+}
+
+.india-scroll-stack-card__subtitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 16px;
+}
+
+.india-scroll-stack-card__desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 24px;
+}
+
+/* Pricing Footer Block */
+.india-scroll-stack-card__price-row {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.india-scroll-stack-card__fare-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.india-scroll-stack-card__fare-label {
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.6);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.india-scroll-stack-card__fare-amount {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+  font-weight: 900;
+  color: #FFFFFF;
+  line-height: 1;
+}
+
+.india-scroll-stack-card__fare-note {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 4px;
+}
+
+/* CTA Group */
+.india-scroll-stack-card__cta-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-card-book {
+  background: #EEB01D;
+  color: #031126;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(238, 176, 29, 0.3);
+  white-space: nowrap;
+}
+
+.btn-card-book:hover {
+  background: #f7bb25;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(238, 176, 29, 0.45);
+}
+
+.btn-card-call {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.btn-card-call:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE BREAKPOINTS
+   -------------------------------------------------------------------------- */
+
+/* Laptop (1024px – 1199px) */
+@media (max-width: 1199px) {
+  .india-scroll-stack-card__grid {
+    grid-template-columns: 45% 55%;
+  }
+
+  .india-scroll-stack-card {
+    min-height: 440px;
+  }
+
+  .india-scroll-stack-card__image-wrap {
+    min-height: 440px;
+  }
+
+  .india-scroll-stack-card__content {
+    padding: 32px 28px;
+  }
+}
+
+/* Tablet (769px – 1023px) */
+@media (max-width: 1023px) {
+  .india-scroll-stack-card__grid {
+    grid-template-columns: 42% 58%;
+  }
+
+  .india-scroll-stack-card {
+    min-height: 420px;
+  }
+
+  .india-scroll-stack-card__image-wrap {
+    min-height: 420px;
+  }
+
+  .india-scroll-stack-card__content {
+    padding: 24px 20px;
+  }
+
+  .india-scroll-stack-card__cta-group {
+    gap: 8px;
+  }
+
+  .btn-card-book, .btn-card-call {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile (<= 768px) */
+@media (max-width: 768px) {
+  .india-flight-options-section {
+    padding-top: 48px;
+    padding-bottom: 64px;
+  }
+
+  .india-flight-options-intro-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .india-scroll-stack-cards-list {
+    gap: 24px;
+  }
+
+  .india-scroll-stack-card {
+    min-height: auto;
+    border-radius: 18px;
+    position: relative !important;
+    top: auto !important;
+    transform: none !important;
+  }
+
+  .india-scroll-stack-card__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .india-scroll-stack-card__image-wrap {
+    min-height: 220px;
+    height: 220px;
+  }
+
+  .india-scroll-stack-card__img-gradient {
+    background: linear-gradient(180deg, rgba(5, 24, 51, 0) 50%, rgba(5, 24, 51, 0.95) 100%);
+  }
+
+  .india-scroll-stack-card__content {
+    padding: 24px 20px;
+  }
+
+  .india-scroll-stack-card__price-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .india-scroll-stack-card__cta-group {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .btn-card-book, .btn-card-call {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 12px 14px;
+  }
+}
