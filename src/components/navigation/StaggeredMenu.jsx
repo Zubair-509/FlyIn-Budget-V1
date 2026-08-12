@@ -322,6 +322,9 @@ export const StaggeredMenu = ({
 
   const closeMenu = useCallback(() => {
     if (openRef.current) {
+      if (document.activeElement && panelRef.current && panelRef.current.contains(document.activeElement)) {
+        document.activeElement.blur();
+      }
       openRef.current = false;
       setOpen(false);
       onMenuClose?.();
@@ -334,6 +337,9 @@ export const StaggeredMenu = ({
 
   const handleItemClick = (e, link) => {
     e.preventDefault();
+    if (e.currentTarget) {
+      e.currentTarget.blur();
+    }
     closeMenu();
     if (link.startsWith('http') || link.startsWith('tel:') || link.startsWith('mailto:')) {
       window.open(link, '_blank', 'noopener,noreferrer');
