@@ -1437,7 +1437,7 @@ body {
 
 @media (max-width: 768px) {
   .navbar {
-    padding: 1rem 1.25rem;
+    display: none !important;
   }
 
   .brand-logo-img {
