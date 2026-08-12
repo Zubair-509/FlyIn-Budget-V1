@@ -86,22 +86,19 @@
   min-height: clamp(480px, 64vh, 680px);
 }
 
-/* Card Panel Styling — Desktop Pinned Position */
-@media (min-width: 1024px) {
-  .india-stack-card {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(92vw, 1420px);
-    height: clamp(440px, 62vh, 660px);
-    border-radius: 24px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.15);
-    background: #061833;
-    transition: box-shadow 0.3s ease;
-  }
+.india-stack-card {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92vw, 1420px);
+  height: clamp(440px, 62vh, 660px);
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  background: #061833;
+  transition: box-shadow 0.3s ease;
 }
 
 /* Card Internal Layout */
@@ -283,23 +280,13 @@
 /* Mobile & Tablet Fallback Layout (< 1024px) */
 @media (max-width: 1023px) {
   .india-cards-deck {
-    min-height: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+    min-height: clamp(400px, 60vh, 520px);
   }
 
   .india-stack-card {
-    position: relative;
-    top: auto;
-    left: auto;
-    transform: none !important;
     width: 100%;
-    height: clamp(420px, 64vh, 520px);
+    height: clamp(400px, 60vh, 520px);
     border-radius: 20px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    background: #061833;
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
   }
 

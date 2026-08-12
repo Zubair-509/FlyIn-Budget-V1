@@ -423,9 +423,6 @@
   .india-scroll-stack-card {
     min-height: auto;
     border-radius: 18px;
-    position: relative !important;
-    top: auto !important;
-    transform: none !important;
   }
 
   .india-scroll-stack-card__grid {

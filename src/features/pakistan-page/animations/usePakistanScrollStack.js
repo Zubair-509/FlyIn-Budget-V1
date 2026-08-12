@@ -27,17 +27,18 @@ export function usePakistanScrollStack(containerRef, cardsRef, onActiveIndexChan
     if (cards.length === 0) return;
 
     const ctx = gsap.context(() => {
-      const cardHeight = cards[0].offsetHeight;
-      const stackOffset = 30; // vertical offset per stacked card in pixels
+      const isMobile = window.innerWidth <= 768;
+      const startPinPos = isMobile ? 'top 80px' : 'top 18%';
+      const startCoveredPos = isMobile ? 'top 95px' : 'top 22%';
 
       cards.forEach((card, index) => {
         // Skip last card from pinning since it releases the section naturally
         if (index < cards.length - 1) {
           ScrollTrigger.create({
             trigger: card,
-            start: 'top 18%',
+            start: startPinPos,
             endTrigger: cards[cards.length - 1],
-            end: 'top 18%',
+            end: startPinPos,
             pin: true,
             pinSpacing: false,
             scrub: true,
@@ -51,11 +52,11 @@ export function usePakistanScrollStack(containerRef, cardsRef, onActiveIndexChan
           });
         }
 
-        // Trigger covered state update when next card reaches top 18%
+        // Trigger covered state update when next card reaches top offset
         if (index > 0) {
           ScrollTrigger.create({
             trigger: card,
-            start: 'top 22%',
+            start: startCoveredPos,
             onEnter: () => onActiveIndexChange && onActiveIndexChange(index),
             onLeaveBack: () => onActiveIndexChange && onActiveIndexChange(index - 1)
           });

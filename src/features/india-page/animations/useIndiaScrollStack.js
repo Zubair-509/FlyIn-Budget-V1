@@ -10,11 +10,10 @@ export function useIndiaScrollStack(containerRef, cardsRef, onActiveIndexChange)
       return;
     }
 
-    // Check reduced motion & mobile screen viewports
+    // Check reduced motion preference
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
-    if (prefersReducedMotion || isMobile) {
+    if (prefersReducedMotion) {
       // Clear inline styles for natural vertical flow
       cardsRef.current.forEach(card => {
         if (card) {
@@ -28,14 +27,18 @@ export function useIndiaScrollStack(containerRef, cardsRef, onActiveIndexChange)
     if (cards.length === 0) return;
 
     const ctx = gsap.context(() => {
+      const isMobile = window.innerWidth <= 768;
+      const startPinPos = isMobile ? 'top 80px' : 'top 18%';
+      const startCoveredPos = isMobile ? 'top 95px' : 'top 22%';
+
       cards.forEach((card, index) => {
         // Skip last card from pinning since it releases the section naturally
         if (index < cards.length - 1) {
           ScrollTrigger.create({
             trigger: card,
-            start: 'top 18%',
+            start: startPinPos,
             endTrigger: cards[cards.length - 1],
-            end: 'top 18%',
+            end: startPinPos,
             pin: true,
             pinSpacing: false,
             scrub: true,
@@ -49,11 +52,11 @@ export function useIndiaScrollStack(containerRef, cardsRef, onActiveIndexChange)
           });
         }
 
-        // Trigger covered state update when next card reaches top 22%
+        // Trigger covered state update when next card reaches top offset
         if (index > 0) {
           ScrollTrigger.create({
             trigger: card,
-            start: 'top 22%',
+            start: startCoveredPos,
             onEnter: () => onActiveIndexChange && onActiveIndexChange(index),
             onLeaveBack: () => onActiveIndexChange && onActiveIndexChange(index - 1)
           });
