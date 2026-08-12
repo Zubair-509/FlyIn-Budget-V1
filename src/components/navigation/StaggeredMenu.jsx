@@ -1,5 +1,5 @@
 import React, { useCallback, useLayoutEffect, useRef, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import './StaggeredMenu.css';
 
@@ -19,7 +19,8 @@ export const StaggeredMenu = ({
   isFixed = false,
   closeOnClickAway = true,
   onMenuOpen,
-  onMenuClose
+  onMenuClose,
+  isScrolled: isScrolledProp
 }) => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
@@ -33,6 +34,22 @@ export const StaggeredMenu = ({
   const textInnerRef = useRef(null);
   const textWrapRef = useRef(null);
   const [textLines, setTextLines] = useState(['Menu', 'Close']);
+
+  const [internalIsScrolled, setInternalIsScrolled] = useState(false);
+  const isScrolled = isScrolledProp !== undefined ? isScrolledProp : internalIsScrolled;
+
+  useEffect(() => {
+    if (isScrolledProp !== undefined) return;
+
+    const handleScroll = () => {
+      setInternalIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isScrolledProp]);
 
   const openTlRef = useRef(null);
   const closeTweenRef = useRef(null);
@@ -387,8 +404,8 @@ export const StaggeredMenu = ({
         })()}
       </div>
 
-      <header className="staggered-menu-header" aria-label="Mobile navigation header">
-        <div className="sm-logo" aria-label="Logo">
+      <header className={`staggered-menu-header ${isScrolled ? 'is-scrolled' : ''}`} aria-label="Mobile navigation header">
+        <Link to="/" className="sm-logo" aria-label="FlyIn Budget Logo">
           {logoUrl && (
             <img
               src={logoUrl}
@@ -397,7 +414,7 @@ export const StaggeredMenu = ({
               draggable={false}
             />
           )}
-        </div>
+        </Link>
         <button
           ref={toggleBtnRef}
           className="sm-toggle"

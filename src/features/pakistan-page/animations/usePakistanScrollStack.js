@@ -10,12 +10,11 @@ export function usePakistanScrollStack(containerRef, cardsRef, onActiveIndexChan
       return;
     }
 
-    // Check reduced motion & mobile screen viewports
+    // Check reduced motion preference
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
-    if (prefersReducedMotion || isMobile) {
-      // Clear inline styles for natural vertical flow
+    if (prefersReducedMotion) {
+      // Clear inline styles under reduced motion for natural flow
       cardsRef.current.forEach(card => {
         if (card) {
           gsap.set(card, { clearProps: 'all' });

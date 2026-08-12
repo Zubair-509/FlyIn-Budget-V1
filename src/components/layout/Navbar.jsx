@@ -26,7 +26,7 @@ export default function Navbar({ isVisible }) {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 30) {
+      if (window.scrollY > 20) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -65,6 +65,7 @@ export default function Navbar({ isVisible }) {
         menuButtonColor="#ffffff"
         openMenuButtonColor="#EEB01D"
         changeMenuColorOnOpen={true}
+        isScrolled={isScrolled}
       />
 
       {/* Desktop Navigation Header */}
