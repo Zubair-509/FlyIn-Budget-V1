@@ -30,6 +30,8 @@ export default function Navbar({ isVisible }) {
   const isAbout = location.pathname === '/about-us';
   const isPakistan = location.pathname === '/flight-to-pakistan';
   const isIndia = location.pathname === '/flight-to-india';
+  const isTerms = location.pathname === '/booking-terms';
+  const isContact = location.pathname === '/get-in-touch';
 
   return (
     <header className={`navbar hero-transition-element ${isVisible ? 'is-visible' : ''} ${isScrolled ? 'is-scrolled' : ''}`}>
@@ -70,8 +72,8 @@ export default function Navbar({ isVisible }) {
           </div>
         </div>
 
-        <Link to="/" className="nav-link" onClick={() => setIsMenuOpen(false)}>Booking Terms</Link>
-        <a href="tel:01143600079" className="nav-link" onClick={() => setIsMenuOpen(false)}>Contact</a>
+        <Link to="/booking-terms" className={`nav-link ${isTerms ? 'active' : ''}`} onClick={() => setIsMenuOpen(false)}>Booking Terms</Link>
+        <Link to="/get-in-touch" className={`nav-link ${isContact ? 'active' : ''}`} onClick={() => setIsMenuOpen(false)}>Contact</Link>
         <button className="btn-manage mobile-nav-btn" onClick={() => setIsMenuOpen(false)}>
           Umrah Inquiry
         </button>

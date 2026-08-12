@@ -35,10 +35,9 @@ body {
 /* Video & Preloaded Image Background Layer */
 .video-container {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   z-index: 1;
   overflow: hidden;
   background-color: #0b1329;
@@ -46,10 +45,9 @@ body {
 
 .hero-bg-image {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   z-index: 0;
   pointer-events: none;
@@ -57,10 +55,9 @@ body {
 
 .hero-video {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   z-index: 1;
   pointer-events: none;

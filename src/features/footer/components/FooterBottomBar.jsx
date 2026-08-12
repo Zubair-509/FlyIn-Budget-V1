@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import { Link } from 'react-router-dom';
 import { legalLinks } from '../data/footerLinks';
 
 export const FooterBottomBar = memo(function FooterBottomBar() {
@@ -14,9 +15,15 @@ export const FooterBottomBar = memo(function FooterBottomBar() {
         {legalLinks.map((link, idx) => (
           <React.Fragment key={idx}>
             {idx > 0 && <span className="legal-divider" aria-hidden="true">|</span>}
-            <a href={link.href} className="legal-link">
-              {link.label}
-            </a>
+            {link.href.startsWith('/') ? (
+              <Link to={link.href} className="legal-link">
+                {link.label}
+              </Link>
+            ) : (
+              <a href={link.href} className="legal-link">
+                {link.label}
+              </a>
+            )}
           </React.Fragment>
         ))}
       </nav>

@@ -10,34 +10,34 @@ export const footerDestinations = [
     city: 'Lahore',
     price: 'From £480*',
     image: lahoreImg,
-    href: '#pakistan-flights-title'
+    href: '/flight-to-pakistan'
   },
   {
     id: 'karachi',
     city: 'Karachi',
     price: 'From £304*',
     image: karachiImg,
-    href: '#pakistan-flights-title'
+    href: '/flight-to-pakistan'
   },
   {
     id: 'islamabad',
     city: 'Islamabad',
     price: 'From £438*',
     image: islamabadImg,
-    href: '#pakistan-flights-title'
+    href: '/flight-to-pakistan'
   },
   {
     id: 'delhi',
     city: 'Delhi',
     price: 'From £418*',
     image: delhiImg,
-    href: '#india-flights-title'
+    href: '/flight-to-india'
   },
   {
     id: 'mumbai',
     city: 'Mumbai',
     price: 'From £453*',
     image: mumbaiImg,
-    href: '#india-flights-title'
+    href: '/flight-to-india'
   }
 ];
