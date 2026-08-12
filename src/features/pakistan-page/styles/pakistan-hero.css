@@ -20,6 +20,13 @@
 }
 
 /* --------------------------------------------------------------------------
+   MOBILE ONLY BACKGROUND (z-index: 1)
+   -------------------------------------------------------------------------- */
+.pakistan-hero__mobile-bg {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
    LAYER 1 — MARGALLA HILLS FULL BACKGROUND (z-index: 1)
    -------------------------------------------------------------------------- */
 .pakistan-hero__bg-layer {
@@ -384,26 +391,45 @@ select.field-input-box option {
     min-height: auto;
     padding-top: 85px;
     padding-bottom: 32px;
-  }
-
-  .pakistan-hero__title-layer {
-    padding-inline: 16px;
-    margin-top: 16px;
-  }
-
-  .pakistan-hero__country {
-    font-size: clamp(3.8rem, 15vw, 6.5rem);
-    line-height: 0.88;
-  }
-
-  .pakistan-hero__fg-layer {
     position: relative;
-    top: auto;
-    left: auto;
+  }
+
+  /* Hide L1, L2, L3 Background & Title layers on Mobile view only */
+  .pakistan-hero__bg-layer,
+  .pakistan-hero__title-layer,
+  .pakistan-hero__fg-layer {
+    display: none !important;
+  }
+
+  /* Show Mobile Only Background */
+  .pakistan-hero__mobile-bg {
+    display: block;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .pakistan-hero__mobile-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .pakistan-hero__mobile-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(3, 17, 38, 0.45) 0%, rgba(3, 17, 38, 0.25) 40%, rgba(3, 17, 38, 0.88) 100%);
+    pointer-events: none;
+  }
+
+  .pakistan-hero__form-layer {
     transform: none;
-    width: 80%;
-    max-width: 360px;
-    margin: -30px auto 20px auto;
+    margin-top: clamp(160px, 35vh, 320px);
   }
 
   .pakistan-inquiry-form-container {

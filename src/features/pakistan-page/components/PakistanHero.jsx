@@ -3,6 +3,7 @@ import PakistanInquiryForm from './PakistanInquiryForm';
 import { usePakistanHeroAnimation } from '../animations/usePakistanHeroAnimation';
 import heroBgL1 from '../../../assets/Desktop Assets/Flights To Pakistan/BG_Hero_L1.png';
 import heroBgL3 from '../../../assets/Desktop Assets/Flights To Pakistan/BG_Hero_L3.png';
+import heroBgMobile from '../../../assets/Mobile assets/Pakistan-hero.png';
 
 export default function PakistanHero() {
   const containerRef = useRef(null);
@@ -12,6 +13,17 @@ export default function PakistanHero() {
 
   return (
     <section ref={containerRef} className="pakistan-hero" aria-label="Flights to Pakistan Hero">
+      {/* MOBILE ONLY BACKGROUND (z-index: 1) */}
+      <div className="pakistan-hero__mobile-bg" aria-hidden="true">
+        <img
+          src={heroBgMobile}
+          alt=""
+          className="pakistan-hero__mobile-bg-img"
+          loading="eager"
+        />
+        <div className="pakistan-hero__mobile-bg-overlay" />
+      </div>
+
       {/* LAYER 1 — MARGALLA HILLS FULL BACKGROUND (z-index: 1) */}
       <div className="pakistan-hero__bg-layer" aria-hidden="true">
         <img

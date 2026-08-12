@@ -17,6 +17,7 @@ export function usePakistanHeroAnimation(containerRef, isReady = true) {
         gsap.set(
           [
             '.pakistan-hero__bg-img',
+            '.pakistan-hero__mobile-bg-img',
             '.pakistan-hero__eyebrow',
             '.pakistan-hero__country',
             '.pakistan-hero__fg-img',
@@ -34,7 +35,7 @@ export function usePakistanHeroAnimation(containerRef, isReady = true) {
 
       introTl
         .fromTo(
-          '.pakistan-hero__bg-img',
+          ['.pakistan-hero__bg-img', '.pakistan-hero__mobile-bg-img'],
           { opacity: 0, scale: 1.035 },
           { opacity: 1, scale: 1, duration: 1.2, ease: 'power2.out' },
           0
